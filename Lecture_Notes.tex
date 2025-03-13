@@ -1,0 +1,310 @@
+\documentclass[a4paper,11pt]{article}
+%\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath, amsfonts, amsthm}
+\usepackage{tikz}
+\usepackage{braket}
+\usepackage{cancel}
+
+\renewcommand{\d}{{\mathrm{d}}}
+\newcommand{\e}{{\mathrm{e}}}
+\newcommand{\dr}[2]{\frac{\partial {#1}}{\partial{#2}}}
+
+\title{Géometrie Différentielle et Physique Mathématique}
+\date{Frédéric Hélein}
+
+\usepackage{geometry}
+\geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=25mm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\begin{document}
+\title %ça marche pas
+\underline{Objectif}: Atteindre les théories BRST\footnote{BRST: Carlo Becchi, Alain Rouet, Raymond Stora \& Igor Tyutin} et BV\footnote{Igor Batalin \& Grigori Vilkovisky}, théories physiques dévellopées pour quantifier les théories de jauge, tout particulièrement les Yang-Mills mais aussi d'autres.
+
+\section{Calcul des variations}
+\subsection{Rapels de base de physique des particules classiques (en formalisme Lagrangien)}
+On considère une particule (classique) dans une variété $\mathcal{M}$ de dimension $m$; $I=]t_0,t_1[$ un intervalle réel ouvert (le temps, $t_0, t_1 \in \mathbb{R}\cup \{\pm \infty\}$); et on appel:
+\begin{align}
+	``\mathrm{Lagrangien}":
+		&&L: &&I\times\mathcal{M} \quad&\to\quad \mathbb{R}\\
+		&&&& (t,x,v) \quad&\mapsto\quad L(t,x,v)\notag\\
+	``\mathrm{Action}":
+		&&\mathcal{A}: &&\mathcal{C}^1(I,\mathcal{M}) \quad &\to \quad	\mathbb{R}\\
+		&&&&\gamma \quad&\mapsto\quad\mathcal{A}[\gamma]:=\int_I L\big(t,\gamma(t),\dot \gamma(t)\big)\notag
+\end{align}
+où $L$ est au moins $\mathcal{C}^1$ en $x$ et $\mathcal{C}^2$ en $v$, et où
+\begin{equation*}\begin{split}
+\delta\mathcal{A}_\gamma[\delta\gamma]
+&=\int_I \dr{L}{x^i}(t,\gamma,\dot \gamma)\delta\gamma^i + \dr{L}{v^i}(t,\gamma, \dot \gamma)\frac{\d \delta \gamma^i}{\d t}\\
+&=\int_I \frac{\d}{\d t}\left(\dr{L}{v^i}(t,\gamma,\dot \gamma)\delta\gamma^i \right)+ \left(\dr{L}{x^i}(t,\gamma, \dot \gamma) - \frac{\d}{\d t}\dr{L}{v^i}\right)\delta \gamma^i
+\end{split}\end{equation*}
+
+Principe de Maupertuis (généralisé): On obtients les trajectoires d'une physique classique régie par $L$ en se restreignat à l'ensemble des chemins $\gamma$ tels que $\forall \delta \gamma \quad \delta\mathcal{A}_\gamma[\delta_\gamma]=0$. I.e. ce sont les chemins qui extrêmisent localement l'action (hors cas physique, on parlera donc simplement de ``points critiques").
+
+D'où on dérive le principe d'Hamiltion:\\
+$\forall \delta\gamma \mathrm{t}.\mathrm{q}. \delta\gamma(t_0)=\delta\gamma(t_1)=0$
+\begin{equation*}
+\delta\mathcal{A}_\gamma[\delta\gamma] = 0 \quad \quad \iff \quad \quad \boxed{\frac{\d}{\d t}\left(\dr{L}{v_i}(t,\gamma,\dot\gamma)\right) = \dr{L}{x^i}(t,\gamma,\dot\gamma)}
+\end{equation*}
+où l'équation à droite est appellée ``equations d'Euler-Lagrange" (E-L) (pour une physique de particules).
+
+\subsection{1$^\mathrm{er}$ théorème de Noether, symétries et conservation (cas des particules)}
+Première difficulté: ques-ce qu'une symétrie? Il s'agit, gorssièrement d'une action d'un groupe de Lie (enfin, d'une algèbre de Lie plutôt)
+
+version simple:
+
+METTRE LE DESSIN
+
+$$X = X^0(t,x)\frac{\partial}{\partial t} + X^i(t,x) \frac{\partial}{\partial x^i}$$
+$$T:=X^0$$
+On note $\Delta_X\subset \mathbb{R}\times(I\times\mathcal{M}$ maximal sur lequel le flot est défini.
+$$\Phi_X : \Delta_X \to I\times\mathcal{M}$$
+$$(\epsilon,t,x)\mapsto \Phi_X(\epsilon,t,x)=\e^{\epsilon X}(t,x)$$
+
+i.e. $\frac{\partial \Phi}{\partial \epsilon}(\epsilon, t, x) = X(\Phi_X(\epsilon, t, x))$ et $\Phi_X(0,t,x)=(t,x)$
+
+en coord loc, ça donne: $\e^{\epsilon X}(t,x)=(t+\epsilon T(t,x),x^i+\epsilon X^i(t,x)) + o(\epsilon)$
+Action sur $\mathcal{C}^1(I',\mathcal{M})$ où $I'$ est un interval compacte de $I$:
+$$\gamma \mapsto \gamma_\epsilon$$
+$$[t_0,t_1]\mapsto[t_0(\epsilon),t_1(\epsilon)]=[t_0+\epsilon T(t_0,x_0),t_1+\epsilon T(t_1,x_1)]\quad \mathrm{modulo}\;\epsilon$$
+où $x_a = \gamma(a)$.
+$$\forall i \in [\![1,n]\!] \quad \gamma^i_{\epsilon}(\Phi_X^0(\epsilon,t,x)=\Phi_X^i(\epsilon,t,\gamma(t))$$
+$$\gamma_\epsilon = \gamma + \epsilon\delta\gamma + o(\epsilon)$$
+
+$$(\gamma^i+\epsilon\delta\gamma^i)(t+\epsilon T(t,\gamma)) = \gamma^i + \epsilon X^i(t,\gamma) + o(\epsilon)$$
+$$\iff \frac{\d \gamma^i}{\d t}T + \delta\gamma^i = X^i$$
+$$\iff \boxed{\delta \gamma^i = X^i(t,\gamma) - T(t,\gamma)\dot\gamma^i}$$
+
+$$X \; \mathrm{symetrie}\;\mathrm{de}\;L \iff(def) \forall [t_0,t_1]\subset I \quad \int_{t_0(\epsilon)}^{t_1(\epsilon)} L(t,\gamma_\epsilon, \dot\gamma_\epsilon)\d t = \int_{t_0}^{t_1} L(t,\gamma,\dot\gamma)\d t + (\epsilon)$$
+
+Thm 1: Si $X$ est une symétrie et si $\gamma$ est un point critique alors
+$$Q_X(t) := \dr{L}{v^i}(t,\gamma,\dot\gamma)X^i(t,\gamma) - \left(\dr{L}{v^i}(t,\gamma,\dot\gamma)\dot\gamma^i - L(t,\gamma,\dot\gamma)\right)T(t,\gamma)$$
+est conservé (i.e. $\frac{\d Q}{\d t}=0$).
+
+Rq: $Q_X = \dr{L}{v^i} + LT$
+
+Preuve du thm:
+$\forall \gamma \in \mathcal{C}^1(I,\mathcal{M})$
+1) hyp de sym $\iff$
+$$\int_{t_0}^{t_1} L(t,\gamma_\epsilon,\dot\gamma_\epsilon) = \int_{t_0}^{t_1}L(t,\gamma,\dot\gamma) + \epsilon [LT]_{t_0}^{t_1} + \int_{t_0}^{t_1} (\dr{L}{x^i}\delta \gamma^i + \dr{L}{v^i}\delta\dot\gamma^i) +o(\epsilon)$$
+$$\iff \int_{t_0}^{t_1} (\dr{L}{x^i}\delta \gamma^i + \dr{L}{v_i}\delta\dot \gamma^i + \frac{\d (LT)}{\d t})\d t =0$$
+$$=: \int_{t_0}^{t_1} \delta_X L(t,\gamma,\dot\gamma) \d t$$
+
+où $\delta_X L : I\times T\mathcal{M} \to \mathbb{R}$
+
+Bref, symétrie $\implies \delta_X L = 0$.
+
+Exo: construire$ \delta_X L$ et montrer que ça marche...
+
+2) Mq Q cste si $\gamma$ pt critiq
+
+$$\frac{\delta L}{\delta \gamma^i} := \dr{L}{x^i}(t,\gamma,\dot\gamma) - \frac{\d}{\d t}(\dr{L}{v^i}(t,\gamma,\dot\gamma))$$
+
+D'où EL $\iff \frac{\delta L}{\delta \gamma^i}=0$
+
+$$\dr{L}{x^i}= \frac{\delta L}{\delta \gamma^i} + \frac{\d}{\d t}(\dr{L}{v^i})$$
+
+\begin{align*}
+\frac{\d Q_X}{\d t}
+&= \frac{\d}{\d t} (\dr{L}{v^i}\delta \gamma^i + LT)\\
+&= \frac{\d}{\d t} (\dr{L}{v^i})\delta \gamma^i + \dr{L}{v^i} \delta\dot\gamma^i+\frac{\d}{\d t}(LT)\\
+&= \dr{L}{x^i} \delta^i+\dr{L}{v^i}\delta \dot \gamma + \frac{\d (LT)}{\d t} - \frac{\delta L}{\delta \gamma^i}\delta \gamma^i
+\end{align*}
+AJOUTER LES FELCHES ROSES
+
+Variante: Si $\exists f:I\times\mathcal{M}\to \mathbb{R}$ t.q. $\delta_X L(t,\gamma,\dot\gamma) = \frac{\partial f}{\partial t}(t,x) + v^i \frac{\partial f}{\partial x^i}(t,x)$ "symétrie modulo un terme exacte" (def) alors la quantité conservée est $Q_X -f$.
+
+REF DE LA MEUF DE L'X SUR NOETHER
+
+\subsection{Formalisme Hamiltonien}
+L'idée est de faire un changement de variable de $T\mathcal{M}$ vers $T^*\mathcal{M}$...
+
+Commençons par def un var symplectique
+
+Un var symplectique $\mathcal{M}$ est une varr munie d'une 2forme $\omega$, $\omega \in \Omega^2(\mathcal{M})$ t.q. 
+
+POINT $\omega$ non dégénérée i.e. $\forall \xi\in T\mathcal{M}, \xi \lrcorner \omega = 0 \implies \xi =0$; \quad \quad $\xi \lrcorner \omega:= \omega(\xi,\cdot)$ (in other books, denoted $\iota_\xi \omega$)
+
+POINT $\d \omega = 0$
+
+Dans des coords loc, $\omega = \sum_{1\leq a_1 < a_2\leq n} \omega_{a_1a_2} \d x^{a_1} \wedge \d x^{a_2}$, et les hypothèses reviennent à dire que rang$(w_{a_1a_2})$ est max, d'où dim$\mathcal{M}$ paire.
+
+Théorème de Darboux tout point admet une carte (et un jeu de coordonnées $(p_i)\!\!\smile\!\!(q^i)$ dessus) dans laquelle $\omega = \d p_i\wedge\d q^i$
+
+Constructions ultra classiques de var simplectiques:
+
+a) $\mathbb{R}^{2n}=\mathbb{R}^n\times\mathbb{R}^n$, on peut donc définir $\omega$ comme dans le théorème de Darboux sur tout $\mathbb{R}^{2n}$.
+
+b) Soit $\mathcal{M}$ une variété de dim $n$, $\exists (T^*\mathcal{M})\to^\pi \mathcal{M} \quad (q,p) \mapsto^\pi q$
+
+Soit $\theta \in \Omega^1 (T^*\mathcal{M})$,
+$$\forall \xi \in T_{(p,q)}(T^*\mathcal{M}), \theta_{(q,p)}(\xi) = < p, \d \pi_{(q,p)} \xi >$$
+AJOUTER LES FLECHES
+
+en coord loc, $q^i$ sur $\mathbb{M}$ et $p^i$ sur $T_q^*\mathcal{M}$ t.q. $p = p_iq^i$ \, $\theta = p_i \d (q^i\circ \pi)$ où $p_i$ et $q^i$ sont des coord loc sur $T^*\mathcal{M}$
+
+UTILISER LES BONS SYMBOLS
+
+$$\approx p_i\d q^i\in \Omega^1(T^*\mathcal{M})$$
+abus de notation, attention, c'est tricky, ça rentre en conflit avec la formule juste avant.
+
+$\omega = \d \theta$ forme symplectique.
+
+Lien entre Lagrangien et géo symplec (eq de Hamilton)
+FAIRE LE DIAGRAMME
+
+$(\d q^i)$ Base de $T_q^*\mathcal{M}$, $p\in T^*_q\mathcal{M} \implies p=p_i\d q^i$
+
+d'où $(p_i, q^i)$ coord sur $T^*\mathcal{M}$; enfin, en fait c'est $q^i\circ \pi$ mais bon, c'est l'abus de notation de tout à l'heure.
+
+$$\theta = p_i\d q^i$$
+
+Tranformation de Legendre
+$$\forall (t,q) \in \mathbb{R}\times\mathcal{M} \d (L|_{\{t\}\times T_q\mathcal{M}}) =: \dr{L}{v}(t,q,v)$$
+
+en coord loc, $v=v^i\frac{\partial}{\partial q^i} \in T_q\mathcal{M}$
+$$\dr{L}{v} = \dr{L}{v^i} \d v^i$$
+
+Hypothèse de Legendre: 
+\begin{align*}
+&&\mathbb{L}: \mathbb{R}\times T\mathcal{M} \to & \mathbb{R}\times T^*\mathcal{M}\\
+&&(t,q,v)\mapsto & (t,q, \dr{L}{v}(t,q,v)) &&
+\mathrm{est}\; \mathrm{un}\; \mathrm{diffeo}
+\end{align*}
+
+Exemple: $L = \frac{m |v|^2}{2} - V(q)$
+
+Def Hamiltionen
+\begin{align*}
+H : \mathbb{R}\times T^*\mathcal{M} &\to \mathbb{R}\\
+(H\circ\mathbb{L})(t,q,v) &= \dr{L}{v^i}(t,q,v) v^i - L(t,q,v)\\
+\iff (\mathrm{implicit})\quad  \mathbb{L}^{-1}&: (t,q,p)\to (t,q,v(t,q,p))
+\end{align*}
+$$\dr{L}{v^i}(t,q,v(t,q,p)) =: p_i $$
+$$H(t,q,p) = p_i v^i(t,q,p) - L(t,q,v(t,q,p))$$
+
+\subsection{retours sur Noether}
+$T\frac{\partial}{\partial t} + X^i \frac{\partial}{\partial x^i}$ sur $\mathbb{R}\times\mathcal{M}$ est une symétrie de $L$.
+
+$\implies Q = \dr{L}{v^i}(t,\gamma, \dot\gamma)X^i(t,\gamma) - (\dr{L}{v^i}\dot\gamma^i - L(t,\gamma,\dot\gamma))$ est conservé si $\gamma$ est solution.
+
+$$Q = (p_i \circ \mathbb{L})X^i - (H\circ\mathbb{L})T$$
+METTRE LES SOUSTITRES
+
+\begin{align*}
+\d H &= v^i \d p_i + \cancel{p_i\d v^i} - \dr{L}{t}(t,q,v) \d t - \dr{L}{q_i}\d q^i - \cancel{\dr{L}{v^i}(t,q,v(t,q,p) \d(v^i)}\\
+&= v^i\d p_i - (\dr{L}{t}\circ \mathbb{L}^{-1})\d t - (\dr{L}{q^i}\circ \mathbb{L}^{-1}) \d q^i
+\end{align*}
+D'où 
+\begin{align}
+	\dr{H}{t} &= -\dr{L}{t}\circ \mathbb{L}\\
+	\dr{H}{q^i} &= - \dr{L}{x^i} \circ \mathbb{L}\\
+	\dr{H}{p_i} &= v^i
+\end{align}
+
+d'où $\forall \gamma:\mathbb{R} \to \mathcal{M}$
+$$\pi = \dr{L}{v}(t,\gamma,\frac{\d \gamma}{\d t})$$
+
+Lemme:
+\begin{equation}
+\frac{\d}{\d t} (\dr L{v^i} (t,\gamma, \dot \gamma)) = \dr L{q_i} (t,\gamma,\dot\gamma)\quad (\mathrm{EL}) \quad \iff \quad
+\begin{split} \frac{\d \gamma^i}{\d t}&=\dr{H}{p_i}(t,\gamma,\pi) \quad (\mathrm{Hq})\\
+\frac{\d \pi_i}{\d t}&=-\dr{H}{q^i}(t,\gamma,\pi) \quad (\mathrm{Hp})\end{split}
+\end{equation}
+Preuve:
+$$Hq \iff (t\gamma,\pi) = \mathbb{L}(t,\gamma,\dot\gamma)$$
+$$\dr{H}{p_i}(t,\gamma,\pi)=v^i(t,\gamma,\pi)=\frac{\d \gamma^i}{\d t}$$
+par def de $v$
+
+Alors, $\pi_i = \dr{L}{v_i}(t,\gamma,\dot\gamma)$
+$$\frac{\d \pi}{\d t} = \frac{\d}{d t}(\dr{L}{v_i}) = (EL) \dr{L}{x^i} = -\dr{H}{q^i}$$
+Notation:
+\begin{align*}
+\frac{\d q^i}{\d t} &= \dr H{p_i}\\
+\frac{\d p_i}{\d t} &= -\dr H{q^i}
+\end{align*}
+
+\subsection{Formulation Géométrique}
+$t\mapsto (\gamma(t), \pi(t)) \in \mathcal{C}^1(\mathbb{R},T^*\mathcal{M})$ est solution de Hamiltion
+$$\iff \frac{\d}{\d t}(\gamma^i, \pi_i) = (\dr H{p_i},-\dr H{q^i})(\gamma,\pi)$$
+ADD COMMENTS
+
+$$X_H = \dr H{p_i} \dr{}{q^i}-\dr H{q^i}\dr{}{p_i}$$
+$$\omega = \d p_i \wedge \d q^i$$
+\begin{align*}
+X_H \lrcorner \omega
+&= (\dr H{p_i} \dr{}{q^i}-\dr H{q^i}\dr{}{p_i}) \lrcorner \d p_j\d q^j\\
+&= \dr H {p_i} (-\delta^{ij} \d p_j) - \dr H {q^i}(\delta_{ij}\d q^j)\\
+&= - (\dr H {p_i} \d p_i + \dr H {q^i} \d q^i)\\
+&=\dr H t - \d H
+\end{align*}
+bref:
+$$\boxed{X_H \lrcorner \omega + \d H = \dr H t \d t}$$
+Artifice: $T^*(\mathbb{R}\times\mathcal{M}) \supset (\mathbb{R}\times\{0\})\times T^*\mathcal{M}\approx\mathbb{R}\times T^*\mathcal{M} $
+
+On pose alors $q^0 = t$ et sur $T^*(\mathbb{R}\times\mathcal{M})$ on étends $\Tilde \omega:= \d p_0 \wedge \d t + \d p_i \wedge \d q^i$ d'où
+$$X_{\Tilde H} \lrcorner \Tilde \omega + \d \Tilde H=0$$
+et donc on s'intéresse uniquement à l'hyper-surface $p^0 = H$.
+
+\subsection{Théorème de Noether généraux}
+Lagrangien d'ordre quelquonque $r$, i.e. $L(x, \dot x, \ddot x, \dot{\ddot x}\;...\; x^{(r)})$. On travaille sur des champs $u:U\to\mathcal{M}$ où $U=\mathbb{R}$ dans le cas particules.
+
+Jets:
+
+Si $\mathcal{M}$ est varr de dim $k$ et $U$ est un ouvert de $\mathbb{R}^n$, 
+$$\mathfrak{j}^r u (x) := (x, u(x), \partial u(x), \partial^2 u(x), \,...\, \partial^r u (x)$$
+où $\partial^i := \dr{}{^{\mu_1}...\partial^{\mu_r}} =: \partial_{\mu_1...\mu_r}$
+Cas général pour des variétés quelconques:
+
+\begin{align*}
+	\mathfrak{j}^0(U,\mathcal{M}) &= U\times\mathcal{M}\\
+	\mathfrak{j}^1(U,\mathcal{M}) &= \{(x,y,E), (x,y)\in U\times\mathcal{M}, E \;\mathrm{sev}\;\mathrm{de}\; T_{(x,y)}(U\times\mathcal{M})| \mathrm{dim}E=\mathrm{dim}U \; \d (\pi_{U\times\mathcal{M}\to U})_{(x,y)}: T_{(x,y)}(U\times\mathcal{M})\to T_x\mathcal{M} \; \d (\pi_{U\times\mathcal{M}\to U})_{x,y)}|_E : E\to T_x\mathcal{U}\}\\
+	\mathfrak{j}^r(U,\mathcal{M}) &= \mathfrak{j}^1(U, j^{r-1}(U,\mathcal{M}))
+\end{align*}
+
+Coord locale sur les jets
+$$v^i_{\mu_1...\mu_j} \quad\quad \mathrm{t}.\mathrm{q}. \quad\quad v^i_{\mu_1...\mu_j}(j^ru(x))=\dr{u^i}{x^{\mu_1}...\partial x^{\mu_j}}$$
+
+Lagrangien général d'ordre $r$ sur ``$U\to\mathcal{M}$":
+$$L : j^r(U,\mathcal{M}) \to \mathbb{R}$$
+$$\mathcal{L}[u] = \int_{U} L(j^r u(x))\d^n x$$
+Symétrie infinitésimale $u\mapsto u+\epsilon\delta u + o(\epsilon)$ infinitesimales, générés par un champ de veteurs $Z$ sur $U\times\mathcal{M}$.
+
+Ou plutôt, pour être précis, un champ $Z:j^r(u)\to T(U\times\mathcal{M})$.
+$$Z = X^\mu \partial_\mu + Y^i  \partial_i$$
+$$\delta u^i = Y^i - \dr{u^i}{x^\mu}X^\mu$$
+
+Thm1: Si $L$ est invariant par $X^\mu\partial_\mu + Y^i\partial_i$ et si $u$ est un point critique de $\mathcal{L}$ alors il lui correspond $J^\mu\partial_\mu$ définit sur $U$ tel que $\dr {J^\mu}{x^\mu}=0$
+
+Ex: $u: \mathbb{R}^n \to \mathbb{R} \quad \Omega\subset \mathbb{R}^n$
+$\mathcal{L}[u]=\int_{\Omega} \frac{|\nabla u|^2}2 \d x$ (action de Dirichlet)
+
+$\mathcal{L}[u+\epsilon\varphi] = \int_\omega \frac{|\nabla u|^2}2 + \epsilon <\nabla u, \nabla \varphi> + \epsilon^2 \frac{|\nabla \varphi|^2}2$
+ ($\varphi$ supposé à support compacte.)
+ 
+\begin{align*}
+\delta \mathcal{L}_u[\varphi] &= \int_\Omega <\nabla u, \nabla \varphi> \d x\\
+&= \int_\Omega (\mathrm{div}(\varphi\nabla u) - \varphi \Delta u) \d x\\
+&=- \int \varphi \Delta u
+\end{align*}
+
+Symétrie par translation $u \mapsto u\circ \tau_\epsilon =: u_\epsilon$; $\tau_\epsilon (x) := x-\epsilon v$.
+
+$u_\epsilon(x) = u(x-\epsilon v) \approx u(x) - \epsilon v^i \dr u {x^i}(x) + o(\epsilon)$
+
+$\delta u = - v^i \dr u {x^i}$
+
+Noether: Si $\delta u = 0$, 
+$$\dr L {v_\mu} (x,u,\d u) \dr u {x^\nu} - (L(x,u, \d x) \delta_\mu^\nu) v^\mu = J^\nu$$
+alors $\dr{J^\nu}{x^\nu} = 0$
+
+(le prof est pas giga sur de la formule pour $J$, voir la démo qui suit)
+
+Cas particulier:
+$r=1$, i.e. $L(x,u,\partial u)$, $X^\mu (x,u), Y^i(x,u)$
+
+$$J^\mu = \dr L {v^i} (x,u,\partial u) Y^i - (\dr L {v^i_\mu} \dr{u^i}{x^\nu} - L \delta_\nu^\mu) X^\nu$$
+et EL $\implies \dr{J^\mu}{x^\mu}=0$
+
+\end{document}
