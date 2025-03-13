@@ -23,8 +23,8 @@
 \underline{Objectif}: Atteindre les théories BRST\footnote{BRST: Carlo Becchi, Alain Rouet, Raymond Stora \& Igor Tyutin} et BV\footnote{Igor Batalin \& Grigori Vilkovisky}, théories physiques dévellopées pour quantifier les théories de jauge, tout particulièrement les Yang-Mills mais aussi d'autres.
 
 \section{Calcul des variations}
-\subsection{Rapels de base de physique des particules classiques (en formalisme Lagrangien)}
-On considère une particule (classique) dans une variété $\mathcal{M}$ de dimension $m$; $I=]t_0,t_1[$ un intervalle réel ouvert (le temps, $t_0, t_1 \in \mathbb{R}\cup \{\pm \infty\}$); et on appel:
+\subsection{Rappels de base de physique des particules classiques (en formalisme Lagrangien)}
+\quad On considère une particule (classique) dans une variété $\mathcal{M}$ de dimension $m$; $I=]t_0,t_1[$ un intervalle réel ouvert (le temps, $t_0, t_1 \in \mathbb{R}\cup \{\pm \infty\}$); et on appel:
 \begin{align}
 	``\mathrm{Lagrangien}":
 		&&L: &&I\times\mathcal{M} \quad&\to\quad \mathbb{R}\\
@@ -40,82 +40,81 @@ où $L$ est au moins $\mathcal{C}^1$ en $x$ et $\mathcal{C}^2$ en $v$, et où
 &=\int_I \frac{\d}{\d t}\left(\dr{L}{v^i}(t,\gamma,\dot \gamma)\delta\gamma^i \right)+ \left(\dr{L}{x^i}(t,\gamma, \dot \gamma) - \frac{\d}{\d t}\dr{L}{v^i}\right)\delta \gamma^i
 \end{split}\end{equation*}
 
-Principe de Maupertuis (généralisé): On obtients les trajectoires d'une physique classique régie par $L$ en se restreignat à l'ensemble des chemins $\gamma$ tels que $\forall \delta \gamma \quad \delta\mathcal{A}_\gamma[\delta_\gamma]=0$. I.e. ce sont les chemins qui extrêmisent localement l'action (hors cas physique, on parlera donc simplement de ``points critiques").
-
-D'où on dérive le principe d'Hamiltion:\\
-$\forall \delta\gamma \mathrm{t}.\mathrm{q}. \delta\gamma(t_0)=\delta\gamma(t_1)=0$
+\underline{Principe de Maupertuis} (généralisé): On obtient les trajectoires d'une physique classique régie par $L$ en se restreignant à l'ensemble des chemins $\gamma$ tels que $\forall \delta \gamma \quad \delta\mathcal{A}_\gamma[\delta_\gamma]=0$. i.e. ce sont les chemins qui extremisent localement l'action (hors cas physique, on parlera donc simplement de ``points critiques").\\ \\
+D'où on dérive le \underline{principe d'Hamiltion}: 
+$\forall \delta\gamma \; \mathrm{t}.\mathrm{q}.\; \delta\gamma(t_0)=\delta\gamma(t_1)=0$
 \begin{equation*}
-\delta\mathcal{A}_\gamma[\delta\gamma] = 0 \quad \quad \iff \quad \quad \boxed{\frac{\d}{\d t}\left(\dr{L}{v_i}(t,\gamma,\dot\gamma)\right) = \dr{L}{x^i}(t,\gamma,\dot\gamma)}
+\;_{(\mathrm{Maup})} \; \delta\mathcal{A}_\gamma[\delta\gamma] = 0 \quad \quad \iff \quad \quad \boxed{\frac{\d}{\d t}\left(\dr{L}{v_i}(t,\gamma,\dot\gamma)\right) = \dr{L}{x^i}(t,\gamma,\dot\gamma)}_{\quad(\mathrm{E}.\scalebox{0.75}[1.0]{-}\mathrm{L}.)}
 \end{equation*}
-où l'équation à droite est appellée ``equations d'Euler-Lagrange" (E-L) (pour une physique de particules).
+où l'équation à droite est appelée ``equations d'\underline{Euler-Lagrange}" (E.-L.) (pour une physique de particules). (Existe aussi en version théorie de champs, cf plus tard).
 
 \subsection{1$^\mathrm{er}$ théorème de Noether, symétries et conservation (cas des particules)}
-Première difficulté: ques-ce qu'une symétrie? Il s'agit, gorssièrement d'une action d'un groupe de Lie (enfin, d'une algèbre de Lie plutôt)
-
-version simple:
+Première difficulté: qu'est-ce qu'une symétrie? Il s'agit, grossièrement d'une action d'un groupe de Lie. (Enfin, d'une algèbre de Lie plutôt...)\\
+Version simple:
 
 METTRE LE DESSIN
 
-$$X = X^0(t,x)\frac{\partial}{\partial t} + X^i(t,x) \frac{\partial}{\partial x^i}$$
-$$T:=X^0$$
-On note $\Delta_X\subset \mathbb{R}\times(I\times\mathcal{M}$ maximal sur lequel le flot est défini.
-$$\Phi_X : \Delta_X \to I\times\mathcal{M}$$
-$$(\epsilon,t,x)\mapsto \Phi_X(\epsilon,t,x)=\e^{\epsilon X}(t,x)$$
-
+$$X = X^0(t,x)\frac{\partial}{\partial t} + X^i(t,x) \frac{\partial}{\partial x^i} \quad \quad \quad T:=X^0$$
+On note $\Delta_X\subset \mathbb{R}\times(I\times\mathcal{M})$ maximal sur lequel le flot est défini.
+\begin{equation*}
+	\Phi_X : \left\{\begin{matrix}
+	\Delta_X & \to & I\times\mathcal{M} &\\
+	(\epsilon,t,x) & \mapsto & \Phi_X(\epsilon,t,x) &=\e^{\epsilon X}(t,x)
+	\end{matrix}\right.
+\end{equation*}
 i.e. $\frac{\partial \Phi}{\partial \epsilon}(\epsilon, t, x) = X(\Phi_X(\epsilon, t, x))$ et $\Phi_X(0,t,x)=(t,x)$
-
-en coord loc, ça donne: $\e^{\epsilon X}(t,x)=(t+\epsilon T(t,x),x^i+\epsilon X^i(t,x)) + o(\epsilon)$
-Action sur $\mathcal{C}^1(I',\mathcal{M})$ où $I'$ est un interval compacte de $I$:
-$$\gamma \mapsto \gamma_\epsilon$$
-$$[t_0,t_1]\mapsto[t_0(\epsilon),t_1(\epsilon)]=[t_0+\epsilon T(t_0,x_0),t_1+\epsilon T(t_1,x_1)]\quad \mathrm{modulo}\;\epsilon$$
-où $x_a = \gamma(a)$.
-$$\forall i \in [\![1,n]\!] \quad \gamma^i_{\epsilon}(\Phi_X^0(\epsilon,t,x)=\Phi_X^i(\epsilon,t,\gamma(t))$$
-$$\gamma_\epsilon = \gamma + \epsilon\delta\gamma + o(\epsilon)$$
-
-$$(\gamma^i+\epsilon\delta\gamma^i)(t+\epsilon T(t,\gamma)) = \gamma^i + \epsilon X^i(t,\gamma) + o(\epsilon)$$
-$$\iff \frac{\d \gamma^i}{\d t}T + \delta\gamma^i = X^i$$
-$$\iff \boxed{\delta \gamma^i = X^i(t,\gamma) - T(t,\gamma)\dot\gamma^i}$$
-
-$$X \; \mathrm{symetrie}\;\mathrm{de}\;L \iff(def) \forall [t_0,t_1]\subset I \quad \int_{t_0(\epsilon)}^{t_1(\epsilon)} L(t,\gamma_\epsilon, \dot\gamma_\epsilon)\d t = \int_{t_0}^{t_1} L(t,\gamma,\dot\gamma)\d t + (\epsilon)$$
-
-Thm 1: Si $X$ est une symétrie et si $\gamma$ est un point critique alors
-$$Q_X(t) := \dr{L}{v^i}(t,\gamma,\dot\gamma)X^i(t,\gamma) - \left(\dr{L}{v^i}(t,\gamma,\dot\gamma)\dot\gamma^i - L(t,\gamma,\dot\gamma)\right)T(t,\gamma)$$
-est conservé (i.e. $\frac{\d Q}{\d t}=0$).
-
-Rq: $Q_X = \dr{L}{v^i} + LT$
-
-Preuve du thm:
-$\forall \gamma \in \mathcal{C}^1(I,\mathcal{M})$
-1) hyp de sym $\iff$
-$$\int_{t_0}^{t_1} L(t,\gamma_\epsilon,\dot\gamma_\epsilon) = \int_{t_0}^{t_1}L(t,\gamma,\dot\gamma) + \epsilon [LT]_{t_0}^{t_1} + \int_{t_0}^{t_1} (\dr{L}{x^i}\delta \gamma^i + \dr{L}{v^i}\delta\dot\gamma^i) +o(\epsilon)$$
-$$\iff \int_{t_0}^{t_1} (\dr{L}{x^i}\delta \gamma^i + \dr{L}{v_i}\delta\dot \gamma^i + \frac{\d (LT)}{\d t})\d t =0$$
-$$=: \int_{t_0}^{t_1} \delta_X L(t,\gamma,\dot\gamma) \d t$$
-
-où $\delta_X L : I\times T\mathcal{M} \to \mathbb{R}$
-
-Bref, symétrie $\implies \delta_X L = 0$.
-
-Exo: construire$ \delta_X L$ et montrer que ça marche...
-
-2) Mq Q cste si $\gamma$ pt critiq
-
-$$\frac{\delta L}{\delta \gamma^i} := \dr{L}{x^i}(t,\gamma,\dot\gamma) - \frac{\d}{\d t}(\dr{L}{v^i}(t,\gamma,\dot\gamma))$$
-
-D'où EL $\iff \frac{\delta L}{\delta \gamma^i}=0$
-
-$$\dr{L}{x^i}= \frac{\delta L}{\delta \gamma^i} + \frac{\d}{\d t}(\dr{L}{v^i})$$
-
+\\
+en coord loc, ça donne: $\e^{\epsilon X}(t,x)=\left(\quad t+\epsilon T(t,x),\quad x^i+\epsilon X^i(t,x)\quad \right) + o(\epsilon)$
+\\
+Action sur $\mathcal{C}^1(I',\mathcal{M})$ où $I'$ est un intervalle compacte de $I$:
 \begin{align*}
+\gamma &\mapsto \gamma_\epsilon\\
+[t_0,t_1] &\mapsto[t_0(\epsilon),t_1(\epsilon)]=[t_0+\epsilon T(t_0,x_0),t_1+\epsilon T(t_1,x_1)]\quad \mathrm{modulo}\;\epsilon
+\end{align*}
+\begin{align*}
+\forall i \in [\![1,n]\!] \quad \gamma^i_{\epsilon}(\Phi_X^0(\epsilon,t,x) &= \Phi_X^i(\epsilon,t,\gamma(t))\\
+\gamma_\epsilon &= \gamma + \epsilon\delta\gamma + o(\epsilon)
+\end{align*}
+\begin{align*}
+(\gamma^i+\epsilon\delta\gamma^i)(t+\epsilon T(t,\gamma)) = \gamma^i + \epsilon X^i(t,\gamma) + o(\epsilon)
+&\iff \frac{\d \gamma^i}{\d t}T + \delta\gamma^i = X^i\\
+&\iff \boxed{\delta \gamma^i = X^i(t,\gamma) - T(t,\gamma)\dot\gamma^i}
+\end{align*}
+$$X \; \mathrm{symetrie}\;\mathrm{de}\;L \overset{(\mathrm{def})}{\iff} \forall [t_0,t_1]\subset I \quad \int_{t_0(\epsilon)}^{t_1(\epsilon)} L(t,\gamma_\epsilon, \dot\gamma_\epsilon)\d t = \int_{t_0}^{t_1} L(t,\gamma,\dot\gamma)\d t + (\epsilon)$$
+\underline{Théorème 1}: Si $X$ est une symétrie et si $\gamma$ est un point critique alors
+$$Q_X(t) := \dr{L}{v^i}(t,\gamma,\dot\gamma)X^i(t,\gamma) - \left(\dr{L}{v^i}(t,\gamma,\dot\gamma)\dot\gamma^i - L(t,\gamma,\dot\gamma)\right)T(t,\gamma)$$
+est conservé (i.e. $\frac{\d Q}{\d t}=0$).\\
+\\
+\underline{Remarque}: $Q_X = \dr{L}{v^i} + LT$\\ \\
+Preuve du théorème:
+$\forall \gamma \in \mathcal{C}^1(I,\mathcal{M})$\\
+\begin{align*}
+1) \;\mathrm{hypothese}\;\mathrm{de}\;\mathrm{symetrie}\;
+&\iff \int_{t_0}^{t_1} L(t,\gamma_\epsilon,\dot\gamma_\epsilon) = \int_{t_0}^{t_1}L(t,\gamma,\dot\gamma) + \epsilon [LT]_{t_0}^{t_1} + \int_{t_0}^{t_1} \left(\dr{L}{x^i}\delta \gamma^i + \dr{L}{v^i}\delta\dot\gamma^i\right) +o(\epsilon)\\
+&\iff \int_{t_0}^{t_1} \delta_X L(t,\gamma,\dot\gamma) \d t:=\int_{t_0}^{t_1} \left(\dr{L}{x^i}\delta \gamma^i + \dr{L}{v_i}\delta\dot \gamma^i + \frac{\d (LT)}{\d t}\right)\d t =0
+\end{align*}
+où $\delta_X L : I\times T\mathcal{M} \to \mathbb{R}$. 
+Bref, ``symétrie $\implies \delta_X L = 0$".\\
+\\
+\underline{Exo}: construire $\delta_X L$ et montrer que ça marche...\\
+\\
+2) Montrons que $Q$ constant si (et seulement si) $\gamma$ est un point critique.
+$$\frac{\delta L}{\delta \gamma^i} := \dr{L}{x^i}(t,\gamma,\dot\gamma) - \frac{\d}{\d t}(\dr{L}{v^i}(t,\gamma,\dot\gamma))$$
+D'où EL $\iff \frac{\delta L}{\delta \gamma^i}=0$
+\begin{align*}
+\dr{L}{x^i}&= \frac{\delta L}{\delta \gamma^i} + \frac{\d}{\d t}(\dr{L}{v^i})\\
 \frac{\d Q_X}{\d t}
 &= \frac{\d}{\d t} (\dr{L}{v^i}\delta \gamma^i + LT)\\
 &= \frac{\d}{\d t} (\dr{L}{v^i})\delta \gamma^i + \dr{L}{v^i} \delta\dot\gamma^i+\frac{\d}{\d t}(LT)\\
-&= \dr{L}{x^i} \delta^i+\dr{L}{v^i}\delta \dot \gamma + \frac{\d (LT)}{\d t} - \frac{\delta L}{\delta \gamma^i}\delta \gamma^i
+&= \dr{L}{x^i} \delta^i+\dr{L}{v^i}\delta \dot \gamma + \frac{\d (LT)}{\d t} - \!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\underset{\quad\quad\quad=0\;\mathrm{par}\;(\mathrm{E}.\scalebox{0.75}[1.0]{-}\mathrm{L}.)}{\cancel{\frac{\delta L}{\delta \gamma^i}\delta \gamma^i}}\\
+&=0 \quad \mathrm{par} \; \mathrm{symetrie}
 \end{align*}
-AJOUTER LES FELCHES ROSES
+\\
+\underline{Variante}: Si $\exists f:I\times\mathcal{M}\to \mathbb{R}$ t.q. $\delta_X L(t,\gamma,\dot\gamma) = \frac{\partial f}{\partial t}(t,x) + v^i \frac{\partial f}{\partial x^i}(t,x)$ ``symétrie modulo un terme exacte" (def) alors la quantité conservée est $(Q_X -f)$.\\
 
-Variante: Si $\exists f:I\times\mathcal{M}\to \mathbb{R}$ t.q. $\delta_X L(t,\gamma,\dot\gamma) = \frac{\partial f}{\partial t}(t,x) + v^i \frac{\partial f}{\partial x^i}(t,x)$ "symétrie modulo un terme exacte" (def) alors la quantité conservée est $Q_X -f$.
+Même si on va aller plus loin dans les théorèmes de Noether plus tard, une bonne référence (historique) est \emph{Les Théorèmes de Noether: Invariance et lois de conservation au XXe siècle} par  Yvette Kosmann-Schwarzbach, éditions de l'école Polytechnique, ISBN: 978-2730211383.
 
-REF DE LA MEUF DE L'X SUR NOETHER
 
 \subsection{Formalisme Hamiltonien}
 L'idée est de faire un changement de variable de $T\mathcal{M}$ vers $T^*\mathcal{M}$...
@@ -132,7 +131,7 @@ Dans des coords loc, $\omega = \sum_{1\leq a_1 < a_2\leq n} \omega_{a_1a_2} \d x
 
 Théorème de Darboux tout point admet une carte (et un jeu de coordonnées $(p_i)\!\!\smile\!\!(q^i)$ dessus) dans laquelle $\omega = \d p_i\wedge\d q^i$
 
-Constructions ultra classiques de var simplectiques:
+Constructions ultra classiques de var symplectiques:
 
 a) $\mathbb{R}^{2n}=\mathbb{R}^n\times\mathbb{R}^n$, on peut donc définir $\omega$ comme dans le théorème de Darboux sur tout $\mathbb{R}^{2n}$.
 
