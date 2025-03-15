@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 %\usepackage[utf8]{inputenc}
 
-\usepackage{amsmath, amsfonts, amsthm}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
 \usepackage{tikz}
 \usepackage{braket}
 \usepackage{cancel}
@@ -117,40 +117,53 @@ Même si on va aller plus loin dans les théorèmes de Noether plus tard, une bo
 
 
 \subsection{Formalisme Hamiltonien}
-L'idée est de faire un changement de variable de $T\mathcal{M}$ vers $T^*\mathcal{M}$...
+L'idée est de faire un changement de variable de $T\mathcal{M}$ vers $T^*\mathcal{M}$... Commençons par définir un variété symplectique.
+\\
+\underline{Définition}: (variété symplectique)\\
+Un var symplectique $\mathcal{M}$ est une variété munie d'une 2-forme $\omega$, $\omega \in \Omega^2(\mathcal{M})$ telle que:
+\begin{itemize}
+\item $\omega$ non dégénérée i.e. $\forall \xi\in T\mathcal{M}, \quad \quad \xi \lrcorner \omega = 0 \quad \implies \quad \xi =0$\\
+$\xi \lrcorner \omega:= \omega(\xi,\cdot)$ (également noté, $\iota_\xi \omega$ dans d'autres ressources)
+\item $\d \omega = 0$\quad\quad ``forme fermée"
+\end{itemize}
 
-Commençons par def un var symplectique
-
-Un var symplectique $\mathcal{M}$ est une varr munie d'une 2forme $\omega$, $\omega \in \Omega^2(\mathcal{M})$ t.q. 
-
-POINT $\omega$ non dégénérée i.e. $\forall \xi\in T\mathcal{M}, \xi \lrcorner \omega = 0 \implies \xi =0$; \quad \quad $\xi \lrcorner \omega:= \omega(\xi,\cdot)$ (in other books, denoted $\iota_\xi \omega$)
-
-POINT $\d \omega = 0$
-
-Dans des coords loc, $\omega = \sum_{1\leq a_1 < a_2\leq n} \omega_{a_1a_2} \d x^{a_1} \wedge \d x^{a_2}$, et les hypothèses reviennent à dire que rang$(w_{a_1a_2})$ est max, d'où dim$\mathcal{M}$ paire.
-
-Théorème de Darboux tout point admet une carte (et un jeu de coordonnées $(p_i)\!\!\smile\!\!(q^i)$ dessus) dans laquelle $\omega = \d p_i\wedge\d q^i$
-
-Constructions ultra classiques de var symplectiques:
-
+Dans des coordonnées locales, $\omega = \sum_{1\leq a_1 < a_2\leq n} \omega_{a_1a_2} \d x^{a_1} \wedge \d x^{a_2}$, et les hypothèses reviennent à dire que le rang de la matrice $(w_{a_1a_2})$ est maximal, d'où dim$\mathcal{M}$ paire.\\
+\\
+\underline{Théorème de Darboux}:\\
+Dans toute variété symplectique, tout point admet une carte (et un jeu de coordonnées $(p_i)\!\!\smile\!\!(q^i)$ sur cet ouvert) dans laquelle $\omega = \d p_i\wedge\d q^i$.\\
+\\
+Constructions ultra classiques de var symplectiques:\\
 a) $\mathbb{R}^{2n}=\mathbb{R}^n\times\mathbb{R}^n$, on peut donc définir $\omega$ comme dans le théorème de Darboux sur tout $\mathbb{R}^{2n}$.
+\\
+b) Soit $\mathcal{M}$ une variété de dimension $n$, 
+\begin{equation*}
+\exists!\; \pi : \left\{\begin{matrix}
+(T^*\mathcal{M}) & \to & \mathcal{M} \\
+(q,p) & \mapsto & q
+\end{matrix}\right.
+\end{equation*}
+Soit ce$\pi$ et soit $\theta \in \Omega^1 (T^*\mathcal{M})$ tel que,
+$$\forall \xi \in T_{(p,q)}(T^*\mathcal{M}), \quad \theta_{(q,p)}(\xi) = \langle \underset{\in T_q^*\mathcal{M}}{p,} \underset{\in T_q\mathcal{M}}{\d \pi_{(q,p)} \xi} \rangle$$
 
-b) Soit $\mathcal{M}$ une variété de dim $n$, $\exists (T^*\mathcal{M})\to^\pi \mathcal{M} \quad (q,p) \mapsto^\pi q$
+En coordonnées locales, $(q^i)$ sur $\mathbb{M}$ et $(p_i)$ sur $T_q^*\mathcal{M}$ avec $p := p_i \d q^i$, on obtient $\theta = p_i \d \left(q^i\circ \pi\right)$ où $(p_i)\!\!\smile\!\!(q^i)$ sont des coordonnées locales sur $T^*\mathcal{M}$. On notera tout simplement $\theta = p_i\d q^i$ avec $\theta \in \Omega^1(T^*\mathcal{M})$
+ce qui est un abus de notation conséquent (notamment puisque rentrant violemment en conflit avec la définition de $p$). Bref, il faut ouvrir l'œil au contexte.\\
+\\
+Il suffit alors de prendre $\omega := \d \theta$ forme symplectique, pour avoir $(T^*\mathcal{M},\omega)$ une variété symplectique.
 
-Soit $\theta \in \Omega^1 (T^*\mathcal{M})$,
-$$\forall \xi \in T_{(p,q)}(T^*\mathcal{M}), \theta_{(q,p)}(\xi) = < p, \d \pi_{(q,p)} \xi >$$
-AJOUTER LES FLECHES
+\noindent \underline{Lien entre Lagrangien et géométrie symplectique} (eq° de Hamilton)\\
 
-en coord loc, $q^i$ sur $\mathbb{M}$ et $p^i$ sur $T_q^*\mathcal{M}$ t.q. $p = p_iq^i$ \, $\theta = p_i \d (q^i\circ \pi)$ où $p_i$ et $q^i$ sont des coord loc sur $T^*\mathcal{M}$
+\begin{equation*}
+L: \left\{ \begin{matrix}
+\mathbb{R}\times T \mathcal{M} & \to & \mathbb{R}\\
+(t,x,v) & \to & L(t,x,v)
+\end{matrix}\right.
+\quad \leftrightsquigarrow \quad H:\left\{\begin{matrix}
+\mathbb{R}\times T* \mathcal{M} & \to & \mathbb{R}\\
+(t,q,p) & \to & H(t,q,p)
+\end{matrix}\right.
+\end{equation*}
 
-UTILISER LES BONS SYMBOLS
 
-$$\approx p_i\d q^i\in \Omega^1(T^*\mathcal{M})$$
-abus de notation, attention, c'est tricky, ça rentre en conflit avec la formule juste avant.
-
-$\omega = \d \theta$ forme symplectique.
-
-Lien entre Lagrangien et géo symplec (eq de Hamilton)
 FAIRE LE DIAGRAMME
 
 $(\d q^i)$ Base de $T_q^*\mathcal{M}$, $p\in T^*_q\mathcal{M} \implies p=p_i\d q^i$
