@@ -25,14 +25,14 @@
 \section{Calcul des variations}
 \subsection{Rappels de base de physique des particules classiques (en formalisme Lagrangien)}
 \quad On considère une particule (classique) dans une variété $\mathcal{M}$ de dimension $m$; $I=]t_0,t_1[$ un intervalle réel ouvert (le temps, $t_0, t_1 \in \mathbb{R}\cup \{\pm \infty\}$); et on appel:
-\begin{align}
+\begin{align*}
 	``\mathrm{Lagrangien}":
 		&&L: &&I\times\mathcal{M} \quad&\to\quad \mathbb{R}\\
 		&&&& (t,x,v) \quad&\mapsto\quad L(t,x,v)\notag\\
 	``\mathrm{Action}":
 		&&\mathcal{A}: &&\mathcal{C}^1(I,\mathcal{M}) \quad &\to \quad	\mathbb{R}\\
 		&&&&\gamma \quad&\mapsto\quad\mathcal{A}[\gamma]:=\int_I L\big(t,\gamma(t),\dot \gamma(t)\big)\notag
-\end{align}
+\end{align*}
 où $L$ est au moins $\mathcal{C}^1$ en $x$ et $\mathcal{C}^2$ en $v$, et où
 \begin{equation*}\begin{split}
 \delta\mathcal{A}_\gamma[\delta\gamma]
@@ -151,43 +151,33 @@ ce qui est un abus de notation conséquent (notamment puisque rentrant violemmen
 Il suffit alors de prendre $\omega := \d \theta$ forme symplectique, pour avoir $(T^*\mathcal{M},\omega)$ une variété symplectique.
 
 \noindent \underline{Lien entre Lagrangien et géométrie symplectique} (eq° de Hamilton)\\
-
+L'objectif est d'effectuer une transformation de la forme:
 \begin{equation*}
 L: \left\{ \begin{matrix}
 \mathbb{R}\times T \mathcal{M} & \to & \mathbb{R}\\
 (t,x,v) & \to & L(t,x,v)
 \end{matrix}\right.
 \quad \leftrightsquigarrow \quad H:\left\{\begin{matrix}
-\mathbb{R}\times T* \mathcal{M} & \to & \mathbb{R}\\
+\mathbb{R}\times T^* \mathcal{M} & \to & \mathbb{R}\\
 (t,q,p) & \to & H(t,q,p)
 \end{matrix}\right.
 \end{equation*}
-
-
-FAIRE LE DIAGRAMME
-
-$(\d q^i)$ Base de $T_q^*\mathcal{M}$, $p\in T^*_q\mathcal{M} \implies p=p_i\d q^i$
-
-d'où $(p_i, q^i)$ coord sur $T^*\mathcal{M}$; enfin, en fait c'est $q^i\circ \pi$ mais bon, c'est l'abus de notation de tout à l'heure.
-
+Si $(\d q^i)$ est une base de $T_q^*\mathcal{M}$, $p\in T^*_q\mathcal{M} \implies p=p_i\d q^i$, d'où $(p_i, q^i)$ est un système de coordonnées sur $T^*\mathcal{M}$; enfin, en fait c'est $q^i\circ \pi$ à la place de $q^i$ mais bon, c'est l'abus de notation de tout à l'heure. On pose:
 $$\theta = p_i\d q^i$$
-
-Tranformation de Legendre
-$$\forall (t,q) \in \mathbb{R}\times\mathcal{M} \d (L|_{\{t\}\times T_q\mathcal{M}}) =: \dr{L}{v}(t,q,v)$$
-
-en coord loc, $v=v^i\frac{\partial}{\partial q^i} \in T_q\mathcal{M}$
+\underline{Transformation de Legendre}:
+$$\forall (t,q) \in \mathbb{R}\times\mathcal{M}\quad\quad \d \left(L|_{\{t\}\times T_q\mathcal{M}}\right) =: \dr{L}{v}(t,q,v)$$
+en coordonnés locales, $v=v^i\frac{\partial}{\partial q^i} \in T_q\mathcal{M}$
 $$\dr{L}{v} = \dr{L}{v^i} \d v^i$$
-
 Hypothèse de Legendre: 
-\begin{align*}
-&&\mathbb{L}: \mathbb{R}\times T\mathcal{M} \to & \mathbb{R}\times T^*\mathcal{M}\\
-&&(t,q,v)\mapsto & (t,q, \dr{L}{v}(t,q,v)) &&
-\mathrm{est}\; \mathrm{un}\; \mathrm{diffeo}
-\end{align*}
-
-Exemple: $L = \frac{m |v|^2}{2} - V(q)$
-
-Def Hamiltionen
+\begin{equation*}
+\mathbb{L}: \left\{\begin{matrix}
+\mathbb{R}\times T\mathcal{M} & \to & \mathbb{R}\times T^*\mathcal{M}\\
+(t,q,v) & \mapsto & (t,q, \dr{L}{v}(t,q,v))
+\end{matrix}\right. \quad \mathrm{est}\; \mathrm{un}\; \mathrm{diffeo}
+\end{equation*}
+Exemple: $L = \frac{m |v|^2}{2} - V(q)$\\
+\\
+\underline{Définition}: (Hamiltonien)
 \begin{align*}
 H : \mathbb{R}\times T^*\mathcal{M} &\to \mathbb{R}\\
 (H\circ\mathbb{L})(t,q,v) &= \dr{L}{v^i}(t,q,v) v^i - L(t,q,v)\\
@@ -201,7 +191,7 @@ $T\frac{\partial}{\partial t} + X^i \frac{\partial}{\partial x^i}$ sur $\mathbb{
 
 $\implies Q = \dr{L}{v^i}(t,\gamma, \dot\gamma)X^i(t,\gamma) - (\dr{L}{v^i}\dot\gamma^i - L(t,\gamma,\dot\gamma))$ est conservé si $\gamma$ est solution.
 
-$$Q = (p_i \circ \mathbb{L})X^i - (H\circ\mathbb{L})T$$
+$$Q = \underset{``\mathrm{moment}"}{(p_i \circ \mathbb{L})}X^i - \underset{``\mathrm{energie}"}{(H\circ\mathbb{L})}T$$
 METTRE LES SOUSTITRES
 
 \begin{align*}
@@ -209,31 +199,30 @@ METTRE LES SOUSTITRES
 &= v^i\d p_i - (\dr{L}{t}\circ \mathbb{L}^{-1})\d t - (\dr{L}{q^i}\circ \mathbb{L}^{-1}) \d q^i
 \end{align*}
 D'où 
-\begin{align}
+\begin{align*}
 	\dr{H}{t} &= -\dr{L}{t}\circ \mathbb{L}\\
 	\dr{H}{q^i} &= - \dr{L}{x^i} \circ \mathbb{L}\\
 	\dr{H}{p_i} &= v^i
-\end{align}
-
+\end{align*}
 d'où $\forall \gamma:\mathbb{R} \to \mathcal{M}$
-$$\pi = \dr{L}{v}(t,\gamma,\frac{\d \gamma}{\d t})$$
+$$\pi = \dr{L}{v}(t,\gamma,\frac{\d \gamma}{\d t})$$\\
 
-Lemme:
-\begin{equation}
+\noindent \underline{Lemme}: (transition Lagrangien-Hamiltonien)
+\begin{equation*}
 \frac{\d}{\d t} (\dr L{v^i} (t,\gamma, \dot \gamma)) = \dr L{q_i} (t,\gamma,\dot\gamma)\quad (\mathrm{EL}) \quad \iff \quad
-\begin{split} \frac{\d \gamma^i}{\d t}&=\dr{H}{p_i}(t,\gamma,\pi) \quad (\mathrm{Hq})\\
-\frac{\d \pi_i}{\d t}&=-\dr{H}{q^i}(t,\gamma,\pi) \quad (\mathrm{Hp})\end{split}
-\end{equation}
+\left\{\begin{split} \frac{\d \gamma^i}{\d t}&=\dr{H}{p_i}(t,\gamma,\pi) \quad (\mathrm{Hq})\\
+\frac{\d \pi_i}{\d t}&=-\dr{H}{q^i}(t,\gamma,\pi) \quad (\mathrm{Hp})\end{split}\right.
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\end{equation*}
 Preuve:
 $$Hq \iff (t\gamma,\pi) = \mathbb{L}(t,\gamma,\dot\gamma)$$
 $$\dr{H}{p_i}(t,\gamma,\pi)=v^i(t,\gamma,\pi)=\frac{\d \gamma^i}{\d t}$$
-par def de $v$
-
+par def de $v$.\\
 Alors, $\pi_i = \dr{L}{v_i}(t,\gamma,\dot\gamma)$
 $$\frac{\d \pi}{\d t} = \frac{\d}{d t}(\dr{L}{v_i}) = (EL) \dr{L}{x^i} = -\dr{H}{q^i}$$
 Notation:
 \begin{align*}
-\frac{\d q^i}{\d t} &= \dr H{p_i}\\
+\frac{\d q^i}{\d t} &= \;\;\,\dr H{p_i}\;\\
 \frac{\d p_i}{\d t} &= -\dr H{q^i}
 \end{align*}
 
@@ -246,24 +235,24 @@ $$X_H = \dr H{p_i} \dr{}{q^i}-\dr H{q^i}\dr{}{p_i}$$
 $$\omega = \d p_i \wedge \d q^i$$
 \begin{align*}
 X_H \lrcorner \omega
-&= (\dr H{p_i} \dr{}{q^i}-\dr H{q^i}\dr{}{p_i}) \lrcorner \d p_j\d q^j\\
+&= \left(\dr H{p_i} \dr{}{q^i}-\dr H{q^i}\dr{}{p_i}\right) \lrcorner \d p_j\d q^j\\
 &= \dr H {p_i} (-\delta^{ij} \d p_j) - \dr H {q^i}(\delta_{ij}\d q^j)\\
-&= - (\dr H {p_i} \d p_i + \dr H {q^i} \d q^i)\\
+&= - \left(\dr H {p_i} \d p_i + \dr H {q^i} \d q^i\right)\\
 &=\dr H t - \d H
 \end{align*}
 bref:
 $$\boxed{X_H \lrcorner \omega + \d H = \dr H t \d t}$$
 Artifice: $T^*(\mathbb{R}\times\mathcal{M}) \supset (\mathbb{R}\times\{0\})\times T^*\mathcal{M}\approx\mathbb{R}\times T^*\mathcal{M} $
-
+\\
 On pose alors $q^0 = t$ et sur $T^*(\mathbb{R}\times\mathcal{M})$ on étends $\Tilde \omega:= \d p_0 \wedge \d t + \d p_i \wedge \d q^i$ d'où
 $$X_{\Tilde H} \lrcorner \Tilde \omega + \d \Tilde H=0$$
 et donc on s'intéresse uniquement à l'hyper-surface $p^0 = H$.
 
-\subsection{Théorème de Noether généraux}
-Lagrangien d'ordre quelquonque $r$, i.e. $L(x, \dot x, \ddot x, \dot{\ddot x}\;...\; x^{(r)})$. On travaille sur des champs $u:U\to\mathcal{M}$ où $U=\mathbb{R}$ dans le cas particules.
-
-Jets:
-
+\section{Théorèmes de Noether généraux}
+\subsection{Théorème 1}
+Lagrangien d'ordre quelconque $r$, i.e. $L(x, \dot x, \ddot x, \dot{\ddot x}\;...\; x^{(r)})$. On travaille sur des champs $u:U\to\mathcal{M}$ où $U=\mathbb{R}$ dans le cas particules, mais sinon peut-être n'importe quoi (ligne d'univers d'une particule dans l'espace-temps, champ classique, ou des produits de ça...).
+\\
+\underline{Définition}: (Jets)\\
 Si $\mathcal{M}$ est varr de dim $k$ et $U$ est un ouvert de $\mathbb{R}^n$, 
 $$\mathfrak{j}^r u (x) := (x, u(x), \partial u(x), \partial^2 u(x), \,...\, \partial^r u (x)$$
 où $\partial^i := \dr{}{^{\mu_1}...\partial^{\mu_r}} =: \partial_{\mu_1...\mu_r}$
@@ -271,52 +260,89 @@ Cas général pour des variétés quelconques:
 
 \begin{align*}
 	\mathfrak{j}^0(U,\mathcal{M}) &= U\times\mathcal{M}\\
-	\mathfrak{j}^1(U,\mathcal{M}) &= \{(x,y,E), (x,y)\in U\times\mathcal{M}, E \;\mathrm{sev}\;\mathrm{de}\; T_{(x,y)}(U\times\mathcal{M})| \mathrm{dim}E=\mathrm{dim}U \; \d (\pi_{U\times\mathcal{M}\to U})_{(x,y)}: T_{(x,y)}(U\times\mathcal{M})\to T_x\mathcal{M} \; \d (\pi_{U\times\mathcal{M}\to U})_{x,y)}|_E : E\to T_x\mathcal{U}\}\\
+	\mathfrak{j}^1(U,\mathcal{M}) &= \{(x,y,E), \quad (x,y)\in U\times\mathcal{M}, E \;\mathrm{sev}\;\mathrm{de}\; T_{(x,y)}(U\times\mathcal{M})\\&\quad \quad| \quad \mathrm{dim}E=\mathrm{dim}U\\
+	&\quad\quad\quad\;\d (\pi_{U\times\mathcal{M}\to U})_{(x,y)}: T_{(x,y)}(U\times\mathcal{M})\to T_x\mathcal{M}
+	\\&\quad\quad\quad\; \d (\pi_{U\times\mathcal{M}\to U})_{x,y)}|_E : E\to T_x\mathcal{U}\quad\quad\quad\quad\quad\quad\quad\quad\quad\}\\
 	\mathfrak{j}^r(U,\mathcal{M}) &= \mathfrak{j}^1(U, j^{r-1}(U,\mathcal{M}))
 \end{align*}
-
-Coord locale sur les jets
+Système de coordonnées locales sur les jets:
 $$v^i_{\mu_1...\mu_j} \quad\quad \mathrm{t}.\mathrm{q}. \quad\quad v^i_{\mu_1...\mu_j}(j^ru(x))=\dr{u^i}{x^{\mu_1}...\partial x^{\mu_j}}$$
-
 Lagrangien général d'ordre $r$ sur ``$U\to\mathcal{M}$":
 $$L : j^r(U,\mathcal{M}) \to \mathbb{R}$$
 $$\mathcal{L}[u] = \int_{U} L(j^r u(x))\d^n x$$
-Symétrie infinitésimale $u\mapsto u+\epsilon\delta u + o(\epsilon)$ infinitesimales, générés par un champ de veteurs $Z$ sur $U\times\mathcal{M}$.
 
-Ou plutôt, pour être précis, un champ $Z:j^r(u)\to T(U\times\mathcal{M})$.
+Symétrie infinitésimale $u\mapsto u+\epsilon\delta u + o(\epsilon)$ infinitésimales, générés par un champ de vecteurs $Z$ sur $U\times\mathcal{M}$. Ou plutôt, pour être précis, un champ $Z:j^r(u)\to T(U\times\mathcal{M})$.
 $$Z = X^\mu \partial_\mu + Y^i  \partial_i$$
 $$\delta u^i = Y^i - \dr{u^i}{x^\mu}X^\mu$$
+\underline{Théorème de Noether 1}: (Forme la plus générale)
 
-Thm1: Si $L$ est invariant par $X^\mu\partial_\mu + Y^i\partial_i$ et si $u$ est un point critique de $\mathcal{L}$ alors il lui correspond $J^\mu\partial_\mu$ définit sur $U$ tel que $\dr {J^\mu}{x^\mu}=0$
-
-Ex: $u: \mathbb{R}^n \to \mathbb{R} \quad \Omega\subset \mathbb{R}^n$
-$\mathcal{L}[u]=\int_{\Omega} \frac{|\nabla u|^2}2 \d x$ (action de Dirichlet)
-
-$\mathcal{L}[u+\epsilon\varphi] = \int_\omega \frac{|\nabla u|^2}2 + \epsilon <\nabla u, \nabla \varphi> + \epsilon^2 \frac{|\nabla \varphi|^2}2$
+Si $L$ est invariant par $X^\mu\partial_\mu + Y^i\partial_i$ et si $u$ est un point critique de $\mathcal{L}$ alors il lui correspond $J^\mu\partial_\mu$ définit sur $U$ tel que $\dr {J^\mu}{x^\mu}=0$\\
+\\
+Ex: $u: \mathbb{R}^n \to \mathbb{R}$ \quad\quad $\Omega\subset \mathbb{R}^n$
+\quad \quad $\mathcal{L}[u]=\int_{\Omega} \frac{|\nabla u|^2}2 \d x$ (action de Dirichlet)\\
+$\mathcal{L}[u+\epsilon\varphi] = \int_\omega \frac{|\nabla u|^2}2 + \epsilon \langle\nabla u, \nabla \varphi\rangle + \epsilon^2 \frac{|\nabla \varphi|^2}2$
  ($\varphi$ supposé à support compacte.)
- 
 \begin{align*}
-\delta \mathcal{L}_u[\varphi] &= \int_\Omega <\nabla u, \nabla \varphi> \d x\\
-&= \int_\Omega (\mathrm{div}(\varphi\nabla u) - \varphi \Delta u) \d x\\
+\delta \mathcal{L}_u[\varphi] &= \int_\Omega \langle\nabla u, \nabla \varphi\rangle \d x\\
+&= \int_\Omega \big(\mathrm{div}(\varphi\nabla u) - \varphi \Delta u\big) \d x\\
 &=- \int \varphi \Delta u
 \end{align*}
-
-Symétrie par translation $u \mapsto u\circ \tau_\epsilon =: u_\epsilon$; $\tau_\epsilon (x) := x-\epsilon v$.
-
-$u_\epsilon(x) = u(x-\epsilon v) \approx u(x) - \epsilon v^i \dr u {x^i}(x) + o(\epsilon)$
-
-$\delta u = - v^i \dr u {x^i}$
-
+Symétrie par translation $u \mapsto u\circ \tau_\epsilon =: u_\epsilon$; $\tau_\epsilon (x) := x-\epsilon v$.\\
+$u_\epsilon(x) = u(x-\epsilon v) \approx u(x) - \epsilon v^i \dr u {x^i}(x) + o(\epsilon)$\\
+$\delta u = - v^i \dr u {x^i}$\\
 Noether: Si $\delta u = 0$, 
 $$\dr L {v_\mu} (x,u,\d u) \dr u {x^\nu} - (L(x,u, \d x) \delta_\mu^\nu) v^\mu = J^\nu$$
-alors $\dr{J^\nu}{x^\nu} = 0$
-
-(le prof est pas giga sur de la formule pour $J$, voir la démo qui suit)
-
-Cas particulier:
+alors $\dr{J^\nu}{x^\nu} = 0$\\
+(le prof est pas totalement sûr de la formule pour $J$, voir la démo qui suit)\\
+\underline{Cas particulier}:
 $r=1$, i.e. $L(x,u,\partial u)$, $X^\mu (x,u), Y^i(x,u)$
+$$J^\mu = \dr L {v^i} (x,u,\partial u) Y^i - \left(\dr L {v^i_\mu} \dr{u^i}{x^\nu} - L \delta_\nu^\mu\right) X^\nu$$
+et EL $\implies \dr{J^\mu}{x^\mu}=0$\\
+\underline{Démonstration}: (cas général)\\
+$X^\mu \partial_\mu + Y^i \partial_i$ agissant sur $(U,u)$.\\
+$U\mapsto U_\epsilon=\varphi_\epsilon(U)$.\\
+$\varphi_\epsilon := x + \epsilon X + o(\epsilon)$.
+$u\mapsto u_\epsilon = u + \epsilon \delta u + o(\epsilon)$.
+$$\delta u^i := Y^i - \dr{u^i}{x^\mu}X^\mu$$
+Symétrie $\overset{\mathrm{def}}{\iff} \quad \forall U \forall u \quad \mathcal{L}_{U_\epsilon}[e_\epsilon] = \mathcal{L} + o(\epsilon)$\\
+Petit lemme de calcul ($m$ multi-indice):
+$$0 = \int_U \left[\sum_{|m|<r}\dr L{v^i_m}\big(\mathfrak{j}^r(u)\big)\dr{^m\delta u^i}{x^m}+\dr{}{x^\mu}\big(L(\mathfrak{j}^r(u)X^\mu\big) \right] \d^n x$$
+autre petit lemme:\\
+$\rho(\epsilon,x):=L\big(\mathfrak{j}^ru_\epsilon(x)\big)$
+$$\frac{\d}{\d \epsilon}\left.\left( \int_{\varphi_\epsilon(U)}\rho(\epsilon,x) \d  x \right) \right|_{\epsilon=0} = \int_U \dr\varphi\epsilon(0,x)+\dr{}{x^\mu}\big(X^\mu\rho(0,x)\big)$$
+et un dernier lemme:\\
+Soit $A^{\mu_1 ... \mu_p}$ un tenseur symétrique, et $g$ une fonction sur $\Omega$. $(1\leq p\leq r)$
+$$A^{\mu_1...\mu_p} \dr g{x^{\mu_1}...\partial x^{\mu_p}} = (-1)^p g \dr{A^{\mu_1...\mu_p}}{x^{\mu_1}...\partial x^{\mu_p}} + \dr{}{x^{\mu_1}}\left(A^{\mu_1...\mu_p}\overset{\leftrightarrow}\partial_{\mu_2...\mu_p}g\right)$$
+où
+\begin{align*}
+f\overset{\leftrightarrow}\partial_{\mu_2...\mu_p} g:=
+& f \partial_{\mu_2...\mu_p} g\\
+&- \partial_{\mu_2} f \partial_{\mu_3...\mu_p} g\\
+&+ ...\\
+&+ (-1)^p (\partial_{\mu_2...\mu_p} f) g
+\end{align*}
+Tous ces lemmes se prouvent par du calcul un peu bourrin.\\
+Ainsi, la condition de symétrie devient, via $A^m=\dr L{v^i_m}(\mathfrak{j}^r(u)$ et $g=\delta u^i$:
+$$\mathrm{Symetrie} \iff \int_U \sum_{|m|<r} (-1)^{|m|} \dr{^{|m|}}{x^m}\left(\dr L{v^i_m}(\mathfrak{j}^r(u))\right)\delta u^i + \dr{}{x^\mu} \left(\sum_{|m|\leq r} \dr L{v^i_m}\overset{\leftrightarrow}\partial_{m\backslash\mu} \delta u^i + X^\mu L\right) = 0$$
 
-$$J^\mu = \dr L {v^i} (x,u,\partial u) Y^i - (\dr L {v^i_\mu} \dr{u^i}{x^\nu} - L \delta_\nu^\mu) X^\nu$$
-et EL $\implies \dr{J^\mu}{x^\mu}=0$
+\begin{align*}
+&\mathrm{Posant}:\quad\quad\quad\quad\quad\quad\quad\quad&(\mathrm{EL})(u):=& \sum_{|m|\leq r} (-1)^|m| \dr{^{|m|}}{x^m}\left(\dr L{v^i_m}(\mathfrak{j}^r(u))\right)
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\\
+&\mathrm{et}&
+J^\mu :=& LX^\mu + \sum_{|m|\leq r} \dr L{v^i_m} \overset{\leftrightarrow}\partial_{m\backslash\mu} \delta u^i
+\end{align*}
+On a bien
+$$X^\mu \partial_\mu + Y^i \partial_i\quad\mathrm{Symetrie} \quad \quad \quad \iff\quad \quad \quad 
+ \partial_\mu J^\mu = 0$$
 
+\subsection{Théorème 2}
+Hypothèse: il existe $X^{a,m,\mu}$ et $Y^{a,m,i}$ sur les jets tel que pour toute famille $(f_a)_{1\leq a \leq A}$ de fonctions $\mathcal{C}^\infty$ (ou $\mathcal{C}^{\mathrm{dim}\,\mathcal{M}}$) sur $\Omega\supset U$ on ait une (famille de) symétrie(s) via:
+\begin{align*}
+X^\mu =& \sum_a \sum_{|m|\leq r} X^{a,m,\mu}(\mathfrak{j}^r(u))\dr {f_a}{x^m}\\
+Y^i =& \sum_a \sum_{|m|\leq r} Y^{a,m,i}(\mathfrak{j}^r(u))\dr {f_a}{x^m}
+\end{align*}
+\underline{Théorème de Noether 2}: (Cas des symétries de dimension infinie)\\
+Si l'hypothèse ci-dessus est vérifiée, il y a dégénérescence de l'équation d'Euler-Lagrange.\\
+\\
+\underline{Démonstration}:
 \end{document}
