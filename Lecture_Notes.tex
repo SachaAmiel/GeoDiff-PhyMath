@@ -5,6 +5,7 @@
 \usepackage{tikz}
 \usepackage{braket}
 \usepackage{cancel}
+\usepackage{xcolor}
 
 \renewcommand{\d}{{\mathrm{d}}}
 \newcommand{\e}{{\mathrm{e}}}
@@ -165,7 +166,7 @@ L: \left\{ \begin{matrix}
 Si $(\d q^i)$ est une base de $T_q^*\mathcal{M}$, $p\in T^*_q\mathcal{M} \implies p=p_i\d q^i$, d'où $(p_i, q^i)$ est un système de coordonnées sur $T^*\mathcal{M}$; enfin, en fait c'est $q^i\circ \pi$ à la place de $q^i$ mais bon, c'est l'abus de notation de tout à l'heure. On pose:
 $$\theta = p_i\d q^i$$
 \underline{Transformation de Legendre}:
-$$\forall (t,q) \in \mathbb{R}\times\mathcal{M}\quad\quad \d \left(L|_{\{t\}\times T_q\mathcal{M}}\right) =: \dr{L}{v}(t,q,v)$$
+$$\forall (t,q) \in \mathbb{R}\times\mathcal{M}\quad\quad \d \left(L_{|\{t\}\times T_q\mathcal{M}}\right) =: \dr{L}{v}(t,q,v)$$
 en coordonnés locales, $v=v^i\frac{\partial}{\partial q^i} \in T_q\mathcal{M}$
 $$\dr{L}{v} = \dr{L}{v^i} \d v^i$$
 Hypothèse de Legendre: 
@@ -229,8 +230,7 @@ Notation:
 \subsection{Formulation Géométrique}
 $t\mapsto (\gamma(t), \pi(t)) \in \mathcal{C}^1(\mathbb{R},T^*\mathcal{M})$ est solution de Hamiltion
 $$\iff \frac{\d}{\d t}(\gamma^i, \pi_i) = (\dr H{p_i},-\dr H{q^i})(\gamma,\pi)$$
-ADD COMMENTS
-
+champ de vecteurs \color{red} non-autonome (i.e. indépendant de $t$) \color{black} tangent à $T^*\mathcal{M}$.
 $$X_H = \dr H{p_i} \dr{}{q^i}-\dr H{q^i}\dr{}{p_i}$$
 $$\omega = \d p_i \wedge \d q^i$$
 \begin{align*}
@@ -309,7 +309,7 @@ Petit lemme de calcul ($m$ multi-indice):
 $$0 = \int_U \left[\sum_{|m|<r}\dr L{v^i_m}\big(\mathfrak{j}^r(u)\big)\dr{^m\delta u^i}{x^m}+\dr{}{x^\mu}\big(L(\mathfrak{j}^r(u)X^\mu\big) \right] \d^n x$$
 autre petit lemme:\\
 $\rho(\epsilon,x):=L\big(\mathfrak{j}^ru_\epsilon(x)\big)$
-$$\frac{\d}{\d \epsilon}\left.\left( \int_{\varphi_\epsilon(U)}\rho(\epsilon,x) \d  x \right) \right|_{\epsilon=0} = \int_U \dr\varphi\epsilon(0,x)+\dr{}{x^\mu}\big(X^\mu\rho(0,x)\big)$$
+$$\frac{\d}{\d \epsilon}\left( \int_{\varphi_\epsilon(U)}\rho(\epsilon,x) \d  x \right) _{\Big|\epsilon=0} = \int_U \dr\varphi\epsilon(0,x)+\dr{}{x^\mu}\big(X^\mu\rho(0,x)\big)$$
 et un dernier lemme:\\
 Soit $A^{\mu_1 ... \mu_p}$ un tenseur symétrique, et $g$ une fonction sur $\Omega$. $(1\leq p\leq r)$
 $$A^{\mu_1...\mu_p} \dr g{x^{\mu_1}...\partial x^{\mu_p}} = (-1)^p g \dr{A^{\mu_1...\mu_p}}{x^{\mu_1}...\partial x^{\mu_p}} + \dr{}{x^{\mu_1}}\left(A^{\mu_1...\mu_p}\overset{\leftrightarrow}\partial_{\mu_2...\mu_p}g\right)$$
@@ -345,4 +345,138 @@ Y^i =& \sum_a \sum_{|m|\leq r} Y^{a,m,i}(\mathfrak{j}^r(u))\dr {f_a}{x^m}
 Si l'hypothèse ci-dessus est vérifiée, il y a dégénérescence de l'équation d'Euler-Lagrange.\\
 \\
 \underline{Démonstration}:
+\begin{align*}
+\delta u^i :=& Y^i - \partial_\mu u^i X^\mu\\
+=& \sum_{|m|\leq r} \delta r ^{r,i} \partial_m f_a
+\end{align*}
+$$\mathrm{Symetrie} \quad \quad \iff \int_U (\mathrm{EL})(u)_i \delta u^i + \partial_\mu \left(\sum_{|m|\leq 2r-1} K^{a,\mu}\partial_m f_a\right)$$
+a) on prend $\mathfrak{j}^{2r-1}f_a |{\partial u}=0$, d'où $\int_U (\mathrm{EL})(u)\delta u^i =0$\\
+b) $(\mathrm{EL})(u)_i = \sum_m (-1)^r \partial_\mu (\dr L {v^i_m})$ 
+$$(\mathrm{EL})(u)_i \delta u^i \quad = \quad (\mathrm{EL})(u)_i \sum_{|m|\leq r} \delta u^{m,i}\partial_m f_a \quad + \quad \partial_\mu \left(\sum_{|m|\leq r} (\mathrm{EL})\delta u^{m,a}\overset{\leftrightarrow}\partial_{m\backslash\mu} f_a\right)$$
+Conclusion: $\forall f_a : \mathfrak{j}^{2r-1} f_a\,\!_{|\partial u} = 0$
+$$\int \sum_{|m|\leq r} (-1)^|m|\partial_m\left[(\mathrm{EL})(u)_i (Y^{m,a} - \dr u{x^\nu} X^{m,a,\nu}\right] f_a = 0$$
+\\
+Exemple: Électromagnétisme\\
+Rappel: Étoile de Hodge $* : \Omega^p(\mathcal{M})\to \Omega^{n-p}(\mathcal{M})$ pour passer de $J^\mu$ 3-forme à 1-forme...
+\begin{align*}
+\mathrm{Electromagnetisme} \quad \quad &\iff \quad \quad \left\{
+\begin{matrix}\d F & = & 0\\ \d(*F) & = & J\end{matrix}\right.\\
+& \iff \mathcal{A}[A] = \int \frac{1}{4}F_{\mu\nu}F^{\mu\nu} + A_\mu J^\mu \d^n x\\
+& \quad \mathrm{avec} \quad F = \frac{1}{2} F_{\mu\nu}\d x^\mu \wedge \d x^\nu \quad \mathrm{et}\quad F_{\mu\nu}=\partial_\mu A_\nu - \partial_\nu A_\mu
+\end{align*}
+$A\mapsto A+\d \varphi,\quad \varphi\in \mathcal{C}^\infty_\mathrm{c}$ groupe de symétrie de Noether. D'où $J:=\d (*F) = \d (*\d A)$ est un problème sous-déterminé.
+Autre exemple: (RG) $\mathcal{A}[g] = \int \mathrm{Ric}_g \d\mathrm{vol}_g$\\
+(i.e. $R_{\mu\nu}-\frac{1}{2}Rg_{\mu\nu} = 0$) a ses symétries dans l'identité de Bianchi
+$$\nabla_\mu \left(R^{\mu\nu}-\frac{1}{2}Rg^{\mu\nu}\right)=0$$
+(et en fait, dans tous les difféomorphismes).
+
+\section{Mécanique et Géométrie Symplectique}
+\subsection{Vers une approche plus générale}
+On rappel que:
+$$\begin{matrix}
+L: & \mathbb{R}\times T\mathcal{M} & \to & \mathbb{R}\\
+\mathbb{L}: &  \mathbb{R}\times T\mathcal{M} & \to & \mathbb{R}\times T^*\mathcal{M}\\
+& (t,x,v) &\mapsto &\left(t,x, p_i = \dr L{v^i}(t,x,v)\right)
+\end{matrix}$$
+Et avec l'hypothèse que $\mathbb{L}$ est un difféo, on construisait:
+$$H(t,q,p):=p_iv^i(t,x,p)-L\big(t,x,v(t,x,p)\big)$$
+avec $p_i:= \dr L{v_i}(t,x,v(t,x,p))$.\\
+On obtenait alors les equations:
+\begin{align*}
+\frac{\d \gamma^i}{\d t} =& \quad \, \dr H{p_i}(t,\gamma, \pi)\\
+\frac{\d \pi_i}{\d t} =& - \dr H{q^i}(t,\gamma, \pi)
+\end{align*}
+On obtenait alors un flot sur la variété symplectique $T^*\mathcal{M}$ par
+$$X_H : \left\{\quad \begin{matrix}
+0 & = & X_H \lrcorner + \d H\\
+\omega & = & \d p_i \wedge \d q^i
+\end{matrix}\right.$$
+Mais on peut se ramener à des problèmes variationnels, en changeant un peu notre construction:\\
+Nous allons maintenant travailler dans $T^*(\mathbb{R}\times\mathcal{M})$ au lieux de $\mathbb{R}\times T^*(\mathcal{M})$.
+$$\mathcal{L}(\gamma,\zeta,\pi) := \int_I \color{red}\left[\color{black}L(t,\gamma,\zeta) \color{red}\cancel{\color{black}\d  t} + \pi \left( \frac{\d \gamma^i}{\d t} - \zeta^i\right)\right]\d t$$
+\color{red}i.e. on impose $\zeta = \frac{\d \gamma}{\d t}$ via les multiplicateurs de Lagrange.\color{black}
+$$\pi \mapsto \pi + \delta \pi \quad \quad \quad \rightsquigarrow \quad\quad\quad
+\mathcal{L}(\gamma,\zeta,\pi) \mapsto \mathcal{L}(\gamma,\zeta,\pi) + \epsilon \int \delta\pi_i (\dot\gamma^i - \zeta^i)\d t$$
+$$\forall\delta\pi \quad \quad \delta\mathcal{L}[\delta\pi]=0 \quad \quad \quad \iff\quad \quad \quad \zeta^i = \frac{\d\gamma^i}{\d t}$$
+$$\delta\mathcal{L}[(0,\delta\zeta,0)] = \int_I \left(\dr L{v^i}\delta\zeta^i-\pi_i\delta\zeta^i\right)\d t = 0$$
+i.e. :
+\begin{align*}
+\left\{\begin{matrix}
+\gamma & \mapsto & \gamma\\
+\pi & \mapsto & \pi\\
+\zeta & \mapsto & \zeta + \epsilon\delta\zeta
+\end{matrix}\right.
+\iff & \pi_i = \dr L{v^i}\\
+\iff & (t,\gamma,\pi) = \mathbb{L}(t,\gamma, \zeta)
+\end{align*}
+Alors:
+\begin{align*}
+\mathcal{L}[\gamma,\pi] &= \int_I \left[L\big(t,\gamma,v(t,\gamma,\pi)\big)
+\right] \d t\\
+&= \int_I \pi_i \dot \gamma^i - \left(\pi_i v^i(\gamma,\pi) - L\big(t,\gamma,v(t,\gamma,\pi)\right)\d t\\
+&= \int_I \pi_i\dot\gamma^i - H(t,\gamma,\pi)\\
+A[\pi,\gamma] &= \int_I \left(\pi_i \frac{\d \gamma^i}{\d t}- H(t,\gamma,\pi)\right) \d t
+\end{align*}
+A pour point critique les solutions de l'équation de Hamilton. (proof left as exo)\\
+On appel cela l'\underline{action de Poincaré}.
+
+\subsection{Trajectoires dans l'espace-temps}
+On travaille donc dans $T^*(I\times \mathcal{M})$. On a des coordonnées dans $T^*\mathcal{M}$ via $(q^i,p_i)$, et on complète par $q^0:=t$ et $p_0$ son dual, pour faire $(q_\mu,p^\mu)$ coordonnées pour $T^*(I\times \mathcal{M})$.
+$$\omega = \d p_0 \wedge \d q^0 + \d p_i \wedge \d p^i = \d p_\mu \wedge \d q^\mu$$
+$$\mathcal{H}(p_\mu, q^\mu):= p_0 + H(q^0,q^1,p_i)$$
+$$\mathcal{H}: T^*(I\times\mathcal{M}) \to \mathbb{R}$$
+On construit également:
+$$(\gamma,\pi) \mapsto \Gamma:=\Bigg\{\bigg(t,\quad \gamma^i(t) - H\Big(t,\gamma(t),\pi(t)\Big),\quad\pi(t)\bigg),\; t\in I\Bigg\} \quad \quad \subset \mathcal{H}^{-1}(\{0\}) =: \mathcal{N}$$
+$$\mathcal{L}[\gamma,\pi] = \int_\Gamma \underset{=:\theta}{p_\mu \d q^\mu}$$
+$$\Gamma \quad \subset \quad \mathcal{N} \quad \subset \quad T^*(I\times\mathcal{M})$$
+
+Notons qu'on se rapproche d'une description relativiste du mouvement (même si c'est pas encore tout à fait ça, car $\Gamma$ est toujours défini à travers notre choix de coordonnés initial dans $\mathcal{M}$).
+On remplace $I\times\mathcal{M}$ pas une variété $\mathcal{E}$ (idéalement avec une métrique pseudo-Riemannienne, pour avoir un bon $*$). On a donc $\mathcal{H}:T^*\mathcal{E}\to\mathbb{R}$ et la dynamique est donnée par $\omega|_\mathcal{N}$. Explicitons...
+$H$ sur $\mathcal{M}$ symplectique. Via le flot de $X_H$ on a:
+$$X_H\lrcorner\omega+\d H = 0$$
+$\mathcal{N}$ est une hyper-surface, telle que
+$$\d\left(\omega_{|\mathcal{N}}\right)=0 \quad \quad \mathrm{et} \quad \quad
+\omega_{|\mathcal{N}}=\mathfrak{i}_\mathcal{N}^*\omega$$
+Rappel: $\d(\cdot)$ commute avec les pull-backs. \quad \quad \quad $\mathfrak{i}_\mathcal{N}\to T^*\mathcal{E}$
+Notons que si $\omega_{|\mathcal{N}}$ est bien fermée, elle est par contre dégénéré (ainsi, ce n'est pas une forme symplectique sur $\mathcal{N}$).\\
+ker $\omega_{|\mathcal{N}}$ = droite $\subset T\mathcal{N}$, qui décrit la dynamique.
+
+\noindent \underline{Lemme}:\\
+Soit $V$ un espace vectoriel de dimension finie:
+$$V \quad \quad \supset \quad \quad W:= \mathrm{ker}\; (\alpha_1, \; ...\alpha_k) \quad \quad \quad \alpha_j \in V^*$$
+\begin{align*}
+V^* & \to W^* &&\\
+\beta & \mapsto \beta_{|W} &&\\
+\,& &&\\
+V^*/\mathbb{R}(\alpha_i)_{i\in[\![1,k]\!]} & \to W^* &&\\
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\beta \mathrm{mod} [\alpha_1, \; ... \alpha_k] & \mapsto \beta_{|W}&&
+\mathrm{est} \; \mathrm{un}\mathrm{iso}!
+\end{align*}
+Soit $(\mathcal{M},\omega)$ une variété symplectique, $T^*\mathcal{E}$, $\mathcal{N}\subset\mathcal{M}$, $M\in\mathcal{N}$, $X\in T_M\mathcal{M}$.
+$$X\lrcorner \omega \in T_M^*\mathcal{M} \to X\lrcorner \omega_{|\mathcal{N}} \in T_M^*\mathcal{N}$$
+Comme ker $\d\mathcal{H}=T_m\mathcal{N}$
+\begin{align*}
+\Big(X\lrcorner(\omega_{|T_M\mathcal{N}})=\Big) \quad \quad X\lrcorner \omega_{|T_M\mathcal{N}} = 0 \quad \quad &\iff \quad \quad X\lrcorner \omega \in \mathbb{R}\d \mathcal{H}\\
+&\iff \exists \lambda \in \mathbb{R} \quad X = X_H \quad \mathrm{avec} \quad X_H\lrcorner\omega+\d \mathcal{H}=0
+\end{align*}
+$$\mathrm{ker}\left(\omega_{|T_M\mathcal{N}}\right)
+:= \left\{X\in T_M\mathcal{N} \quad |\quad X\lrcorner\omega_{|T_M\mathcal{N}} = 0 \right\} = \mathbb{R}X_\mathcal{H}$$
+
+On dit de $\left(\mathcal{N},\omega_{|\mathcal{N}}\right)$ que c'est une variété \underline{pré-symplectique} i.e. munie d'une forme fermée et de dégénérescence pas forcement nulle mais de noyau tangent à la dynamique.
+
+Les courbes dans $\mathcal{N}= \mathcal{H}^{-1}(C)$ seront les points critiques de $\int_\Gamma \theta = \color{red} ?????\color{black}$, courbe tangente à la distribution ker $\omega_{|\mathcal{N}}$.
+
+\noindent Autre exemple: (Force de Lorentz)
+$$\mathcal{H} = (p_0 - eA_0)^2 - c^2|p_i-eA_i|^2_{\mathbb{R}^3} - (mc^2)^2$$
+
+\subsection{Lien avec le premier théorème de Noether}
+Situation:
+$$\gamma : \left\{ \begin{matrix}
+I & \to & \mathcal{M}\\
+t & \mapsto & \gamma(t)
+\end{matrix}\right.
+\quad \quad \quad \quad
+L[\gamma]=\int_I L(t,\gamma,\dot\gamma)\d t$$
+
 \end{document}
