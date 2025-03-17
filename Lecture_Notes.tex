@@ -478,5 +478,20 @@ t & \mapsto & \gamma(t)
 \end{matrix}\right.
 \quad \quad \quad \quad
 L[\gamma]=\int_I L(t,\gamma,\dot\gamma)\d t$$
-
+$$X^i(t,x)\dr{}{x^i} + T(t,x)\dr{}t \quad \in \quad (\underset t T \times \underset x {\mathcal{M}})$$
+est une symétrie (modulo $\d f$) de $L$ si 
+$$\quad \quad \quad T\dr L t + \left(L - v^i \dr L {v^i}\right)\left(\dr T t + v^i \dr T {x^i}\right) + X^iL + \dr L{v^i} \left(\dr {x^i} t + v^j \dr{X^i}{x^i}\right)
+= \dr f t + v^i \d f {x^i} \quad \quad \quad (*)$$
+où $f: I\times\mathcal{M}\to \mathbb{R}$
+\begin{align*}
+\iff \quad \mathrm{Si}\; \mathcal{H} &= p_0 + H(t,q,p)\\
+F &= p_0 T(q^0,q^i) + p_i X^i(q^\mu) - f(q^\mu)\\
+&= \theta(T,X) - f, \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \theta=p_\mu\d q^\mu
+\end{align*}
+Or, si $f,g\in \mathcal{C}^\infty\big(T^*(I\times\mathcal{M})\big)$
+$$\{f,g\} := \dr f{p_\mu}\dr g{x^\mu} - \dr f{x^\mu}\dr g{p_\mu}$$
+\begin{align*}
+(*) \iff \quad \quad \;\{H,F\} =& H\{H,T\}\\
+\underset {\mathrm{si}\; \mathcal{N}=\mathcal{H}^{-1}(0)} \implies \{H,F\}_{|\mathcal{N}} =& 0
+\end{align*}
 \end{document}
