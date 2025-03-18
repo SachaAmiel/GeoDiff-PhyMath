@@ -494,4 +494,104 @@ $$\{f,g\} := \dr f{p_\mu}\dr g{x^\mu} - \dr f{x^\mu}\dr g{p_\mu}$$
 (*) \iff \quad \quad \;\{H,F\} =& H\{H,T\}\\
 \underset {\mathrm{si}\; \mathcal{N}=\mathcal{H}^{-1}(0)} \implies \{H,F\}_{|\mathcal{N}} =& 0
 \end{align*}
+\underline{Point de vue ``Relativiste"}:\\
+$\mathcal{E}$ espace-temps,\\
+$\mathcal{H}: T^*\mathcal{E}\to\mathbb{R}$ fonction ``cohérente",\\
+$\mathcal{N}=\mathcal{H}^{-1}(\{0\})$,\\
+une courbe $\Gamma$ par point critique:
+$$\int_{\Gamma\subset\mathcal{N}} \theta \quad \quad \to \quad \quad \Gamma \mathrm{t}.\mathrm{q}. \forall X\in T_M\Gamma\quad X\lrcorner(\omega_{|\mathcal{N}}) = 0$$
+Si $F=\theta(X) - f = p_\mu X^\mu (q) - f(q)$ où $f\in\mathcal{C}^\infty$, $X^\mu$ est une symétrie (modulo $\d f$) lorsque $\{H,F\}_{|\mathcal{N}}=0$.
+
+\noindent \underline{Point de vue non-relativiste}:\\
+$H:T^*\mathcal{M}\to \mathbb{R}$, $H$ indépendant du temps. $X=X^i(x)\partial_i \in \mathfrak{X}(\mathcal{M})$ est une symétrie de $\int_I L(\gamma,\dot\gamma)\d t$ ssi $\{H, p_i X^i(q)\}=0$.\\
+\underline{Généralisation plus générale}:sur une variété symplectique quelconque $\mathcal{M}$.\\
+\\
+\underline{Définition}: (crochet de poisson sur une variété symplectique)\\
+$$\begin{matrix}
+\mathcal{C}^\infty(\mathcal{M})\times\mathcal{C}^\infty(\mathcal{M}) &
+\to & \mathcal{C}^\infty(\mathcal{M})&\\
+(F,G) & \mapsto & \{F,G\}&
+:= \omega(X_F,X_G)
+\end{matrix}$$
+Remarque, dans un jeu de coordonnées à la Darboux, ça donne:
+$$\{F,G\} = \dr F{p_i}\dr G{q^i} - \dr F{q^i}\dr G{p_i}$$
+Soit: $(\gamma,\pi): I \to \mathcal{M}$ t.q.:
+\begin{align*}
+\frac{\d (\gamma,\pi)}{\d t} =& X_H(\gamma,\pi)\\
+\forall F \in\mathcal{C}^1(\mathcal{M}) \frac{\d F(\gamma,\pi)}{\d t} =&
+\dr F{q^i}(\gamma,\pi)\frac{\d \gamma^i}{\d t} + \dr F{p_i}\frac{\d \pi_i}{\d t}\\
+=& \{F,H\}(\gamma,\pi)
+\end{align*}
+Notons, au passage, les propriétés triviales:
+$$\forall A,B,C \quad \quad \quad \{A,B\}=-\{B,A,\} \quad \quad \{AB,C\}=A\{B,C\}+\{A,C\}B$$
+\underline{Théorème de Noether 1 dans le cas symplectique}:\\
+Si $X_F$ est une symétrie de $H$ alors $F$ est conservé le long du flot de $X_H$.
+\begin{itemize}
+\item $X_F$ symétrie de $H \iff \d H(X_F)=0 \iff X_F\lrcorner\d H = 0$.
+\item $F$ conservé le long du flot de $X_H$: $\d F(X_H) = X_H\lrcorner\d F = 0$
+\end{itemize}
+Preuve:
+\begin{align*}
+\{H,F\} :=& \omega(X_H, X_F)\\
+=& (X_H\lrcorner \omega)(X_F)\\
+=& -\d H(X_F) = - X_F \lrcorner \d H\\
+=& X_H \lrcorner \d F
+\end{align*}
+$$\boxed{X_H\lrcorner \d F = - X_F \lrcorner\d H =\{H,F\}}$$
+\begin{align*}
+u : I \to& (\mathcal{M},\omega) &\frac{\d F(\omega)}{\d t} =& \d F u\left(\frac{\d u}{\d t}\right)\\
+&&=& \d F u(X_H)\\
+\frac{\d u}{\d t} =& X_H(\omega)
+& =& \{H,F\}(u)
+\end{align*}
+\underline{Proposition}:\\
+$F\mapsto X_F$ symétrie infinitésimale de $\omega$ implique
+$$L_{X_F}\omega = X_F \lrcorner\d \omega + \d \underset{=-\d F}{\left(X_F\lrcorner \omega\right)}=0 - \d(\d F) = 0$$
+Se pose la question de si cette proposition admet une réciproque...\\
+Soit $X\in \mathfrak{X}(\mathcal{M})$ t.q. $L_X(\omega)=0$
+$$0=L_X(\omega)=0+\d (X\lrcorner\omega)$$
+d'où $X\lrcorner\omega$ est fermé.\\
+En fait la réciproque dépend de la cohomologie de la variété:
+$$H^1(\mathcal{M})=\{0\} \quad \implies \quad \exists F : X\lrcorner\omega = - \d F, \; \mathrm{i}.\mathrm{e}. \; X=X_F$$
+Sinon, on peut dire que c'est localement vrai, mais c'est pas aussi fort évidement. Bref:\\
+Si $H^1(\mathcal{M})=\{0\}$, $X$ est une symétrie physique si et seulement si $L_X\omega = 0 = L_XH=X\lrcorner\d H$.\\
+\\
+Premier lemme sympa: $X_{\{f,g\}}=[X_f,X_g]$ i.e.
+$$\left(\mathcal{C}^\infty(\mathcal{M}), \{\cdot,\cdot\}\right) \quad \overset{X_{(\cdot)}}{\underset{\mathrm{morphisme}\;\d '\mathrm{algebre}\;\mathrm{de}\;\mathrm{Lie}}{\xrightarrow{\hspace*{4cm}}}} \quad \left(\mathfrak{X}(\mathcal{M}),[\cdot,\cdot]\right)$$
+Preuve:\\
+Montrons que $\d \{f,g\} + [X_f,X_g]\lrcorner\omega = 0$
+\begin{align*}
+\d \{f,g\} =& \d \left(X_f \lrcorner\d g\right)\\
+=& \d \left(X_f\lrcorner\d g\right)+ X_f \lrcorner\underset{=0}{\d(\d g)}\\
+\underset{\mathrm{DD}}=\!\!&\;L_{X_f}(\d g)\\
+\underset{\mathrm{Leibneitz}}=\!\!\!\!\!\!\!\!&\quad L_{X_f}(-X_g\lrcorner\omega)\\
+=&-\underset{=[X_f,X_g]}{L_{X_f}(X_g)}\lrcorner\omega-X_g\lrcorner \underset{=0}{L_{X_f}}\omega
+\end{align*}
+Deuxième lemme: $\{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0$\\
+Preuve:
+\begin{align*}
+0\quad&\!\!\!\!\!\!\!\underset{\mathrm{Lemme}\;1}= \Big([X_f,X_g]-X_{\{f,g\}}\Big)\lrcorner\d h\\
+&= X_f \cdot (X_g\cdot h) - X_g \cdot (X_f \cdot h) - \{\{f,g\},h\}\\
+&= \{f,\{g,h\}\} - \{g,\{f,g\}\}+\{h,\{f,g\}\} 
+\end{align*}
+\underline{Définition}: (variété de Poisson)\\
+variété $\mathcal{M}$ munie d'un crochet de Poisson
+$$\{\cdot,\cdot\}: \begin{matrix}
+\mathcal{C}^\infty(\mathcal{M})\times\mathcal{C}^\infty(\mathcal{M}) & \to & \mathcal{C}^\infty(\mathcal{M})\\
+(F,G) & \mapsto & \{F,G\}
+\end{matrix}$$
+Vérifiant:
+\begin{itemize}
+\item Bilinéarité
+\item anti-symétrie
+\item identité de Jacobi (donc c'est un crochet de Lie)
+\item Leibnitz
+\end{itemize}
+
+\noindent Lemme final: ($\sim$Darboux pour les variétés de poisson)\\
+Dans tout système de coordonnées locales $(x_i)$,
+$$\exists \pi = \sum_{i<j} \pi^{ij}(x) \partial_i \wedge\partial_j$$
+$\partial_i\wedge\partial_j:=(\partial_i\otimes\partial_j-\partial_j\otimes\partial_i)$, d'où $\pi = \pi^{ij}\partial_i\otimes\partial_j$ une fois anti-symétrisé, de sorte que:
+$$\{f,g\} = \sum_{ij}\pi^{ij} \partial_i (f) \partial_j (g)$$
+$$\pi^{ab}\partial_b\pi^{a'a''} + \pi^{a'b}\partial_b \partial^{a''a}+\pi^{a''b}\partial_b\pi^{aa'}=0 \quad \quad(\mathrm{Jacobi})$$
 \end{document}
