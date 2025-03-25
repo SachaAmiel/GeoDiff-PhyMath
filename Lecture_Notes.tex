@@ -53,7 +53,7 @@ où l'équation à droite est appelée ``equations d'\underline{Euler-Lagrange}"
 Première difficulté: qu'est-ce qu'une symétrie? Il s'agit, grossièrement d'une action d'un groupe de Lie. (Enfin, d'une algèbre de Lie plutôt...)\\
 Version simple:
 
-METTRE LE DESSIN
+\color{red}METTRE LE DESSIN\color{black}
 
 $$X = X^0(t,x)\frac{\partial}{\partial t} + X^i(t,x) \frac{\partial}{\partial x^i} \quad \quad \quad T:=X^0$$
 On note $\Delta_X\subset \mathbb{R}\times(I\times\mathcal{M})$ maximal sur lequel le flot est défini.
@@ -326,7 +326,7 @@ Ainsi, la condition de symétrie devient, via $A^m=\dr L{v^i_m}(\mathfrak{j}^r(u
 $$\mathrm{Symetrie} \iff \int_U \sum_{|m|<r} (-1)^{|m|} \dr{^{|m|}}{x^m}\left(\dr L{v^i_m}(\mathfrak{j}^r(u))\right)\delta u^i + \dr{}{x^\mu} \left(\sum_{|m|\leq r} \dr L{v^i_m}\overset{\leftrightarrow}\partial_{m\backslash\mu} \delta u^i + X^\mu L\right) = 0$$
 
 \begin{align*}
-&\mathrm{Posant}:\quad\quad\quad\quad\quad\quad\quad\quad&(\mathrm{EL})(u):=& \sum_{|m|\leq r} (-1)^|m| \dr{^{|m|}}{x^m}\left(\dr L{v^i_m}(\mathfrak{j}^r(u))\right)
+&\mathrm{Posant}:\quad\quad\quad\quad\quad\quad\quad\quad&(\mathrm{EL})(u):=& \sum_{|m|\leq r} (-1)^{|m|} \dr{^{|m|}}{x^m}\left(\dr L{v^i_m}(\mathfrak{j}^r(u))\right)
 \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\\
 &\mathrm{et}&
 J^\mu :=& LX^\mu + \sum_{|m|\leq r} \dr L{v^i_m} \overset{\leftrightarrow}\partial_{m\backslash\mu} \delta u^i
@@ -354,7 +354,7 @@ a) on prend $\mathfrak{j}^{2r-1}f_a |{\partial u}=0$, d'où $\int_U (\mathrm{EL}
 b) $(\mathrm{EL})(u)_i = \sum_m (-1)^r \partial_\mu (\dr L {v^i_m})$ 
 $$(\mathrm{EL})(u)_i \delta u^i \quad = \quad (\mathrm{EL})(u)_i \sum_{|m|\leq r} \delta u^{m,i}\partial_m f_a \quad + \quad \partial_\mu \left(\sum_{|m|\leq r} (\mathrm{EL})\delta u^{m,a}\overset{\leftrightarrow}\partial_{m\backslash\mu} f_a\right)$$
 Conclusion: $\forall f_a : \mathfrak{j}^{2r-1} f_a\,\!_{|\partial u} = 0$
-$$\int \sum_{|m|\leq r} (-1)^|m|\partial_m\left[(\mathrm{EL})(u)_i (Y^{m,a} - \dr u{x^\nu} X^{m,a,\nu}\right] f_a = 0$$
+$$\int \sum_{|m|\leq r} (-1)^{|m|}\partial_m\left[(\mathrm{EL})(u)_i (Y^{m,a} - \dr u{x^\nu} X^{m,a,\nu}\right] f_a = 0$$
 \\
 Exemple: Électromagnétisme\\
 Rappel: Étoile de Hodge $* : \Omega^p(\mathcal{M})\to \Omega^{n-p}(\mathcal{M})$ pour passer de $J^\mu$ 3-forme à 1-forme...
@@ -499,7 +499,7 @@ $\mathcal{E}$ espace-temps,\\
 $\mathcal{H}: T^*\mathcal{E}\to\mathbb{R}$ fonction ``cohérente",\\
 $\mathcal{N}=\mathcal{H}^{-1}(\{0\})$,\\
 une courbe $\Gamma$ par point critique:
-$$\int_{\Gamma\subset\mathcal{N}} \theta \quad \quad \to \quad \quad \Gamma \mathrm{t}.\mathrm{q}. \forall X\in T_M\Gamma\quad X\lrcorner(\omega_{|\mathcal{N}}) = 0$$
+$$\int_{\Gamma\subset\mathcal{N}} \theta \quad \quad \to \quad \quad \Gamma \; \mathrm{t}.\mathrm{q}. \;\forall X\in T_M\Gamma\quad X\lrcorner(\omega_{|\mathcal{N}}) = 0$$
 Si $F=\theta(X) - f = p_\mu X^\mu (q) - f(q)$ où $f\in\mathcal{C}^\infty$, $X^\mu$ est une symétrie (modulo $\d f$) lorsque $\{H,F\}_{|\mathcal{N}}=0$.
 
 \noindent \underline{Point de vue non-relativiste}:\\
@@ -574,6 +574,8 @@ Preuve:
 &= X_f \cdot (X_g\cdot h) - X_g \cdot (X_f \cdot h) - \{\{f,g\},h\}\\
 &= \{f,\{g,h\}\} - \{g,\{f,g\}\}+\{h,\{f,g\}\} 
 \end{align*}
+\section{Variétés de Poisson}
+\subsection{Introduction aux variétés de Poisson}
 \underline{Définition}: (variété de Poisson)\\
 variété $\mathcal{M}$ munie d'un crochet de Poisson
 $$\{\cdot,\cdot\}: \begin{matrix}
@@ -594,4 +596,164 @@ $$\exists \pi = \sum_{i<j} \pi^{ij}(x) \partial_i \wedge\partial_j$$
 $\partial_i\wedge\partial_j:=(\partial_i\otimes\partial_j-\partial_j\otimes\partial_i)$, d'où $\pi = \pi^{ij}\partial_i\otimes\partial_j$ une fois anti-symétrisé, de sorte que:
 $$\{f,g\} = \sum_{ij}\pi^{ij} \partial_i (f) \partial_j (g)$$
 $$\pi^{ab}\partial_b\pi^{a'a''} + \pi^{a'b}\partial_b \partial^{a''a}+\pi^{a''b}\partial_b\pi^{aa'}=0 \quad \quad(\mathrm{Jacobi})$$
+$$\pi \in \Gamma(\mathcal{M},\lambda^2 T\mathcal{M})$$
+Note: si on étends la dérivée de Lie au crochet de Schouten ($\sim$ dérivée de Lie sur les structures supérieures) alors $[\pi,\pi]=0$.
+\\ \\
+\underline{Exemple}: Dual d'une algèbre de Lie.
+\subsection{Aparté sur les Algèbres de Lie}
+Rappels de base: définitions équivalentes de l'algèbre de Lie canoniquement associée à un groupe de Lie $G$.
+\begin{enumerate}
+\item $\mathrm{Lie}(G) = T_e G$
+\item $\mathrm{Lie}(G) = \{$ Champs vectoriels tangeants à $G$ invariants à gauche (resp à droite) par l'action du groupe sur lui-même$\}$.
+\end{enumerate}
+Autre rappel (de pure géo-diff):
+$$(\varphi_* X) (x) = \d \varphi _{\varphi^{-1}(x)} (X(\varphi^{-1}(x))) \quad \quad \quad \varphi \; \mathrm{diffeomorphisme}$$
+$$\varphi_* X \lrcorner \varphi^* \alpha = (X\lrcorner \alpha) \cdot \varphi \quad \quad \quad \mathrm{dualite}\;\mathrm{push}\!-\!\mathrm{forward}\;\&\;\mathrm{pullback}$$
+Encore un rappel: $G$ groupe de Lie $\implies G \approx G' \subset \mathrm{GL}_N(\mathbb{R})$\\
+On vas donc écrire l'action à gauche simplement: $L_g x =: g x$.\\ \\
+Dernier Rappel: $X,Y$ invariants $\implies [X,Y]_{\mathfrak{X}(G)}$ invariant, d'où
+$$[X,Y]_{\mathfrak{X}(G)} (e) =: [X,Y]_\mathfrak{g}$$
+
+\noindent \underline{Point de vue dual}: (Forme de Mauer-Cartan)
+$$\begin{matrix}
+\mathfrak{g} & \to & \mathfrak{X}(G)\\
+\xi & \mapsto & \begin{matrix}
+\mathrm{le}\;\mathrm{champ}\;\mathrm{de}\;\mathrm{vecteurs}\\
+\mathrm{invariant}\;\mathrm{qui}\;\mathrm{vaut}\;\xi\;\mathrm{en}\;e_G
+\end{matrix}
+\end{matrix}$$
+est un morphisme d'algèbres de Lie, et $\tilde \xi (x) = x \cdot \xi$.\\
+On en déduit un isomorphisme $\alpha_x : T_x G \to \mathfrak{g}$ (enfin, une application inverser en fait):
+$$\alpha_x (x.\xi)= \xi \quad \quad \rightsquigarrow \quad\quad \alpha \in \Omega^1 (G\cdot \mathfrak{g}) = \Omega^1(G)\otimes \mathfrak{g}$$
+C'est la \emph{forme de Mauer-Cartan}.
+\\
+\underline{Lemme}: (Mauer-Cartan ou Formule de Cartan)
+$$\d \alpha + \frac{1}{2} [\alpha \wedge \alpha] = 0$$
+où $\forall \alpha, \beta \in \Omega^1 \otimes \mathfrak{g}$:
+\begin{align*}
+[\alpha \wedge \beta ] (v,w) :=& [\alpha(v),\beta(w)] - [\alpha(w),\beta(v)]\\ =& [\beta\wedge\alpha](v,w)
+\end{align*}
+Considérant une base $(E_i)$ de $\mathfrak{g}$:
+\begin{align*}
+\alpha =& \alpha^i E_i, &\beta =& \beta^i E_i, &\alpha^i =& \alpha^i_\mu \d x^\mu, &\beta^i =& \beta^i_\mu \d x^\mu
+\end{align*}
+\begin{align*}
+[\alpha\wedge\beta] =& \big[(\alpha^i E_i)\wedge(\beta^jE_j)\big]\\
+=& \alpha^i\wedge\beta^j [E_i,E_j]\\
+=& C^k_{ij} \alpha^i \wedge \beta^j E_k
+\end{align*}
+avec $C^k_{ij}$ les coefficients de structure de l'algèbre de Lie dans $\mathfrak{g}$ pour la base $(E_i)$. Bref:
+$$[\alpha\wedge\beta]^k = C^k_{ij} \alpha^i \wedge \beta^j$$
+\underline{Preuve}: (formule de Cartan)
+$$\d \alpha (X,Y) + \alpha\big([X,Y]\big) = X\dot \alpha(Y) - Y\cdot \alpha(Y)$$
+\begin{align*}
+X &= x\cdot \xi & Y&= x \cdot \zeta & (\xi,\zeta)&\in \mathfrak{g}
+\end{align*}
+\begin{align*}
+\d \alpha_x (x\cdot \xi, x \cdot \zeta) + \alpha_x \big([x\cdot \xi, x\cdot \zeta]\big) &= x \cot [\xi, \zeta]\\
+&= (x\cdot\xi) \lrcorner \underset{=0}{\d\alpha_x(\underset{=\zeta}{x\cdot\zeta})} - x\cdot \zeta \lrcorner \underset{=0}{\d (\xi)}\\
+\alpha_x\big(x\cdot[\xi,\zeta]\big) &= [\xi,\zeta]\\
+&= \big[\alpha_x (x\cdot\xi), \alpha_x(x\cdot \zeta)\big]\\
+&=\frac{1}{2} [\alpha\wedge\alpha] (x\cdot \xi, x \cdot \zeta)
+\end{align*}
+Bref,
+$$\boxed{\left(\d\alpha + \frac{1}{2}[\alpha\wedge\alpha]\right)(x\cdot\xi,x\cdot\zeta) = 0}$$
+\underline{Retour à Poisson}: (Duale d'une algèbre de Lie comme exemple non-trivial de variété de Poisson)\\
+$\mathfrak{g}$ algèbre de Lie, $(E_i)$ base de $\mathfrak{g}$, $C^k_{ij}:=[E_i,E_j]^k$ coefficients de structure, $\{\cdot,\cdot\}$ sur $\mathcal{C}^\infty(\mathfrak{g}^*)^2$.\\
+$\forall F,G\in\mathcal{C}^\infty(\mathfrak{g}^*), \forall\alpha\in \mathfrak{g}^*$ \quad 
+$\d F_\alpha \in T_\alpha^* (\mathfrak{g}^*) \approx (\mathfrak{g}^*)^* \approx \mathfrak{g}$, et de même, $\d G_\alpha \in \mathfrak{g}$.\\
+On pose donc:
+$$\{F,G\}(\alpha):=\langle\underset{\quad\in \mathfrak{g}^*}\alpha,\underset{\in\mathfrak{g}}{[\d F_\alpha,\d G_\alpha]}\quad \rangle\!\!\!\underset{\mathrm{crochet}\;\mathrm{de}\;\mathrm{dualite}}\; \in \mathcal{C}^\infty(\mathfrak{g}^*)$$
+Il est trivial que ce crochet est bilinéaire, antisymétrique, Jacobi se vérifier simplement (c'est $\langle\alpha,\cdot\rangle$ qui contient toute cette structure), quand à Leibniz, on l'obtient directement en passant en coordonnées via:
+$$\{F,G\} (\alpha) = \alpha_i C^i_{jk}\dr F{\alpha^j}(\alpha)\dr G{\alpha^k}(\alpha)$$
+Réciproquement: si $V$ est un espace vectoriel, et $\{\cdot,\cdot\}$ est un crochet de Poisson sur $V^*$ linéaire, alors $V$ est une algèbre de Lie.\\
+En gros, tout se trouve dans la dualité: $\pi_{ij}(\alpha) = C^k_{ij}\alpha_k$
+
+\subsection{Retour à Poisson}
+\noindent \underline{Lien avec Noether}: (application moment - Souriau)\\
+Dynamique dans $(\mathcal{M},\pi)$ variété de Poisson.
+$$\mathcal{C}^\infty(\mathcal{M}) \ni H \mapsto X_H \quad \quad \mathrm{t}.\mathrm{q}. \quad\quad \forall F \in \mathcal{C}^\infty(\mathcal{M}) \quad X_H \lrcorner \d F = \{H,F\}$$
+i.e. $X_H$ agit comme un opérateur différentiel d'ordre 1.
+$$\{H,F\}(x) = \pi^{ij}(x) \dr H{x^i} \dr F{x^j} \quad \quad \quad \rightsquigarrow \quad \boxed{X_H = \pi^{ij}(x) \dr H{x^i} \dr{}{x^j}}$$
+\underline{Équations ``de" Hamilton}:\\
+Pour $\gamma: I\to \mathcal{M}$, 
+$$\frac{\d\gamma}{\d t} = X_H(\gamma)$$
+$$\frac{\d F(\gamma)}{\d t} = \{H,F\}(\gamma)$$
+Maintenant, supposons qu'il existe $G$, groupe de Lie, qui agit sur $(\mathcal{M},\pi)$ en respectant $\pi$ (i.e. une action à droite laissant la dynamique invariante).\\
+On rappel les propriétés élémentaires de l'exponentielle:
+$$\begin{matrix}
+\mathfrak{g} & \to & G\\
+\xi & \mapsto & \e^\xi
+\end{matrix}
+\quad \quad \quad
+\frac{\d \left(\e^{t\xi}\right)}{\d t} = \e^{t\xi}\cdot\xi
+ \quad \quad \quad
+\e^{t\xi}_{|t=0} = e_G$$
+elle induit une action de $\mathfrak{g}$ sur $\mathcal{M}$.\\
+Hypothèses:
+$$\Psi: \left\{
+\begin{matrix}
+\mathfrak{g} & \to & \mathfrak{X}(\mathcal{M})\\
+[\cdot,\cdot]_\mathfrak{g} & \mapsto & \{\cdot,\cdot\}
+\end{matrix}\right.\quad \mathrm{morphisme}$$
+et $\forall \xi$ $\Psi(\xi)$ satisfait:
+\begin{itemize}
+\item Symplectique: $\Psi(\xi) \lrcorner \omega + \d \big((H,\xi)\big) = 0$
+\item Poisson: $\d F\big(\Psi(\xi)\big) = \{(J,\xi),F\}$
+\end{itemize}
+où $J\in\mathcal{C}^\infty(\mathcal{M},\mathfrak{g}^*)$= ``application moment".
+
+\noindent \underline{Noether symplectique}:\\
+si $\Psi(\xi)\lrcorner \d H = 0$ et que $\frac{\d \gamma}{\d t} = X_H(\gamma)$ alors $J(\gamma)$ est constant.\\
+Preuve:\\
+$$\forall\xi \quad \frac{\d \left(\langle J,\xi\rangle(\gamma)\right)}{\d t} = \d \langle J,\xi\rangle_\gamma \!\!\!\!\!\!\!\!\!\!\!\underset{\quad\quad\;\;=X_H(\gamma)}{(\dot \gamma)} = \big\{H,\langle J,\xi\rangle\big\}(\gamma)$$
+\underline{Exemple Physique}: Problème à deux corps\\ \\
+\underline{Exemple ``canonique"}: $T^* G$ variété symplectique\\
+(sans preuves, mais voir les notes pour détails)
+\begin{enumerate}
+\item Action à droite de $G$ sur $T^*G$:
+$$\forall g \in G \quad R_g :\left\{
+\begin{matrix}
+G & \to & G\\
+x & \mapsto & xg
+\end{matrix}
+\right.
+\quad\quad\quad\quad\quad
+\tilde R_g : \left\{
+\begin{matrix}
+T^*G & \to & T^*G\\
+(x,a) \bigg\{\begin{matrix}
+x \in G\quad\\
+a \in T^*_x G
+\end{matrix}
+& \mapsto & \tilde R_g (x,a)
+\end{matrix}
+\right.$$
+$$\tilde R_g (x,a) = \left(R_g x, R^*_{g^{-1}} a\right)= \left(x,g, a\circ \d R_{g^{-1}}\right)
+\quad \quad \quad \quad\quad\quad
+\tilde R_{g_1,g_2}:= \tilde R_{g_1}\circ \tilde R_{g_2}$$
+\item $g\mapsto \e^{t\xi}$, $\xi\in \mathfrak{g}$ champ de vecteur invariant à droite.
+$$X_\xi = \frac{\d \tilde R_{\e^{t\xi}}}{\d t}_{|t=0}
+\quad \quad \quad \quad
+X_\xi(x,a) = \bigg(x\cdot \xi, -(\mathrm{ad}_\xi p ^*) a \bigg)$$
+où $p$ est donné par:
+\item $X_\xi$ est une action hamiltonienne; $\sigma$ la forme symplectique usuelle sur $T^*G$. Or $\exists! p$ t.q.
+$$p: \begin{matrix}
+T^*G & \to & \mathfrak{g}^*\\
+(x,a) & \mapsto & p(x,a)
+\end{matrix} \quad \quad
+a = p_i(x,a) \alpha^i(x)$$
+où $\alpha\in \Omega^1$ est la forme de Mauer-Cartan. 
+i.e. $\exists! p \; : \; \langle p(x,a), \alpha_x\rangle = a$.
+Notons, au passage, que $\alpha = x^{-1}\d x$ en notation matricielle.
+
+\noindent Ainsi, $$\boxed{X_\xi \lrcorner \sigma + \d \langle p, \xi \rangle = 0}$$
+et aussi:
+$$\forall f, g \in \mathcal{C}^\infty (\mathfrak{g}^*), \quad \quad
+\boxed{\{f\circ p, g\circ p\}_{T^*G} = \{f,g\}_{\mathfrak{g^*}}\circ p}$$
+\end{enumerate}
+on dit que $p$ est un ``\underline{morphisme de Poisson}".
+\subsection{Poisson, distributions et feuilletages}
+Soit $(\mathcal{M},\pi)$ une variété de Poisson.\\
+\underline{Motivation via exemple}: $\mathcal{M}=\mathfrak{so}(3)^*\approx \mathbb{R}^3$; $\mathfrak{so}(3) = \mathrm{Vect}\left(x^i\dr{}{x^{i+1}}-x^{i+1}\dr{}{x^i}\right)_{i\in \mathbb{Z}/2g\mathbb{Z}}$
 \end{document}
