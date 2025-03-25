@@ -11,8 +11,7 @@
 \newcommand{\e}{{\mathrm{e}}}
 \newcommand{\dr}[2]{\frac{\partial {#1}}{\partial{#2}}}
 
-\title{Géometrie Différentielle et Physique Mathématique}
-\date{Frédéric Hélein}
+
 
 \usepackage{geometry}
 \geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=25mm}
@@ -20,8 +19,12 @@
 \renewcommand{\baselinestretch}{1.2}
 
 \begin{document}
-\title %ça marche pas
-\underline{Objectif}: Atteindre les théories BRST\footnote{BRST: Carlo Becchi, Alain Rouet, Raymond Stora \& Igor Tyutin} et BV\footnote{Igor Batalin \& Grigori Vilkovisky}, théories physiques dévellopées pour quantifier les théories de jauge, tout particulièrement les Yang-Mills mais aussi d'autres.
+\title{Notes de cours de\\Physique-Mathématique et Géométrie Différentielle}
+\author{cours de Frédérique Hélein - notes de Sacha Amiel}
+\maketitle
+\tableofcontents
+\newpage
+\noindent\underline{Objectif}: Atteindre les théories BRST\footnote{BRST: Carlo Becchi, Alain Rouet, Raymond Stora \& Igor Tyutin} et BV\footnote{Igor Batalin \& Grigori Vilkovisky}, théories physiques dévellopées pour quantifier les théories de jauge, tout particulièrement les Yang-Mills mais aussi d'autres.
 
 \section{Calcul des variations}
 \subsection{Rappels de base de physique des particules classiques (en formalisme Lagrangien)}
@@ -755,5 +758,93 @@ $$\forall f, g \in \mathcal{C}^\infty (\mathfrak{g}^*), \quad \quad
 on dit que $p$ est un ``\underline{morphisme de Poisson}".
 \subsection{Poisson, distributions et feuilletages}
 Soit $(\mathcal{M},\pi)$ une variété de Poisson.\\
-\underline{Motivation via exemple}: $\mathcal{M}=\mathfrak{so}(3)^*\approx \mathbb{R}^3$; $\mathfrak{so}(3) = \mathrm{Vect}\left(x^i\dr{}{x^{i+1}}-x^{i+1}\dr{}{x^i}\right)_{i\in \mathbb{Z}/2g\mathbb{Z}}$
+\underline{Motivation via exemple}: $\mathcal{M}=\mathfrak{so}(3)^*\approx \mathbb{R}^3$; $\mathfrak{so}(3) = \mathrm{Vect}\left(x^i\dr{}{x^{i+1}}-x^{i+1}\dr{}{x^i}\right)_{i\in \mathbb{Z}/2g\mathbb{Z}}$\\
+On étudie la distribution:
+$$D_x := \big\{ X_F(x), F\in \mathcal{C}^\infty(\mathfrak{so}(3)^*)\big\}=: x^\perp\subset T_x \mathfrak{so}(3)^* = \mathfrak{so}(3)^* \quad \mathrm{car} \; \mathrm{espace}\; \mathrm{vectoriel}$$
+$D_x$ est une distribution singulière (singularité en 0)
+$$(D_x)_{x\in\mathfrak{so}(3)^*}=\big\{(x,x^\perp),x\in \d \mathbb{R}^3\backslash\{0\}\big\} \cup \{(0,0)\}$$
+est la distribution tangente aux sphères.
+
+\noindent\underline{Cas général}: $(\mathcal{M},\pi)$
+$$\forall x\in \mathcal{M} \quad D_x = \{X_F(x), F\in \mathcal{C}^\infty(\mathcal{M})\subset T_x\mathcal{M}\}$$
+Si $\mathcal{M}$ est symplectique, $D_x = T_x \mathcal{M}$\\
+
+\noindent\underline{Proposition 1}:\\
+Si le rang de $D$ est constant, comme $X_{\{F,G\}}=[X_F,X_G]$. Soit $F_1, ..., F_k$ t.q. $X_{F_1}, ... X_{F_k}$ base de $D_x$.\\
+$[X_{F_i},X_{F_j}]\in \mathrm{Vect}(X_{F_1},...X_{F_k})$\\
+
+\noindent\underline{Théorème}: (Frobenius)\\
+Si le rang de $D$ est constant, $D$ est intégrable.\\
+D'où $\mathcal{M}$ feuilleté par des sous-variétés intégrable de $\mathcal{M}$.\\
+
+\noindent Soit $\mathcal{F}$ une feuille intégrable
+\begin{enumerate}
+\item Si $\varphi \in \mathcal{C}^\infty(\mathcal{M}) \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\quad\quad\quad\quad\;
+\varphi_{|\mathcal{F}} = 0 \implies X_\varphi |_\mathcal{F} =0$
+\item $\forall F,G \in \mathcal{C}^\infty(\mathcal{M}), \quad\varphi,\psi \in \mathcal{C}^\infty(\mathcal{M}) \quad\quad\quad \varphi_{|\mathcal{F}}=\psi_{|\mathcal{F}}=0 \implies \{F+\varphi, G+\psi\}_{|\mathcal{F}} = \{F,G\}_{|\mathcal{F}}$
+\end{enumerate}
+Conséquence: on peut définir un crochet de Poisson sur les feuilles, car si on connait $F_{|\mathcal{F}}$ et $G_{|\mathcal{F}}$ on connait $\{F,G\}_{|\mathcal{F}}$
+$$\rightsquigarrow \{\cdot,\cdot\}_{\mathcal{F}} : \mathcal{C}^\infty(\mathcal{F})\times\mathcal{C}^\infty(\mathcal{F}) \to \mathcal{C}^\infty(\mathcal{F})
+\quad\quad\quad\quad
+\mathrm{non}\;\mathrm{degenere}$$
+i.e. $\exists \omega_\mathcal{F} \in \Omega^2(\mathcal{F})$; \quad $\{F,G\}_\mathcal{F}=\omega_\mathcal{F}(X_F,X_G)$ et $\d \omega_F = 0$\\ \\
+Bref: les feuilles des distributions non-dégénérées dans les variétés de poisson sont des variétés symplectiques. Résultat assez sympa.
+\section{Théories de Jauge}
+\subsection{Présentation des théories de référence}
+\noindent\underline{Exemple}: Maxwell sur $\mathbb{M}_4=:\mathbb{M}$
+\begin{align*}
+F &= \frac{1}{2}F_{\mu\nu}\d x^\mu \wedge \d x^\nu
+& \mathrm{i}.\e. \; F_{\mu\nu}&= \partial_\mu A_\nu - \partial_\nu A_\mu\\
+&= \d A &&\\
+A &\in \Omega^1(\mathbb{M})&
+|F|^2 &= \frac{1}{2}F_{\mu\nu}F^{\mu\nu}\\
+\mathcal{A}[A] &= \int_\mathbb{M} \frac{-1}{2}|F|^2 \d^4x&
+&=\frac{1}{2}F_{\mu\nu}F_{\mu'\nu'} \eta^{\mu\mu'}\eta^{\nu\nu'}
+\end{align*}
+Symétrie de Jauge: $A\mapsto A+\d f \quad\quad\quad \mathcal{A}[A+\d f] = \mathcal{A}[A]$\\
+Espace des configurations: $\Omega^1(\mathbb{M}) / \d\Omega^0(\mathbb{M})$\\
+Noether II $\implies$ E.L. dégénéré.\\
+
+\noindent\underline{Autre exemple}: Maxwell-Dirac
+$$\mathcal{A}_\mathrm{Maxwell} + \int_\mathbb{M} \bar \Psi \cancel{\mathcal{D}}\Psi + c \cdot \!\!\!\!\!\!\!\!\!\!\!\!\!\!\underset{\quad\quad\mathrm{terme}\;\mathrm{cubique}}{\bar \Psi \cancel{A}\Psi}$$
+Donne une équation d'Euler non-linéaire.\\
+
+\noindent\underline{Yang-Mills pure}:
+$A\in\Omega^1(\mathbb{M})\otimes\mathfrak{g}$, pour $\mathfrak{g}$ une algèbre de Lie, le plus souvent parmi:
+$$\begin{matrix}
+\mathfrak{u}(1) & \leftrightsquigarrow & \mathrm{E}.\mathrm{M}.\\
+\mathfrak{su}(2) & \leftrightsquigarrow & \mathrm{weak}\\
+\mathfrak{su}(3) & \leftrightsquigarrow & \mathrm{strong}
+\end{matrix}$$
+Pour choisir un exemple à filer le long de cette section, on peut considérer $\mathfrak{su}(2)$ vu comme:
+$$\mathfrak{su}(2) = \mathrm{Vec}\Bigg(
+\left(\begin{matrix}
+0 & -1 \\
+1 & 0
+\end{matrix}\right),
+\left(\begin{matrix}
+0 & i \\
+i & 0
+\end{matrix}\right),
+\left(\begin{matrix}
+1 & 0 \\
+0 & -1
+\end{matrix}\right)\Bigg)
+ = \mathrm{Vec}(E_i)$$
+ \begin{align*}
+ A = A_\mu &\d x^\mu = A^i_\mu E_i \d x^\mu\\
+ \mapsto F &= \d A + A\wedge A\\
+ &= \d A + \frac{1}{2}[A\wedge A]
+ \intertext{appelée ``forme de courbure" (// avec Mauer-Cartan)}
+ &= \frac{1}{2}\left(\partial_\mu A_\nu-\partial_\nu A_\mu + [A_\mu,A_\nu]\right)\d x^\mu \wedge \d x^\nu\\
+ &= \frac{1}{2} F^i_{\mu\nu} E_ i \d x^\mu \wedge \d x^\nu
+ \end{align*}
+$$|F|^2 = \frac{1}{2} F^{i\mu\nu}F^j_{\mu\nu} \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\underset{\quad\quad\quad\quad\quad\mathrm{produit}\;\mathrm{scalaire}\;\mathrm{sur}\;\mathfrak{g}}{K_{ij}}\quad\quad\quad\quad
+\mathcal{A}[A]=\int_\mathbb{M} \frac{-1}{2}|F|^2 \d^4 x$$
+
+Pour $g\in\mathcal{C}^\infty(\mathbb{M},G)$, (i.e. $g=\e^\varphi$) on prend la transformation de jauge $A\mapsto g^{-1}Ag+g^{-1}\d g$, et on remarque, évidement, qu'on retrouve $A\mapsto A+\d\varphi$ dans le cas abélien. Si $(K_{ij})$ est invariant par l'action adjointe de $G$ sur $\mathfrak{g}$, alors $\mathcal{A}[g^{-1}Ag+g^{-1}\d g] = \mathcal{A}[A]$. C'est une symétrie de Jauge (en général, non-abélienne).
+$$\mathrm{E}.\mathrm{L}.\;: \quad \quad \quad \boxed{\partial_\mu F^{i\mu\nu} - C^i_{jk} A^j_\mu F{k\mu\nu} =0}$$
+
+\subsection{Géométrie des théories de Jauge: connexion sur un fibré principal}
 \end{document}
