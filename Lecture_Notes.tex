@@ -6,10 +6,13 @@
 \usepackage{braket}
 \usepackage{cancel}
 \usepackage{xcolor}
+\usepackage{relsize}
 
 \renewcommand{\d}{{\mathrm{d}}}
+\newcommand{\D}{{\mathcal{D}}}
 \newcommand{\e}{{\mathrm{e}}}
 \newcommand{\dr}[2]{\frac{\partial {#1}}{\partial{#2}}}
+\newcommand{\ppi}{{\mathlarger{\mathlarger{\mathlarger{\pi}}}}}
 
 
 
@@ -844,7 +847,149 @@ $$|F|^2 = \frac{1}{2} F^{i\mu\nu}F^j_{\mu\nu} \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
 \mathcal{A}[A]=\int_\mathbb{M} \frac{-1}{2}|F|^2 \d^4 x$$
 
 Pour $g\in\mathcal{C}^\infty(\mathbb{M},G)$, (i.e. $g=\e^\varphi$) on prend la transformation de jauge $A\mapsto g^{-1}Ag+g^{-1}\d g$, et on remarque, évidement, qu'on retrouve $A\mapsto A+\d\varphi$ dans le cas abélien. Si $(K_{ij})$ est invariant par l'action adjointe de $G$ sur $\mathfrak{g}$, alors $\mathcal{A}[g^{-1}Ag+g^{-1}\d g] = \mathcal{A}[A]$. C'est une symétrie de Jauge (en général, non-abélienne).
-$$\mathrm{E}.\mathrm{L}.\;: \quad \quad \quad \boxed{\partial_\mu F^{i\mu\nu} - C^i_{jk} A^j_\mu F{k\mu\nu} =0}$$
+$$\mathrm{E}.\mathrm{L}.\;: \quad \quad \quad \boxed{\partial_\mu F^{i\mu\nu} - C^i_{jk} A^j_\mu F^{k\mu\nu} =0}$$
+
+On reconnais, dans le premier terme, Maxwell; et dans le second, des termes (interactions) non-linéaires.
 
 \subsection{Géométrie des théories de Jauge: connexion sur un fibré principal}
+On peut voir $A$ comme une connexion sur $\mathcal{F}$, un fibré principal au dessus de $X$, groupe de structure de $G$:
+$$\begin{matrix}
+\mathcal{F}\\
+P \downarrow \quad \\
+X
+\end{matrix}\quad \mathcal{F}=X\times G
+\quad \mathrm{Action}\;\mathrm{de}\;G\;\mathrm{sur}\;\mathcal{F}\; \mathrm{a} \;\mathrm{droite}$$
+$$\begin{matrix}
+\mathcal{F}\times G & \to & \mathcal{F}\\
+(z,g) & \mapsto & z \cdot g
+\end{matrix}
+\quad\quad \rightsquigarrow \quad\quad
+\begin{matrix}
+\mathcal{F}\times \mathfrak{g} & \to & T\mathcal{F}\\
+(z,\xi) & \mapsto & (z,\,z \cdot \xi)
+\end{matrix}
+\quad\quad \rightsquigarrow \quad\quad
+\mathcal{F}_x = P^{-1}(\{x\}) = "\mathrm{Orbite}\;\mathrm{de}\;\mathrm{l}'\mathrm{action}\;\mathrm{de}\; G.
+$$
+\color{red} METTRE LE DESSIN \color{black}
+On appel cette construction une \emph{connexion d'Ehresmann} (connexion sur des fibrés lisses), et est définie rigoureusement par:
+$$\forall z \in \mathcal{F} \quad V_z = \mathrm{ker} \; \d P_z \quad \quad \d P_z T_z \mathcal{F} \to T_{P(z)} X$$
+Utilisant l'extension naturelle sur les algèbres de Lie, on obtient:
+$$z\cdot \xi = \frac{\d}{\d t}\left(z\e^{t\xi}\right)_{|t=0} \in V_z$$
+
+D'où
+$V_z = \mathrm{ker} \d P_z = z \cdot \mathfrak{g}$. 
+La connexion d'Ehresmann peut être vue comme une distribution $(H_z)_{z\in\mathcal{F}}$ où $H_z \subset T_z \mathcal{F}$ et $H_z \oplus V_z = T_z \mathcal{F}$.
+
+\color{red}METTRE LE DESSIN\color{black}
+$$\d P_z |_{H_Z} : H_z \to T_{P(z)}X \; \mathrm{iso}$$
+Comment représenter $H_z$? Nous allons construire $\Theta_z: T_z \mathcal{F} \to \mathfrak{g}$ linéaire tel que $\mathrm{ker}\, \Theta_z = H_z$. Notons que $\Theta_z$ est à priori non-unique.\\
+\underline{On normalise:} $\Theta_z (z\cdot \xi) = \xi$. Ce qui revient, en gros à dire que la restriction de $\Theta$ à une fibre est (en gros, modulo identification) Mauer-Cartan.\\
+\underline{On suppose:} $(H_z)$ invariante par l'action de $G$ i.e. $\iff R_g^* \Theta = \mathrm{Ad}_g^{-1} \Theta = g^{-1} \Theta g$. On pale de forme \emph{equivariante}.\\
+\underline{On utilise une connexion "usuelle":} voir exposé d'Ehresmann de 1952 à Bourbaki pour plus d'info.\\
+\underline{Trivialisation:} i.e. existence d'une section $\sigma: X \to \mathcal{F}$ (En réalité, il n'en existe pas forcement, mais localement, si, donc on peut voir une trivialisation comme un choix qui pave tout $X$, peu-importe ce qui marche...)
+$$\begin{matrix}
+X\times G & \to & \mathcal{F}&\\
+(x,g) & \mapsto & \sigma(x)\cdot g&\\
+(x,g) & \leftarrow & z&\\
+&\to & "\mathrm{coordonnees}& (x,g)\in X\times G
+\end{matrix}
+\quad \quad \color{red}METTRE\;DESSIN
+$$
+$$\Theta^{-1} = g^{-1} \underset{=A_\mu(x)\d x^\mu}{A(x)} g + g^{-1} \d g$$
+
+Le premier terme est indépendant du degré (c.f. hypothèse d'équivariance) tandis que le second gère la normalisation. Attention: on dirait une symétrie de Jauge, mais il s'agit en fait d'une expression sur les coordonnées. Ici, $g$ est une coordonnée sur $\mathcal{F}$, i.e. une variété telle que $\mathrm{dim}\,\mathcal{F} =\mathrm{dim}\,\mathbb{M}+\mathrm{dim}\,\mathfrak{g}$ et non une application $X \to G$.
+
+Si on change $\sigma \mapsto \tilde \sigma = \sigma \cdot \gamma$ où $\gamma: X \to G$; la transformée de jauge de $A$, $A \mapsto \tilde A$, alors $A\in \Omega^1(X)\otimes \mathfrak{g}$ décrit la connexion d'Ehresmann.\\ \\
+\underline{Note de rigueur:} $A\approx P^* a$ pour passer de la version sur $\mathbb{M}$ à $\mathcal{F}$... Mais bon...
+$$\d \theta + \frac{1}{2}[\theta\wedge\theta] = g^{-1} \left(\d A +\frac{1}{2}[A\wedge A]\right)g$$
+\underline{Note:} non trivial, dans cette égalité se cache l'utilisation de Mauer-Cartan pour annuler les composantes verticales.
+
+\section{Intégrale des Chemins (point de vue de Feynman)}
+$$\boxed{\boxed{\int_{\mathrm{Champs}\;\varphi}\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\D\varphi \quad\e^{\frac{iS(\varphi)}{\hbar}}}}$$
+Exemple: $\{\varphi:\mathbb{M}\to\mathbb{C}\}$
+$$S(\varphi) = \int_\mathbb{M}\frac{1}{2}|\partial_0 \varphi|^2 - \sum_{a=1}^3 |\partial_a \varphi|^2 - m^2 |\varphi|^2
+\quad \quad \underset{\mathrm{E}.\mathrm{L}.}\rightsquigarrow \quad \quad
+\Box \varphi + m^2 \varphi = 0 \quad \mathrm{i}.\mathrm{e}. \; \mathrm{Klein}-\mathrm{Gordon}$$
+\underline{Problème:} \emph{ça veut dire quoi?}
+\subsection{Difficultés et Méthode}
+\noindent \underline{Difficultés:}
+\begin{enumerate}
+\item Le ``$\,i\;$" dans $\e^{iS/\hbar}$ rends déjà les choses compliquées. $\int_\mathbb{R}\d x e^{ix^2}$ est une intégrale oscillante (Fresnel) donc ça converge, mais déjà $\int_{\mathbb{R}^n} \d^nx \e^{i|x|^2}$ est beaucoup plus compliqué et nécessite en général de déformer des contours dans le plan complexe (Rotations de Wick) $\int_{\mathbb{R}^n}\d^nx\e{-\alpha|x|^2}$ avec $\mathrm{Re}(\alpha)>0$ puis faire tendre $\alpha$ vers $i$... Le tout guidé par la seule formule que l'on ait: formule des Gaussiennes.
+$$\begin{matrix}
+Q & : & \mathbb{R}^n\to \mathbb{R}\\
+Q(x) & = & A_{ij}x^ix^j\geq 0
+\end{matrix}
+\quad \quad \quad
+\int_{\mathbb{R}^n}\e^{\frac{1}{2}Q(x)} \d^n x = \frac{(2\pi)^{^n\!/_{\!2}}}{\sqrt{\mathrm{det}(A)}}
+$$
+\item La dimension infinie des espaces fonctionnels est un gros problème.
+$$\mathbb{R}^n \quad \quad \rightsquigarrow \quad \quad \mathcal{E}:= \mathcal{C}^0([0,1],\mathbb{R}^n) \ni \varphi$$
+Alors, le ``$\D\varphi$" dans $\int_\mathcal{E}\D\varphi \e^{-Q(\varphi)}$ n'existe pas si on veut une mesure de Lebesgue. On peut résoudre ce problème avec des \emph{mesures de Wienen} mais c'est très subtil de bien choisir $\mathcal{E}$, notamment sa topologie. Et en général, il faut en faire un espace de distributions.
+\item Avec un terme d'interaction $\mathcal{I}=\int_\mathcal{E}\D\varphi\e^{-Q(\varphi)/2+I(\varphi)}$, où $I$ est un polynôme de degrés $\geq 3$, c'est la catastrophe, en général plus rien ne converge. On travaille donc uniquement sur des cas particuliers, en petite dimension (de $\mathbb{M}$) ou bien \emph{par perturbation}.\\
+Travailler en perturbation, c'est renoncer au calcul de $\mathcal{I}$ et en faire un développement asymptotique en $\varepsilon$ avec:
+$$\mathcal{I}_\varepsilon = \int_\mathcal{E}\D\varphi\e^{-Q(\varphi)/2+\varepsilon I(\varphi)}$$
+mais du coup, il faut renormaliser...
+\item \underline{Idée de la méthode perturbative} illustrée en dimension finie.
+$$\langle P \rangle = \frac{
+\int_{\mathbb{R}^n} \e^{iA(x,x)/2}P(x)\d^n x
+}{
+\int_{\mathbb{R}^n} \e^{iA(x,x)/2}\d^n x
+} \quad \quad \quad P \in \mathbb{R}[x_i]$$
+$$\langle x^1x^2\rangle = \left.\dr{}{J_1}\dr{}{J_2} \e^{A^{-1}(J,J)/2}\right|_{J=0} \quad \quad
+\begin{matrix}
+A(x,x) & = & A_{ij}x^ix^j\\
+A^{-1}(J,J) & = & (A^{-1})^{ij} J_i J_j
+\end{matrix}
+ \quad \quad J=(J_i) \;\mathrm{coord}\;\mathrm{sur}\;\mathbb{R}^n$$
+ \underline{Preuve:}
+ \begin{align*}
+ W(J):=& \int_{\mathbb{R}^n} \e^{-^1\!/\!_2A(x,x)+\langle J,x \rangle}\d^n x\\
+ \dr W {J_i} =& \int_{\mathbb{R}^n} \e^{-^1\!/\!_2A(x,x)+\langle J,x \rangle} x^i\d^n x
+ \\
+ \dr {^2W} {J_i\partial J_j} =& \int_{\mathbb{R}^n} \e^{-^1\!/\!_2A(x,x)+\langle J,x \rangle} x^ix^j\d^n x\\
+ \dr {^2W} {J_i\partial J_j}(0) =& \int_{\mathbb{R}^n} \e^{-^1\!/\!_2A(x,x)} x^ix^j\d^n x\\
+ \mathrm{Donc}\; \langle x^ix^j\rangle =& \dr {^2W} {J_i\partial J_j}(0)\\
+ \mathrm{Or}\; W(J) =& [...\mathrm{calcul}\;\mathrm{peu}\;\mathrm{passionnant}...]\\ =& \e^{^1\!/\!_2(A^{-1})^{ij}J_iJ_j} \times W(0)\\
+ \mathrm{Donc}, \; \langle x^ix^j\rangle =& \left.\dr {^2} {J_i\partial J_j} \e^{^1\!/\!_2(A^{-1})^{ij}J_iJ_j}\right|_{J=0\quad \quad \quad \Box}
+ \end{align*}
+ Ce calcul se généralise trivialement à $\langle P(x)\rangle = \left.P\left(\dr{}J\right) \e^{^1\!/\!_2A^{-1}(J,J)}\right|_{J=0}$, ce qui permet les développements asymptotiques.\\
+ En dimension finie, pour les cas ``gentils" (K-G ou Dirac) on peut faire à peut prêt pareil. Développer devient alors ce qu'on appel la renormalisation.
+ \item Problème supplémentaire pour les théories de Jauge: l'analogue de $A$ n'est plus inversible (c'est re-la galère).\\
+ \underline{Analogie via Yang-Mills:}
+ $$F_{\mu\nu}=(\partial_\mu A_\nu - \partial_\nu A_\mu + ...)$$
+ Où les termes ci-dessus sont les termes linéaires, et les termes ``..." sont les non-linéaires.
+ $$\mathcal{A}[A] = \int_\mathbb{M} \frac{-1}{4}F_{\mu\nu}F^{\mu\nu} = \int_\mathbb{M}\frac{-1}{4}|\d A|^2 + I(A)$$
+ Ici, $|\d A|^2$ présente un caractère dégénéré. Pourquoi? Passons en Fourrier:
+ $$A= \mathrm{cste}\times \int (\eta^{\mu\nu} ||p||^2-p^\mu p^\nu) \hat A_\mu \hat A_\nu \quad \mathrm{avec}\quad \hat A_\mu(p) = \int A_\mu(x) \e^{i p_\nu x^\nu /\hbar}\d^n x$$
+ Y a un p'tit souci car l'intégrale s'annule sur le cône, mais passons... Le véritable problème est que $A^{-1}$ a pour noyau $\left(\frac{1}{\eta^{\mu\nu} ||p||^2-p^\mu p^\nu}\right)$ et donc n'existe pas!
+ $$M^{\mu\nu}(p):=\eta^{\mu\nu}||p^2|| - p^\mu p^\nu \quad \implies \quad M^{\mu\nu}(p) p_\nu = 0$$
+ et cela est fondamentalement lié à $A\mapsto A+\d f$...
+\end{enumerate}
+\subsection{Une construction: l'intégrale de Berezin}
+On souhaite construire:
+$$\int_{\ppi V} : \left\{\begin{matrix}
+\mathcal{C}^\infty(\ppi V) & \to & \mathbb{R}\\
+f & \mapsto & \int_{\ppi V} f(\theta) \D \theta^1 ... \D\theta^n
+\end{matrix}\right.$$
+vérifiant:
+\begin{itemize}
+\item \underline{Linéarité:} $\int_{\ppi V}$ est linéaire.
+\item \underline{Stokes:} $\int_{\ppi V} (\D\theta)^n \dr f {\theta^i} = 0$
+\begin{align*}
+\implies \int_{\ppi V} (\D \theta)^n f(\theta) &= \int_{\ppi V} (\D\theta)^n f_{1...n} \theta^1...\theta^n\\
+&= C f_{1...n}, \quad C\int \mathbb{R}
+\end{align*}
+\item \underline{Normalisation:} $C=1$
+\end{itemize}
+
+\noindent \underline{Petite Bizarrerie:} Formule du changement de variable:
+$$\theta = A \tilde \theta, \quad A \in GL(V^*)$$
+$$\int_{\ppi V} (\D\theta)^nf(\theta) = \int_{\ppi V} \left(\D\tilde \theta\right)^n (\mathrm{det}\;A)^{-1} f\left(A\cdot\tilde\theta\right)$$
+Alors que cette expression devrait avoir un $\mathrm{det}\;A$ à la puissance $+1$ en géométrie classique.\\
+$\int_{\ppi V} \D \theta^n...\D\theta^1 f(\theta)$ correspond mathématiquement à $e_n \lrcorner(...(e_1\lrcorner(e_1\lrcorner \alpha))...) = (e_1 \wedge ... \wedge e_n)\lrcorner \alpha.$\\
+
+\noindent \underline{Motivation (supersymétrie):} Superparticule dans une variété Riemannienne $\mathcal{N}$: 
+\\
+Soit $x:\mathbb{R}\to \mathcal{N}$ un boson et $\psi:\begin{matrix}\mathbb{R}&\to&\ppi T_x\mathcal{N}&\\t&\mapsto&\psi(t)&\in\ppi T_{x(t)}\mathcal{N}\end{matrix}$ un fermion
 \end{document}
