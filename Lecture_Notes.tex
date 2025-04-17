@@ -992,4 +992,144 @@ $\int_{\ppi V} \D \theta^n...\D\theta^1 f(\theta)$ correspond mathématiquement 
 \noindent \underline{Motivation (supersymétrie):} Superparticule dans une variété Riemannienne $\mathcal{N}$: 
 \\
 Soit $x:\mathbb{R}\to \mathcal{N}$ un boson et $\psi:\begin{matrix}\mathbb{R}&\to&\ppi T_x\mathcal{N}&\\t&\mapsto&\psi(t)&\in\ppi T_{x(t)}\mathcal{N}\end{matrix}$ un fermion
+$$\iff (x,\psi): \mathbb{R} \to \ppi T\mathcal{N}=\left\{(a,v), a\in \mathcal{N}, v\in \ppi T_x\mathcal{N}\right\}$$
+où $\ppi T\mathcal{N}$ est un fibré sur $\mathcal{N}$.\\
+On note que $\mathcal{C}^\infty(\ppi T\mathcal{N})=\Omega^0(\mathcal{N})$...\\
+Supersymétrie: $Q_\eta :
+\left\{
+\begin{matrix}
+x    & \mapsto & x-\eta\psi\\
+\psi & \mapsto & \psi+\eta\dot x
+\end{matrix}
+\right.
+$ \quad avec $\eta \in \mathcal{C}^\infty(\ppi\mathbb{R})$ générateur ($\eta^2=0$).\\
+
+\noindent \underline{Exemple}:
+$$\mathcal{A}(\dot x, \psi) = \int_\mathbb{R}\d t \frac{1}{2}\left(|\dot x|^2 + \langle\psi,\nabla_{\dot x} \psi\rangle\right)$$
+Action invariante (modulo un terme exact) par la symétrie $Q_\eta$.\\
+
+\noindent Formulation en supertemps: $\mathbb{R}^{1/1}$ (le premier $1$ correspond à $t$, le deuxième à $\theta$), tel que $\mathcal{C}^\infty(\mathbb{R}^{1/1})=\mathcal{C}^\infty(\mathbb{R})\oplus\theta\mathcal{C}^\infty(\mathbb{R})$
+$$\phi : \begin{matrix}
+\mathbb{R}^{1/1} & \to & \mathcal{N}&\\
+(t,\theta) & \mapsto & \phi(t,\theta) & = x(t) + \theta \psi(t)\end{matrix}$$
+$$\mathcal{A}(x,\psi) = \int\int_{\mathbb{R}^{1/1}} \d t \D\theta \left\langle \left(\dr{} \theta - \theta \dr{} t\right) \phi, \dr\phi t\right\rangle$$
+$$Q_\eta : \phi \mapsto \phi + \eta \left(\dr {} \theta + \theta \dr{} t\right)\phi$$
+
+\subsection{Application à Maxwell (vers le Gauge-fixing)}
+\quad On cherche à définir:
+$\int_{A\in\Omega^1(\mathbb{M})}\e^{\frac i\hbar S(A)}$ avec $S(A):= \int_\mathbb{M} \d^4x \left(\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-j^\mu A_\mu \right)$. Le terme avec les $F_{\mu\nu}$ est quadratique et peut donc être ramené à une gaussienne. On observe la symétrie de jauge: $S(A+\d \varphi) = S(A)$ lorsque $\varphi$ est à décroissance rapide. Cela implique que l'opérateur $Q$ intervenant dans $S$ n'est pas inversible. $S$ est constante sur chaque $A+\d \Omega^{0}_\mathrm{c}(\mathbb{M})$ l'orbite du groupe de jauge; il n'y a donc pas d'oscillations sur cette orbite, et donc pas de problème de définition de $\int \e^{iS(A)}\hbar$. De plus, l'orbite $\approx \d \Omega^{0}(\mathbb{M})$ est un espace de dimension infinie, \emph{mais} $A$ et $A+\d \varphi$ représentent le même état physique. Idée: fixer la jauge.\\
+
+\noindent \underline{Exemple:} On impose $\partial_\mu A^\mu = 0\quad\Big(\iff \d(*A)=0\Big)$ qu'on appel la jauge de Lorentz. Dès lors, $A\mapsto A+\d \varphi$ implique $\partial_\mu A^\mu \mapsto\partial_\mu A^{\mu} + \Box \varphi$. L'unicité de $A$ dans une orbite de Jauge est garantie si on impose des conditions aux bords.\\
+
+\noindent \underline{Caricature en dimension finie:}
+\begin{itemize}
+\item $\Omega^1(\mathbb{M}) \quad \longrightarrow \quad \mathcal{M}$ variété de dimension $N$.
+\item $\Omega^0_\mathrm{c}(\mathbb{M}) \quad \longrightarrow\quad \mathfrak{g}$ algèbre de Lie de dimension $k$.
+\item $\{\mathrm{orbites}\}=\Omega^1(\mathbb{M})/\d \Omega^0_\mathrm{c}(\mathbb{M}) \quad \longrightarrow\quad \underline{\mathcal{M}}$ variété de dimension $n=N-k$. (Notons qu'ici $\Omega^{0}_\mathrm{c} \hookrightarrow \Omega^1(\mathbb{M})$ via la différentielle).
+\item L'intégrande $\D A \e^{\frac{i}{\hbar}S(A)}\mathcal{O}(A)$ (où $\mathcal{O}$ est une observable, c'est à dire une fonction invariante de Jauge) est une $N$-forme $\omega\in\Omega^N(\mathcal{M})$.
+\end{itemize}
+\underline{Idée:}
+$$\int_\mathcal{M} \omega \quad \rightsquigarrow \quad \int_\Sigma p^*\omega \times \mathrm{Jacobien}$$
+avec:
+\begin{itemize}
+\item $\underline\omega$ une $n$-forme sur le quotient $\underline{\mathcal{M}}$
+\item $p: \mathcal{M}\to \underline{\mathcal{M}}$ projection
+\item $\Sigma$ une hypersurface de dimension $n$ transverse aux orbites (sections du fibré $\mathcal{M}\underset p \to \underline{\mathcal M}$)\\
+\end{itemize}
+\emph{procédons par analyse-synthèse}
+
+\noindent \underline{Analyse:}
+
+Supposons qu'il existe une telle forme $\underline \omega \in \Omega^n(\underline{\mathcal{M}})$. On suppose qu'il existe une application de fixation de jauge $F:\mathcal{M}\to G$ (où $G$ est la fibre de $\mathcal{M}\to\underline{\mathcal{M}}$) telle que:
+$$\forall x \in \underline{\mathcal M}, \quad F\Big|_{p^{-1}\{x\}} \overset\sim\to G \quad \quad \wedge \quad \quad \mathrm{rg}(\d F, \ p) = N$$
+(Analogue pour Maxwell: $F(A)=\partial_\mu A^\mu$, car $F:\Omega^1(\mathbb M) \to \Omega^0(\mathbb M)$\quad)\\
+Soit $\theta\in\Omega^k(G)$ tel que $\int_G\theta=1$.
+$$\int_{\mathcal M} \omega  \quad \rightsquigarrow \quad \int_{\underline{\mathcal M}} = \int_{\underline{\mathcal M}} \left(\int_{p^{-1}\{x\}}F^*\theta\right)\underline \omega$$
+Soient des champs de vecteurs $\left\{\begin{matrix}
+Y_1  ...  \;Y_k & \mathrm{tangents}\\
+X_1  ...  \;X_n & \mathrm{horizontaux}
+\end{matrix}\right.$ aux fibres sur $\mathcal M$, tels que $\bigg(Y_1(z), ... Y_k(z)\bigg)$ base de $T_zp^{-1}\{x\}$ et $(Y_1, ... Y_k, X_1, ... X_n)$ base de $T_z\mathcal M$.
+$$\int_{\underline{\mathcal M}} \underline\omega= 
+\int_{\underline{\mathcal M}} \int_{p^{-1}\{x\}} \left(F^*\theta(Y_1, ... Y_k)\d y^1\wedge...\wedge\d y^k\right) p^*\underline\omega(X_1,...X_n)\d x^1\wedge...\wedge\d x^n$$
+avec $x=p(z)$ et \!$\left\{\begin{matrix}
+\d y^1\wedge...\wedge\d y^k (Y_1, ... Y_k) = 1\\
+\d x^1\wedge...\wedge\d x^k (X_1, ... X_n) = 1
+\end{matrix}\right.$ Or, comme $p_*Y_\alpha = 0$, on a $Y_\alpha\lrcorner p^*\underline\omega=0$ et donc:
+\begin{align*}
+\int_{\underline{\mathcal M}} \underline\omega &= 
+\int_{\mathcal M} \left(F^*\theta\wedge p^*\underline\omega\right)(Y_1, ...Y_k, X_1,...X_n)\d^k y\wedge\d^n x\\
+&= 
+\int_{\mathcal M} \left[(Y_1...Y_k)\lrcorner(F^*\theta\wedge p^*\underline\omega)\right](X_1,...X_n)\d^k y\wedge\d^n x\\
+&= 
+\int_{\mathcal M} F^*\theta\wedge p^*\underline\omega
+\end{align*}
+\underline{Synthèse:}
+
+On part de $\int_{\mathcal M} F^*\theta\wedge p^*\underline\omega$ où $\omega$ est invariante par l'action du groupe de jauge. $\mathfrak{g}$ algèbre de Lie, et représentation $\rho: \begin{matrix}
+\mathfrak g\times\mathcal M & \to & T\mathcal M\\
+(\xi,z) & \mapsto & \xi \cdot z
+\end{matrix}$\\
+Soit $(e_1, ...e_k)$ une base de $\mathfrak g$ et $(e^1, ...e^k)$ sa duale, on définit $Y_\alpha(z) = e_\alpha\cdot z$ pour $\alpha \in [\![1,k]\!]$.\\
+Hypothèse de symétrie: $\boxed{L_{Y_\alpha}\omega=0}$.\\
+On prend une fixation de jauge $F:\mathcal{M}\to \mathfrak{g}$; $\theta \in \Omega^k(\mathfrak g),\; \theta = \varphi e^1\wedge...\wedge e^k$ pour $\varphi\in\mathcal{C}^\infty_\mathrm{c}(\mathfrak g)$.\\
+Remarque d'Antoine: \emph{pas clair en général si $F$ est à valeur dans $G$ ou $\mathfrak g$...} on peut alors définir:
+$$\int_{\underline{\mathcal M}} \underline\omega := \int_\mathcal M F^*\theta \wedge (Y\lrcorner \omega)$$
+où $Y\lrcorner\omega = p^*\omega$ pour faire le lien avec l'analyse, avec évidement $Y=Y_1\wedge...\wedge Y_k$.
+
+\noindent \underline{Lemme:}\\
+Si $\mathfrak g$ est unimodulaire (i.e. $c^\beta_{\alpha\beta}=0$, i.e. l'action adjointe $\mathfrak g\to\mathfrak g$ est sans trace) alors:
+$$L_{Y\alpha}\omega = 0 \quad \implies\quad
+\left\{
+\begin{matrix}
+\d(Y\lrcorner\omega)=0\quad \;\;\,&\\
+Y\lrcorner \omega \; \mathrm{invariante}&
+\!\!\! \mathrm{par}\;\mathrm l'\mathrm{action}\;\mathrm{de}\;\mathfrak g
+\end{matrix}
+\right.$$
+\underline{Note:} Si $\mathfrak g$ est unimodulaire, on peut définir la forme $\underline \omega$, comme ça:
+$$\int_{\underline{\mathcal M}} \underline\omega := \int_\mathcal M F^*\theta \wedge (Y\lrcorner \omega) \overset{[...]}= \int_\mathcal M (F^*\theta) (Y) \omega$$
+En écrivant $\theta = \varphi e^1\wedge...\wedge e^k$, on a :
+$$(F^*\theta)(Y) = (\varphi\circ F) \mathrm{det}\left[\dr{(F^\alpha\circ \rho)}{\xi^\beta}\right]=: (\varphi\circ F) \mathrm{det}[A^\alpha_{\;\beta}] \quad \quad A^\alpha_{\;\beta} = e^\alpha \circ \d F_z \circ \rho(e_\beta)$$
+$$\mathfrak{g} \begin{matrix}
+\overset \rho \to T_z\mathcal M \overset{\d_zF}\to\\
+\underset A \longrightarrow
+\end{matrix} \mathfrak g$$
+\color{red} refaire ce diagramme\color{black}
+
+\noindent \underline{Conclusion:} posant $\omega = P^* \underline{\omega}$ on a
+\begin{align}
+\int_\mathcal{M} \omega \quad \overset{\mathrm{gauge}\;\mathrm{fix}}{\rightsquigarrow\rightsquigarrow\rightsquigarrow}
+\quad & \int_{\underline{\mathcal{M}}} \underline{\omega}\\
+=& \int_\mathcal{M} (F^* \theta) \wedge (Y\lrcorner \omega)\label{GF2}\\
+=& \int_\mathcal{M} (\varphi\circ F) \mathrm{det} \Big( \d (F\circ\rho)_z\Big) \omega\label{GF3}\\
+=& \int_\mathcal{M} \delta_0 (F) (\mathrm{FP}) \omega \label{GF4}
+\end{align}
+
+Dans l'équation (\ref{GF2}) $\theta \in \Omega^k(\mathfrak{g})$; $\theta=\varphi\; e^1\wedge...\wedge e^k$ et $Y= Y_1 \wedge ... \wedge Y_k$ avec $Y_\alpha = \rho(e_\alpha)$. Le terme "$\mathrm{det} \Big(\d (F\circ\rho)_z\Big)$" dans (\ref{GF3}) est le déterminant de Faddeev Popov, noté FP. Enfin, le passage de (\ref{GF3}) à (\ref{GF4}) utilise le fait que $A$ peut être vue via le diagramme commutatif suivant:
+$$\mathfrak{g}
+\begin{matrix}
+\overset{\rho_z}\to T_x\mathcal{F}_x \overset{\d F} \to \\
+\underset A \longrightarrow
+\end{matrix}
+\mathfrak{g}$$
+\color{red} refaire le diagramme au propre dès que j'ai le temps...\color{black} et pour finir, on remplace $\varphi \in \mathcal{C}^\infty_\mathrm{c}$ par $\delta_0$ sur $\mathfrak{g}$. Pour rappel, on peut voir $\delta_0$ comme limite (au sens des distrib') mais sinon, aussi via Fourrier formel:
+$$\delta_0(F) = \frac{1}{(2\pi\hbar)^k}\int_{\mathfrak{g}^*} \d^4\lambda \e^{\frac{i}{\hbar}\langle\lambda,F\rangle}$$
+où $\lambda \in \mathfrak{g}^*$ est un multiplicateur de Lagrange. De même FP $= \mathrm{det} \; A$ où $A=\d (F\circ \rho)$.\\
+
+\underline{Remarque}: On a un petit problème avec FP qui n'est pas local en l'espace-temps (.e. si on change $\mathcal M$ par $\Omega^1(\mathbb M)$, par exemple, $\mathrm{det}(A)_{z\in\Omega^1(\mathbb M)}$ ne se calcul pas à partir de la forme locale de $z$)...
+\subsection{Un peu de super-calcul}
+Soit:
+\begin{itemize}
+\item $V$ un espace vectoriel de dimension $k$;
+\item $\ppi(V^*\oplus V)$ le foncteur de super-parité;
+\item $\mathcal{C}^\infty\big(\ppi(V^*\oplus V)\big) = \Lambda^0(V^*\oplus V)^*$ où $\Lambda^0$ est l'algèbre extérieure;
+\item $(e_1, ..., e_k)$ une base de $V$, $(e^1, ..., e^k)$ sa base duale (et on les combinera pour les bases des produits tensoriels);
+\item $A\in \mathrm{End}(V)\approx V\otimes V^*$ que l'on décompose en $A=A^i_{\;j}e^j\otimes e_i$
+\end{itemize}
+\underline{Propriété:}
+$$
+I:= \int_{\ppi(V^*\oplus V)}\D c^k \D \Bar c_k ... \D c^1 \D \Bar c_1 \quad \e^{\frac i \hbar \langle \Bar c, A c \rangle}
+= \left(\frac{i}{\hbar}\right)^k \mathrm{det} \; A
+$$
+Preuve:
 \end{document}
