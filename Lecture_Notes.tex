@@ -1132,4 +1132,79 @@ I:= \int_{\ppi(V^*\oplus V)}\D c^k \D \Bar c_k ... \D c^1 \D \Bar c_1 \quad \e^{
 = \left(\frac{i}{\hbar}\right)^k \mathrm{det} \; A
 $$
 Preuve:
+\begin{align*}
+\langle \bar c, A c \rangle &= \bar c_\alpha A^\alpha_{\;\beta} c^\beta &
+c &\in \mathcal{C}^\infty(\ppi V^*) &
+\e^{\frac i \hbar \langle\bar c, A c\rangle} &= \sum_{p=0}^\infty \frac{1}{p!}\left(\frac{i}{\hbar}\langle\bar c, Ac\rangle\right)^p\\
+A &= A^\alpha_{\;\beta} e^\beta\otimes e_\alpha&
+\bar c &\in \mathcal{C}^\infty(\ppi V)&
+&=\sum_{p=0}^k \frac{1}{p!}\left(\frac{i}{\hbar}\langle\bar c, Ac\rangle\right)^p
+\end{align*}
+où les termes de degrés $>k$ disparaissent car dans l'algèbre extérieure.
+\begin{align*}
+I &= \int_{\ppi(V*\oplus V)} (\D c\D \bar c)^k \left(\frac i \hbar \right)^k \frac{\langle\bar c,Ac\rangle^k}{k!}&&\\
+&= \left( \frac i \hbar \right)^k \frac 1 {k!} \dr{}{c^k}\dr{}{\bar c_k}...\dr{}{c^1}\dr{}{\bar c_1} \langle\bar c, Ac\rangle^k &
+\mathrm{car}\;\mathrm{integrale} & \; \mathrm{de}\;\mathrm{Berezin}\\
+\langle\bar c, Ac\rangle^k &= (\bar c_1 A^1+ ... + \bar c_k A^k)^k & A^\alpha &= A^\alpha_{\;\beta} c^\beta\\
+&= \sum_{\alpha_1, ... \alpha_k} \sum_{\beta_1, ...\beta_k} (\bar c_{\alpha_1} A^{\alpha_1}_{\;\beta_1}c^{\beta_1})...(\bar c_{\alpha_k} A^{\alpha_k}_{\;\beta_k}c^{\beta_k})&
+\langle\bar c, Ac\rangle &= \bar c_\alpha A^\alpha\\
+&= \sum_{\alpha_i, \beta_i} A^{\alpha_1}_{\;\beta_1}...A^{\alpha_k}_{\;\beta_k} \times (\bar c_{\alpha_1} c^{\beta_1})...(\bar c_{\alpha_k} c^{\beta_k})
+& \mathrm{les}\; (\bar c_\alpha c^\beta)\;\mathrm{commutent}&\;\mathrm{entre}\;\mathrm{eux}\\
+&= k! \sum_{\beta_i} A^{1}_{\;\beta_1}...A^{k}_{\;\beta_k} \times (\bar c_{1} c^{\beta_1})...(\bar c_{k} c^{\beta_k})\\
+&= k! \mathrm{det}(A)\times (\bar c_{1} c^{1})...(\bar c_{k} c^{k})& \Box
+\end{align*}
+\underline{Conclusion:}
+$$\boxed{\boxed{
+\int_{\underline{\mathcal M}} \underline \omega = \int_\mathcal M \int_{\mathfrak g^*} \d^k\lambda \left(\frac i \hbar \right)^k \int_{\ppi(\mathfrak g \oplus \mathfrak g^*)} (\D c\D\bar c)^k \e^{\frac i\hbar \Big( \langle \lambda, F\rangle+\langle\bar c, \d(F\circ \varphi) c\rangle \Big)} \omega
+}}$$
+Et ce qui nous intéresse est:
+$$\omega := \e^{\frac\hbar i S(x)} \mathcal{O}(x) \d^N x \quad \quad \mathcal{C}\in\mathcal{C}^\infty(\mathcal{M})$$
+où $\mathcal{O}$ est invariante par la jauge $\mathfrak{g}$, i.e. c'est une observable physique.
+
+$$\boxed{\boxed{
+\int_\mathcal M \e^{\frac i\hbar S} \mathcal{O} \d^N x := \frac{``\mathrm{Vol}(G)"}{(2\pi\hbar)^k}\left(\frac\hbar i\right)^k \int_\mathcal M \int \mathfrak g \int_{\ppi(\mathfrak g^*\oplus\mathfrak g)} \d^Nx\d^k\lambda(\D c\D\bar c)^k \e^{\frac i\hbar S_{\mathrm{FP}}(x,\lambda,c,\bar c)}\mathcal{O}(x)
+}}$$
+où:
+$$\boxed{
+S_\mathrm{SP}(x,\lambda,c,\bar c):= S(x)+ \langle\lambda,F(x)\rangle + \langle\bar c, \d(F\circ \rho)_x c\rangle
+}$$
+\underline{Remarque}:
+
+Ici, on a supposé que $\langle\lambda, F(x)\rangle$ ``passe une seule fois dans l'orbite". On peut généraliser à un passage à $n<\infty$ simplement en normalisant par $\frac1n$.\\\\
+\underline{Interprétation:} Hessienne de $S_\mathrm{FP}$ vs celle de $S$.
+$$S(x) = \underset{\mathrm{quadratic}}{Q(x)}+ \underset{\mathrm{interactions}}{\tilde S_\mathrm{int}(x)}$$
+$\int \d x \e^{\frac i\hbar S_\mathrm{int}}$ n'a généralement pas de sens, mais $\int d x \e^{\frac i\hbar Q}$ (par exemple si $Q\geq 0$ mais en fait, en général il suffit qu'il soit non-dégénéré). Si $Q$ est inversible, on appel $Q^{-1}$ son ``propagateur". Le problème est qu'en théorie de jauge, $Q$ n'est pas inversible à cause de non énorme noyau. En coordonnées locales sur $\mathcal M\times\mathfrak g\times\ppi(\mathfrak g^*\oplus\mathfrak g)$:
+\color{red} METTRE LE DESSIN \color{black}
+$$\dr S{z^i}=0\quad\quad(\mathrm{symetrie}\;\mathrm{de}\;\mathrm{jauge})$$
+$$\boxed{\d S_{x_0}=0}$$
+i.e. $x_0$ point critique de l'action (i.e. solution d'E.L.) notons $x_0\approx(x_0,\lambda_0,c_0,\bar c_0)$ pour aller plus vite. \color{red}mettre le schéma énorme sur $\partial^2 S_\mathrm{FP}(x_0)$ ainsi que le dessin de super-symétrie\color{black}
+
+$M_{00}$ et $M_{11}$ sont à coefficients paires (Bosons) et $M_{01}$ et $M_{10}$ impaires (Fermions). 
+\begin{align*}
+^\mathcal{S}\mathrm{det} :&= ``\mathrm{super}\;\mathrm{determiant}\\
+:&=\frac{\mathrm{det}\left(M_{00}-M{01}M_{11}^{\;-1}M_{10}\right)}{\mathrm{det}\;M_{11}}
+\end{align*}
+et $M$ inversible ssi $^\mathcal{S}\mathrm{det}\;M \ne 0$.\\L'idée derrière la construction de $^\mathcal{S}\mathrm{det}$ est que $\mathrm{det}(AB)=\mathrm{det}(A)\times\mathrm{det}(B)$ d'où: $$^\mathcal{S}\mathrm{det} \left(\begin{matrix}
+M_{00}&0\\0&M_{11}
+\end{matrix}\right) = \frac{\mathrm{det}\; M_{00}}{\mathrm{det}\; M_{11}}$$
+\underline{Lemme:} (proof as exo)
+$$\left(\begin{matrix}
+M_{00} & M_{01}\\
+M_{10} & M{11}
+\end{matrix}\right)
+\overset{\exists X}=
+\left(\begin{matrix}
+M_{00}-M{01}M_{11}^{\;-1}M_{10} & 0\\
+0 & M{11}
+\end{matrix}\right)
+\times
+\mathlarger{\mathlarger{\Bigg(}}\left(\begin{matrix}
+1 & 0\\ X & 1
+\end{matrix}\right)
+\mathrm{ou}
+\left(\begin{matrix}
+1 & X\\ 0 & 1
+\end{matrix}\right)\mathlarger{\mathlarger{\Bigg)}}
+$$
+$\left(\partial^2S(x_0,0,c,\bar c)\right)^{-1}$ est ``l'énorme" propagateur dont on utilise des blocs.
 \end{document}
