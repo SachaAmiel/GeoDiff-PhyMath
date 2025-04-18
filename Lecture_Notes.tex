@@ -5,7 +5,7 @@
 \usepackage{tikz}
 \usepackage{braket}
 \usepackage{cancel}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{relsize}
 
 \renewcommand{\d}{{\mathrm{d}}}
@@ -1207,4 +1207,52 @@ M_{00}-M{01}M_{11}^{\;-1}M_{10} & 0\\
 \end{matrix}\right)\mathlarger{\mathlarger{\Bigg)}}
 $$
 $\left(\partial^2S(x_0,0,c,\bar c)\right)^{-1}$ est ``l'énorme" propagateur dont on utilise des blocs.
+
+\subsection{Application à Yang-Mills}
+$$S_\mathrm{YM}= \frac{-1}4 \int_\mathbb{M}\mathrm{tr}(F\wedge*F)\quad\quad\quad A\mapsto A+\epsilon\d_A\alpha + o(\epsilon)$$
+$$F: \quad \alpha \in \mathcal{C}^\infty(\mathbb{M},\mathfrak{g}) \quad \overset\rho\longrightarrow\quad  \overset{\d_A\alpha = \d\alpha+[A,\alpha]}{\Omega^1(\mathbb{M},\mathfrak{g})} \quad \underset{\mathrm{Lorentz}}{\overset{\d F}\longrightarrow} \quad \d(*\d_A\alpha)\in \mathcal{C}^\infty(\mathbb{M},\mathfrak{g})$$
+
+$$\color{red}\boxed{\color{black}
+S_\mathrm{FP}(A,\lambda,c,\bar c) = S_\mathrm{YM}(A)+ \int_\mathbb{M}\d^4x \lambda(x) \d(*A) + \int_\mathbb{M}\d^4 \bar c(x) \d(*\d_A\alpha) c(x)
+\color{red}}\color{black}$$
+Avec $(k_{\alpha\beta})$ la métrique de $\mathfrak{su}(p)$ et
+$$F=\d A + \frac12[A\wedge A]= \d A + A\wedge A$$
+on a:
+\begin{align*}
+S_\mathrm{YM} =& \int k_{\alpha\beta} (\partial_\mu A^\alpha_{\;\nu} - \partial_\nu A^\alpha_{\;\mu})(\partial^\mu A^{\beta\nu} - \partial^\nu A^{\beta\mu}) && (\mathrm{Maxwell})\\
+&+A\cdot A\cdot\partial A + A\cdot A\cdot A&&(\mathrm{Perturbations})\\
+&+\lambda\d(*A) + \underset{= \bar c \;\Box c}{\bar c\d(*\d c)} + \bar c\d(*A c) &&(\mathrm{Fantomes})
+\end{align*}
+\color{red}METTRE LE DESSIN\\ \\
+là ya une page de correspondances diagrammes de Feynman $<->$ intégrales de Feynman... je pense juste mettre la photo\color{black}
+
+\noindent Il reste à vérifier que:
+\begin{itemize}
+\item la théorie est bien invariante de jauge (\color{Green}\checkmark\color{black} par construction)
+\item les fantômes $c$ et anti-fantômes $\bar c$ sont in-observables. (Méthode calculatoire: t'Hofft \& Veltman.) Nous allons le montrer par la méthode BRST (Becchi, Rouet, Stora \& Tyutin).
+\end{itemize}
+\underline{Observation:}\\
+Notons que $\langle\lambda,F(x)\rangle + \langle\bar c, \d(F\circ\rho)c\rangle = \lambda_\alpha F^\alpha+\bar c_\alpha(\d F\circ\rho)^\alpha_{\;\beta} c^\beta$\\
+Notons les constante de structures sur $\mathfrak{g}$ par $f^\alpha_{\beta\gamma}$ pour éviter les conflits de notations avec les fantômes.
+$$\boxed{
+Q:=\frac12 f^\gamma_{\alpha\beta} c^\gamma c^\beta\dr{}{c^\gamma} - c^\alpha\rho^i(e_\alpha)\dr{}{x^i}+\lambda_\alpha\dr{}{\bar c_\alpha}
+}$$
+agit sur $\mathcal{C}^\infty\Big(\underset x {\mathcal M}\times \underset \lambda {\mathfrak g} \times \underset{(c,\bar c)} {\ppi(\mathfrak g^*\oplus\mathfrak g})\Big) $.\\
+
+\noindent\underline{Lemme:}\\
+Soit $\psi = \bar c F(x)$:
+\begin{enumerate}
+\item $Q\psi = \bar c_\alpha (c^\beta \rho^i(e_\beta) \dr{F^\alpha}{x^i} + \lambda_\alpha F^\alpha = \langle\lambda,F\rangle+\bar c_\alpha (\d F\circ\rho)^\alpha_\beta$.\\
+Bref, $S_\mathrm{FP}$ est une dérivée totale par cet opérateur compliqué.
+\item $Q(S_0) = - c^\alpha\rho^i(e_\alpha)\dr S{x^i} = 0$ ssi $S_0$ invariante de jauge.
+\item $Q^2 = 0$
+\end{enumerate}
+\underline{Conclusion:}
+\begin{itemize}
+\item et donc... $S_\mathrm{FP}:= S_0 + Q\psi$, mais ça c'est une conséquence triviale des prop ci-dessus.
+\item $QS_\mathrm{FP} = Q(S_0+Q\langle\bar c, F\rangle) = QS_0 + Q^2\langle\bar c,F\rangle = 0$
+\item Les ``Observables" sont donc les quantités annulées par $Q$ quotientées par l'invariance de jauge c'est à dire son image. i.e. $\mathrm{ker}\,Q/\mathrm{Im}\,Q$ i.e. une classe de cohomologie. C'est en fait la cohomologie des représentations d'algèbres de Lie.
+\end{itemize}
+\underline{Remarque:}\\
+Pour prouver $Q^2 = 0$ le prof à fait un énorme super-calcul ultralong, ça utilisait du jaccobi et tout et tout... J'ai eu trop la flemme de noter.
 \end{document}
