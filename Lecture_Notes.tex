@@ -1162,7 +1162,7 @@ $$\omega := \e^{\frac\hbar i S(x)} \mathcal{O}(x) \d^N x \quad \quad \mathcal{C}
 où $\mathcal{O}$ est invariante par la jauge $\mathfrak{g}$, i.e. c'est une observable physique.
 
 $$\boxed{\boxed{
-\int_\mathcal M \e^{\frac i\hbar S} \mathcal{O} \d^N x := \frac{``\mathrm{Vol}(G)"}{(2\pi\hbar)^k}\left(\frac\hbar i\right)^k \int_\mathcal M \int \mathfrak g \int_{\ppi(\mathfrak g^*\oplus\mathfrak g)} \d^Nx\d^k\lambda(\D c\D\bar c)^k \e^{\frac i\hbar S_{\mathrm{FP}}(x,\lambda,c,\bar c)}\mathcal{O}(x)
+\int_\mathcal M \e^{\frac i\hbar S} \mathcal{O} \d^N x := \frac{``\mathrm{Vol}(G)"}{(2\pi\hbar)^k}\left(\frac\hbar i\right)^k \int_\mathcal M \int_\mathfrak g \int_{\ppi(\mathfrak g^*\oplus\mathfrak g)} \d^Nx\d^k\lambda(\D c\D\bar c)^k \e^{\frac i\hbar S_{\mathrm{FP}}(x,\lambda,c,\bar c)}\mathcal{O}(x)
 }}$$
 où:
 $$\boxed{
@@ -1225,7 +1225,8 @@ S_\mathrm{YM} =& \int k_{\alpha\beta} (\partial_\mu A^\alpha_{\;\nu} - \partial_
 \end{align*}
 \color{red}METTRE LE DESSIN\\ \\
 là ya une page de correspondances diagrammes de Feynman $<->$ intégrales de Feynman... je pense juste mettre la photo\color{black}
-
+\section{\color{red}j'ai pas d'idée de titre de section:-(\color{black}}
+\subsection{Cohomologie fantôme}
 \noindent Il reste à vérifier que:
 \begin{itemize}
 \item la théorie est bien invariante de jauge (\color{Green}\checkmark\color{black} par construction)
@@ -1255,4 +1256,197 @@ Bref, $S_\mathrm{FP}$ est une dérivée totale par cet opérateur compliqué.
 \end{itemize}
 \underline{Remarque:}\\
 Pour prouver $Q^2 = 0$ le prof à fait un énorme super-calcul ultralong, ça utilisait du jaccobi et tout et tout... J'ai eu trop la flemme de noter.
+
+Si pour l'instant on a vu $Q$ comme un opérateur, on peut également remarquer que c'est un champ de (super)-vecteurs: $Q = v^i(z,\theta)\dr{}{z^i} + v^a(z,\theta)\dr{}{\theta^a}$ avec $z=(x,\lambda)$ et $\theta = \langle c,\bar c\rangle$. Dès lors, on peut calculer sa divergence vis à vis de $\d z$ et $\D\theta$ (on utilise la notation $|v|$ pour désigner le degrés de parité de $v$):
+\begin{align*}
+\mathrm{div}\; Q :=& \dr{v^i}{z^i}-(-1)^{|v|}\dr{v^a}{\theta^a}\\
+=& -\dr{}{c^a}\left(\frac12 f^c_{ab} c^ac^b\right)+\dr{}{x^i}(\theta^a\rho^i_a) - \dr{}{\bar c_a}\lambda_a\\
+=& \frac{-1}2 \left(f^c_{ab}c^b-f^c_{ac} c^a\right)+ \theta^a\dr{\rho^i_a}{x^i}\\
+=& -f^c_{cb}+\theta^a\dr{\rho^i_a}{x^i}
+\end{align*}
+$$\mathrm{div}\;Q = 0 \quad \iff \quad \left\{\begin{matrix} f^c_{cb}=0 & \iff & \mathfrak{g} \; \mathrm{unimodulaire} &(\mathrm{i}.\e.\; \mathrm{l}'\mathrm{action}\;\mathrm{adjointe}\\
+\dr{\rho^i_a}{x^i}=0 &&&\quad \mathrm{preserve}\;\mathrm{les}\;\mathrm{volumes})
+\end{matrix}\right.$$
+\underline{Remarque:} du coup, cette propriété ne s'applique pas dans le cas conforme.\\
+
+\noindent\underline{Justification de la définition:} (de la super-divergence)
+$$\int\int \d z\D\theta \Big((\mathrm{div}\,Q) +Qf\Big)=0\quad \quad \quad \mathrm{si}\; f\;\mathrm{ou}\; v^i \in \mathcal{C}^\infty\Big(\mathcal M\times\mathfrak g^*\times\ppi(\mathfrak g^*\oplus\mathfrak g)\Big)$$
+\underline{Corollaire:} \quad \quad div $Q=0 \quad\implies \quad \int ... Qf = 0$
+\begin{align*}
+(\mathrm{div}\;Q)f + Qf &= \left(\dr{v^i}{x^i}-(-1)^{|v|}\dr{v^a}{\theta^a}\right) f + v^i\dr f{x^i} + v^a\dr f {\bar c^a}\\
+&=\dr{(v^if)}{x^i} - (-1)^{|v|}\dr{(v^af)}{\theta^a}
+\end{align*}
+en fait, $-Q$ définit une différentielle de Chevalley-Eilenberg.\\
+
+\noindent\underline{Définition:} \quad $\d_\mathrm{CE}: \Lambda^\bullet\mathfrak g^* \longrightarrow \Lambda^\bullet\mathfrak{g}^*$
+\begin{enumerate}
+\item linéaire
+\item anti-dérivation: $\forall\alpha\in\Lambda^p\mathfrak{g}^*,\forall\beta\in\Lambda^q\mathfrak{g}^*\quad\d_\mathrm{CE}(\alpha\wedge\beta) = (\d_\mathrm{CE}\alpha)\wedge\beta + (-1)^{|\beta|}\alpha\wedge\d_\mathrm{CE}\beta$
+\item action: $\forall\alpha\in\mathfrak{g}^*=\Lambda^1\mathfrak{g}^* \quad \d_\mathrm{CE}\alpha\in\Lambda^2\mathfrak{g}^*$ et $\forall\xi,\eta\in\mathfrak{g}\quad (\d_\mathrm{CE}\alpha)(\xi,\eta) = - \alpha([xi,\eta])$
+\end{enumerate}
+
+\noindent\underline{Motivation:}\\
+Soit $G$ un groupe de Lie, $\mathfrak{g}$ son algèbre de Lie.
+$$\begin{matrix}
+\mathfrak{g} & \to & \mathfrak{X}(G)&
+\quad \quad&
+\alpha\in\Omega^i(G)\otimes\mathfrak{g} &\mathrm{Mauer}-\mathrm{Cartan}\\
+\xi & \mapsto & [x\mapsto x\cdot\xi]&&
+\alpha(x\cdot\xi)=\xi
+\end{matrix}$$
+$$
+\d \alpha (x\cdot\xi,x\cdot\zeta) = 
+-\alpha([x\cdot\xi,x\cdot\zeta]) +
+\cancel{(x\cdot\xi)\lrcorner\d(\alpha(x\cdot\zeta))} -
+\cancel{(x\cdot\zeta)\lrcorner\d(\alpha(x\cdot\xi))}
+$$
+\underline{Autre Motivation:}
+
+$\d_\mathrm{CE}$ est le dual de $[\cdot,\cdot]$ (un co-produit quoi). Le prof est même assez convaincu que ça forme une bigèbre (voire même une algèbre de Hopf) mais bon... Faut vérifier.
+
+\subsection{Lien avec la théorie des représentations}
+\underline{Lemme:}\\
+$\forall X_1,X_2,X_3 \in \mathfrak{g}\quad \forall \alpha\in \mathfrak{g}^*$
+$$\d_\mathrm{CE}(\d_\mathrm{CE}\alpha)(X_1,X_2,X_3) = \alpha([[X_1,X_2],X_3]+[[X_2,X_3],X_1]+[[X_3,X_1],X_2])$$
+Bref:
+$$\boxed{\boxed{\mathrm{Jacobi}\quad \iff \quad \d_\mathrm{CE}^{\;\;2}=0}}$$
+
+\noindent\underline{Représentation} de $G$ (ou $\mathfrak{g}$) vectorielle\\
+Soit $V$ un espace vectoriel (muni d'une base $e_i$), $R:G\to GL(V)$ morphisme de groupes.
+$$\rho : \begin{matrix}
+\mathfrak{g} & \to & \mathrm{End}(V)&\\
+e_a & \mapsto & \rho_a & = (\rho^i_{ja})_{ij}
+\end{matrix}\quad\quad \mathrm{issue}\;\mathrm{de}\;R\quad \quad \mathrm{t}.\mathrm{q}.\quad \quad \rho[e_a,e_b]=[\rho_a,\rho_b]$$
+\underline{Chevaley-Eilenberg:} (cas de la théorie des rep') $\quad \d_\mathrm{CE}: \Lambda^\bullet\mathfrak g^*\otimes V \longrightarrow\Lambda^\bullet\mathfrak g^*\otimes V$
+\begin{enumerate}
+\item linéaire
+\item Leibneitz
+\item $\forall\alpha\in\mathfrak{g}^*\otimes V\;\forall\xi,\zeta\in\mathfrak{g}$
+\end{enumerate}
+$$\boxed{(\d_\mathrm{CE}\alpha)(\xi,\zeta) = \rho(\xi)(\alpha,(\zeta))-\rho(\zeta)(\alpha,(\xi)) - \alpha([\xi,\zeta])}\quad \in V$$
+et si $V=\mathbb{R}$, on récupère le cas vu précédemment. On comprend que (dans le cas physique) $\rho_a(x) = \rho^i_{ja}x^j\dr{}{x^i}$ dans:
+$$-\d_\mathrm{CE} \quad=\quad \frac12 f^c_{ab}c^ac^b\dr{}{c^c} - c^a\rho^i_{ja}x^j\dr{}{x^i} \quad=\quad Q$$
+où $Q$ agit sur $\mathcal{C}^\infty\Big(\ppi(\underset x{\mathfrak{g}}\oplus \underset c V)\Big)$\\
+\underline{Exo:} Vérifier que $Q=-\d_\mathrm{CE}$\\
+
+\noindent\underline{Prop:}
+\begin{align*}
+\d_\mathrm{CE}^{\;\;2} \alpha (X,Y,Z) =& \quad\, \Big([\rho X,\rho Y] - \rho[X,Y]\Big)\alpha(Z)\\
+&+ \Big([\rho Y,\rho Z] - \rho[Y,Z]\Big)\alpha(X)\\
+&+ \Big([\rho Z,\rho X] - \rho[Z,X]\Big)\alpha(Y)\\
+&+ \alpha \Big(\underset{=``\mathrm{Jacobiateur}"}{[X,Y],Z]+[[Y,Z],X]+[[Z,X],Y]}\Big)
+\end{align*}
+$$\d_\mathrm{CE}^{\;\;2}=0 \quad \iff \quad \begin{matrix}
+\mathrm{Jacobi}\;(\mathfrak{g}-\mathrm{alg}\;\d\e\;\mathrm{Lie})\\
+\rho: \;\mathrm{representation}
+\end{matrix} \quad \iff \quad \mathrm{Donc}\;Q^2=0$$
+\underline{Généralisation:}\\
+Remplacer $GL(V)$ par $\mathrm{Diff}(\mathcal M)$ où $\mathcal{M}$ est un variété et $\rho : 
+\mathrm{End}(V) \to \mathfrak{X}(\mathcal{M})$ ou $\mathfrak{g}\to \mathfrak{X}(\mathcal{M})$
+$$Q = \frac12f^c_{ab}c^ac^b\dr{}{c^c} - c^a\rho^i_a\color{red}(x)\color{black}\dr{}{x^i}$$
+Soit $\varphi\in\mathcal{C}^\infty(\mathcal M\times\ppi\mathfrak{g})$ et $K^c:=\frac12f^c_{ab}c^ac^b$:
+\begin{align*}
+Q^2(\varphi) =& \left( K^c\dr{}{c^c} - c^a\rho_a\right)\left(K^d\dr{}{c^d}-c^b\rho_b\right)\varphi\\
+=& K^c\dr{c^c}K^d + \underset{\langle\mathrm{Sym}|\mathrm{AntSym}\rangle}{\cancel{K^cK^d\dr{}{c^c}\dr{}{c^d}}}\varphi - K^c\rho_c \varphi + K^cc^b\cancel{\rho_b\dr\varphi{c^c}} - c^a(\rho_aK^c)\dr\varphi{c^c} - c^aK^d\cancel{\dr{}{c^b}\rho_a}\varphi+\!\!\!\!\!\!\!\!\!\! \underset{\quad\quad =^1\!/\!_2c^ac^b[\rho_a,\rho_b]\varphi}{c^ac^b\rho_a\rho_b\varphi}\\
+=&\frac12f^c_{ab}c^ac^b\dr{}{c^c}\left(\frac12f^d_{ef}\dr\varphi{c^d}\right) - \frac12c^ac^b\Big(f^c_{ab}\rho_e-[\rho_a,\rho_b]\Big)\varphi - \frac12 \rho_a f^c_{bd}c^ac^b\dr\varphi{c^c}\\
+=& \frac12\Big(f^e_{ab}f^d_{ec}-\rho_cf^d_{ab} \Big)c^ac^bc^c \dr\varphi{c^d} +\frac12 c^ac^b\Big([\rho \,e_a,\rho \,e_b] - \rho [e_a,e_b] \Big)\varphi
+\end{align*}
+
+Or $f^e_{ab}f^d_{ec}c^ac^bc^c=0 \iff$ Jacobi et le second terme est équivalent au fait que $\rho$ soit un morphisme d'alg de Lie. Ainsi, si $\rho_cf^d_{ab}=0$ (le prof dit que ``normalement ce terme est null car $f^c_{ab}$ est constant" mais j'avoue que j'ai pas compris pourquoi...)
+$$Q^2=0 \quad \iff\quad \mathrm{Lie}\;\mathrm{Alg}\;\&\;\mathrm{Representation}$$
+\underline{Extension:}
+à $Q\in\mathfrak X(\mathcal{M}\times\ppi\mathfrak g)$ soit au cas où $f^c_{ab}\in\mathcal{C}^\infty(\mathcal M)$ i.e. non-constant. Alors $Q^2=0$ n'équivaut plus à Jacobi et rep, mais
+$$\Big(f^e_{ab}f^d_{ec}-\rho_cf^d_{ab} \Big)c^ac^bc^c=0 \quad\quad\wedge\quad\quad \mathrm{rep}$$
+c'est à dire: Algebr\color{red}oïde \color{black} de Lie et représentation.
+
+\subsection{Algébroïdes \& Groupoïdes de Lie}
+\underline{Définition:} Algébroïde de Lie
+\begin{itemize}
+\item Une \underline{variété} (``base") $\mathcal M$
+\item Un \underline{fibré} vectoriel $E\to\mathcal{M}$
+\item Un \underline{crochet} sur $\Gamma(\mathcal{M},E)$ noté $[\cdot,\cdot]$
+\item Une \underline{encre} $\rho:\Gamma(\mathcal{M},E)\to\mathfrak{X}(\mathcal M)$ telle que\\
+\color{white}$\bullet\bullet\color{black}\bullet\;\Big(\Gamma(\mathcal M, E), \; [\cdot,\cdot]\Big)\;$\color{black} est une algèbre de Lie \\
+\color{white}$\bullet\bullet\color{black}\bullet\;\;\forall\varphi\in\mathcal{C}^\infty(\mathcal{M}),\forall X,Y\in\Gamma(\mathcal{M},E) \quad [X,\varphi Y] = \varphi [X,Y] + \Big(\rho(X)\cdot\varphi\Big) Y\;$\color{black}
+\end{itemize}
+Remarque:
+$$[X,\varphi Y] \quad=\quad \underset{\in\mathbb{R}}\varphi \underset{\in E}{[X,Y]} + \Big(\underset{\in T\mathcal{M}}{\rho(X})\cdot\varphi\Big) \underset{\in E}Y \quad=\quad \varphi [X,Y] + \rho(X)\lrcorner\d\varphi Y \quad=\quad\varphi [X,Y] + \d\varphi(\rho X) Y$$
+\underline{Propriété:}
+$\rho$ induit un morphisme d'algèbres de Lie:
+$$\Gamma(\mathcal{M},E)\quad \longrightarrow\quad\mathfrak{X}(\mathcal{M})=\Gamma(\mathcal{M},T\mathcal{M})$$
+$$\rho\Big([X,Y]_E\Big) \quad = \quad \Big[\rho(X),\rho(Y)\Big]_{T\mathcal{M}\;=\;[\cdot,\cdot]_\mathrm{Lie}}$$
+Preuve:\\
+On considère $\varphi\in\mathcal{C}^\infty(\mathcal{M})$ et $X,Y,Z\in\Gamma(\mathcal{M},E)$; on applique Jacobi sur $(X,Y,\varphi Z)$ puis on conclu avec un calcul peu palpitant que j'ai eu la flemme de noter.\\
+
+\noindent\underline{Exemples:}
+\begin{enumerate}
+\item $\mathcal{M}=\{*\}$; $\mathfrak{g}=\Gamma(*,\mathfrak{g})$; $\rho=0$ bref... Les algèbres de Lie sont des algébroïdes de Lie...
+\item $\mathcal{M}$ variété, $E=T\mathcal{M}$, $[\cdot,\cdot]$ crochet des champs de vecteurs, $\rho:T\mathcal{M}\to T\mathcal{M}$ identité.
+\item Soit $(\mathcal{M},\pi)$ variété de Poisson. (voir le travail de Jean Pradines)\\
+$\pi\in\Gamma(\mathcal{M},\Lambda^2T\mathcal{M})$ qu'on écrit en coordonnées: $\pi = \frac12\pi^{ij}\partial_i\wedge\partial_j$ i.e. $\pi^{ij}+\pi{ji}=0$
+$$\forall f,g\in\mathcal{C}^\infty \quad \{f,g\} := \pi^{ij}\dr f{x^i}\dr g{x^j}$$
+$$0=[\pi,\pi]\in\Gamma(\mathcal{M},\Lambda^3T\mathcal{M}) \quad \mathrm{crochet}\;\d\e\;\mathrm{Schrouten}-\mathrm{Nijenhies}$$
+On peut définir une algébroïde de Lie sur $T^*\mathcal{M}$, prenons $\alpha,\beta\in\Gamma( \mathcal{M},T^*\mathcal{M}) =\Omega^1(\mathcal{M)}$
+$$[\alpha,\beta]=L_{\pi\alpha}\beta - L_{\pi\beta}\alpha - \d\Big(\pi(\alpha,\beta)\Big)\in\Omega^1(\mathcal{M})$$
+où $\pi\alpha:=\pi^{ij}\alpha_i\partial_j$ car on peut en effet voir $\pi:T^*\mathcal{M}\to T\mathcal{M}$.\\
+Soit $k$ une section de $E$ qui forme une base de $E_x$ pour tout $x\in\mathcal{M}$. Soit $(e_1,...e_k)$ un repère sur $E$, on obtient une algébroïde  avec:
+$$[e_a,e_b]=f^c_{ab}(x)e_c$$
+$$\rho(e_a)=\rho^i_a(x)\partial_i \quad \rho:E\to T\mathcal{M}$$
+Et on prend pour $[\cdot,\cdot]_E$ le crochet de Lie, i.e. $\left(f^c_{ab}f^d_{ce}+\rho^i_a\dr{f^d_{bc}}{x^i}\right)\theta^a\theta^b\theta^c=0$\\
+où $\theta^a:=e^a=(e_a)^*$ et $\theta^a\theta^b:=e^a\wedge e^b$...\\
+$\rho$ induit un morphisme $\Gamma(\mathcal M, F) \to \mathfrak{X}(\mathcal M)$ ce qui est équivalent à dire que:
+$$\rho^i_a\dr{\rho^j_b}{x^i}-\rho^i_b\dr{\rho^i_a}{x^i} - f^c_{ab}\rho^j_c = 0$$
+\end{enumerate}
+\underline{Idée:}
+
+C'est un peu comme pour une paire $(A,\rho)$ d'une alg de Lie et sa représentation, si ce n'est que contrairement au cas de $\rho:A\to V$ on ne peut pas ``décrocher" $A$ de sa représentation car les coefficients sont non-constants et dépendent de la variété.\\
+
+\noindent Si $\varphi = \varphi^a e_a$ et $\psi=\psi^be_b \in \Gamma(\mathcal{M},E)$
+\begin{align*}
+[\varphi,\psi]_E &= [\varphi^ae_a,\psi^be_b]\\
+&= \varphi^a[e_a,\psi^be_b] - \d\varphi^a \Big(\rho(\psi^be_b)\Big)e_a\\
+&= \varphi^a\Big(\psi^b[e_a,e_b]+\d\psi^b(e_a)e_b\Big)-\psi^b\d\varphi^a(e_b)e_a\\
+&= \varphi^a\psi^b[e_a,e_b] + \varphi^a\d\psi(\rho_a)e_b - \psi^b\d\varphi^a(\rho_b)e_a\\
+&=\Big(f^c_{ab}\varphi^a\psi^b + \varphi^a\rho^i_a\dr{\psi^c}{x^i} - \psi^b\rho^i_b \dr{\varphi^c}{x^i}\Big)e_c
+\end{align*} 
+\underline{Cas Poisson:}
+\begin{align*}
+\rho(\d x^i) &= \pi^{ij}\partial_i\\
+[\d x^i,\d x^j] &= \d \pi^{ij} = \dr{\pi^{ij}}{x^k} \d x^k\\
+\implies [\alpha,\beta]_{T^*\mathcal{M}} &= [\alpha_i \d x^i, \beta_j \d x^j]_{T^*\mathcal M}\\
+&= \Big[\partial_k \pi^{ij}\alpha_i\beta_j + \pi^{ij}(\alpha_i\partial_j\beta_k - \beta_i \partial_j \alpha_k)\Big]\d x^k
+\end{align*}
+\underline{Lien avec les groupoïdes de Lie:}\\ \\
+\underline{Définition:} Groupoide de Lie
+
+On demande à ce que $G$ et $G^{(0)}=:\mathcal{M}$ soient des variétés. On demande également un plongement $\mathcal{C}^\infty$, tel que $G$ soit une sous-variété de $G^{(0)}$, $u: \mathcal{M}\hookrightarrow G$, et évidement on demande que les opérations de compositions soient lisses.\\
+\color{red}Remarque pour moi même: Je suis étonné qu'il n'y ait pas de contrainte de régularité sur les fonctions $s$ et $b$ (source et but) mais il faut que j'y réfléchissent parce qu'il est fort probable que ce soit inutile pour des raisons de cohérence...\color{black}
+
+\noindent\underline{Lien avec alg de Lie:}
+$$T^bG = \Big\{(\gamma,v) \in TG; \d b_\gamma(v)=0\in T_{b(v)}\mathcal{M}\Big\}\quad\subset\quad TG$$
+$$u*T^bG = T^bG|_\mathcal{M} = \Big\{(x,v); x\in \mathcal{M}; v\in T_x ^b G\Big\}$$
+Bref, les ``plans tangents" aux unité forment une algebroide de Lie. \color{red} Mettre le dessin \color{black}\\
+
+\noindent\underline{Remarque sur le problème inverse:}
+
+Aller d'algeboide vers groupoide n'est pas du tout aussi simple. En fait, c'est presque un problème ouvert. Il y a un théorème qui permet d'intégrer une algèbroide de Lie en un groupoide ($3^\e$ théorème de Lie, par Cartan et Edo) mais la structure de Lie est assez bouleversée donc on sait pas trop ce que c'est. La question de la structure de ces groupes a été posée par Alan Winster, (c'est une sorte de variété ultra singulière) et la réponse est en partie venue de la Physique.\\
+
+\noindent\underline{Exemple de Groupoïde de Lie:}\\
+$G$ un groupoide, $\mathfrak{g}$ son algèbre; le groupoide associé est:
+$$T^*G = \mathfrak{G} \quad \mathfrak{g}^*=\mathfrak{G}^{(0)}$$
+Et on a une application ``moment": $T^*G \to \mathfrak{g}^*$ qui permet bien de voir le plongement.
+
+\subsection{De BRST à BV}
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
