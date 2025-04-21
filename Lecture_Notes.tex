@@ -1437,16 +1437,51 @@ $$T^*G = \mathfrak{G} \quad \mathfrak{g}^*=\mathfrak{G}^{(0)}$$
 Et on a une application ``moment": $T^*G \to \mathfrak{g}^*$ qui permet bien de voir le plongement.
 
 \subsection{De BRST à BV}
+\underline{Quantification BRST:}
+$$\int_{\mathcal M \times \mathfrak g \times \ppi(\mathfrak g^* \oplus \mathfrak g)}\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\d x\; \d\lambda\; \D c\; \D\bar c \quad \e^{\frac i\hbar \Big(S(x)+\langle\lambda,F(x)\rangle+\langle\bar c, (\d F\circ \rho) c\rangle\Big)}$$
+où $F:\mathcal{M}\to\mathfrak g$ fixe la jauge, et $\langle\lambda,F(x)\rangle+\langle\bar c, (\d F\circ \rho) c\rangle = Q\langle\bar c, F(x)\rangle$
+$$Q^2 = \frac12 f^c_{ab}c^ac^b\dr{}{c^c} - c^a\rho^i_a(x) \dr{}{x^i}+\lambda_a \dr{}{\bar c_a}$$
+$$Q^2 = 0 \quad \quad \wedge \quad \quad QS=0=-c^a\varphi^i\dr{}{x^i} \quad Q\mathcal{O}=0$$
+\underline{Une autre méthode: BV} (Batalin Vilkovisky)
+$$\mathcal N := \mathcal{M}\times\mathfrak g \times \ppi(\mathfrak g^* \oplus \mathfrak g) \quad \quad z=(x,\lambda,c,\bar c)$$
+$$\rightsquigarrow \quad \ppi T^*\mathcal N = \Big\{ (z,z^\dag), \; z\in\mathcal N, \; z^\dag\in\ppi T^*_z\mathcal N\Big\}$$
+$$\mathcal C^\infty (\ppi T^*_z\mathcal N) = \Lambda^0 (T_z\mathcal N) \quad \quad \quad
+z^\dag = (x_i^\dag, \lambda^a_\dag, c_a^\dag, \bar c_\dag^a)$$
+\underline{Remarque Historique:}
 
+J. Zinn-Justin (des français) ont introduit le même objet, pas pour résoudre les problèmes de Jauge, mais pour la renormalisation, c.f. Weinberg, tomme II chapitre 1 \& 2.
+\begin{align*}
+\mathrm{Sur}\;\ppi T^*\mathcal N, \quad \omega &= \d z^\dag_n \wedge \d z^n\\
+&= \d x^\dag_i\wedge \d x^i \;+\; \d \lambda^\alpha_\dag \wedge \d \lambda_a \;+\; \d c^\dag_a\wedge \d c^a \;+\; \d\bar c^a_\dag \wedge \d \bar c_a
+\end{align*}
+$\theta = \color{violet}z^\dag_n\color{black}\d z^n$ et $Q\in\mathfrak{X}(\mathcal{M})$. En voyant $Q$ comme un champ de vecteur $Q\lrcorner \theta\in\mathcal{C}^\infty(\ppi T^*\mathcal{M})$ ce qui n'est pas sans rappeler Noether symplectique.
+\begin{align*}
+Q\lrcorner\theta =& \frac12 f^c_{ab}c^ac^b\color{violet}c^\dag_c &&&& \theta = p_i\d q^i\\
+&-c^a\rho^i_a(x)\color{violet}x^\dag_i &&&& \{\theta(X),H\}=0\\
+&+\lambda^a\color{violet}\bar c^a_\dag &&&& \color{violet}\mathrm{Variables}\;``\mathrm{exotiques}"\color{black}
+\end{align*}
+$$S_\mathrm{BV}(z,z^\dag) \quad = \quad S_0(x) \quad + \quad \underset{\quad =:S_1}{Q\lrcorner\theta}$$
+Notons que, en soit, BV n'a pas de gauge-fixing, mais on peut toujours le rajouter comme dans BRST.
+$$S_0(x) \quad \longrightarrow \quad S_0 + \underset{\mathrm{Sym}}Q\underset{\mathrm{Gauge}\;\mathrm{Fix}}{\langle\bar c, F\rangle}$$
 
+\noindent Comment retrouver la symétrie?
+$$\frac{S_\mathrm{BV}\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_\mathrm{BV}}{\partial z^n} \quad = \quad 0$$
+Qui est une sorte de crochet de Poisson (c'est un crochet de BV) $=\frac12 \{S_\mathrm{BV},S_\mathrm{BV}\}$
+\begin{align*}
+\frac{S_\mathrm{BV}\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_\mathrm{BV}}{\partial z^n} =& 
+(-c^a\varphi^i_a) \left(\dr{S_0}{x^i} - c^a\dr\varphi{x^i} \color{violet}x^\dag_j\color{black}\right) + \underset{\dr{}\lambda}0\times (c_a^\dag)\\
+&+\frac12 f^c_{ab}c^ac^b\left(f^d_{cb}c^b\color{violet}c^\dag_d\color{black}-\rho^i_c\color{violet}x^\dag_i\color{black}\right) + \lambda^a \times 0\\
+=& \underset{\mathrm{Sym}\;\mathrm{Jauge}}{-c^a\rho^i_a \dr{S_0}{x^i}} + \underset{\mathrm{repr}}{\left(\frac12 f^c_{ab}c^ac^b\rho_c - c^ac^b\rho^i_a \dr{\rho_b}{x^i}\right)}\color{violet}x^\dag\color{black} + \underset{\mathrm{Jacobi}}{\frac12 f^c_{ab}f^d_{cb} c^ac^bc^c} \color{violet}c_d^\dag\\
+S_\mathrm{BV} =& S_0 + S_1\\
+\{S_\mathrm{BV},S_\mathrm{BV}\} =& \{S_0,S_0\} + 2\{S_0,S_1\} + \{S_1,S_1\}
+\end{align*}
+\begin{itemize}
+\item $\{S_0,S_0\}$ toujours nul car variété classique donc crochet de Poisson classique.
+\item $\{S_0,S_1\}$ symétrie de Jauge.
+\item $\{S_1,S_1\} \quad \rightsquigarrow\quad Q^2=0$
+\end{itemize}
 
-
-
-
-
-
-
-
-
+Quand à la gestion de la fixation de Jauge, on l'obtient par la restriction à une Lagrangienne (une surface Lagrangienne, i.e. une surface de dimension moitié sur laquelle s'annule la forme symplectique, et évidement, il y a tout un travail pour montrer qu'une telle physique est indépendante de ce choix, pour ne pas casser l'invariance de Jauge).
+$$\mathrm{Jauge}: \quad L \quad \subset \quad \ppi T^* \mathcal{N}$$
 
 \end{document}
