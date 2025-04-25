@@ -193,7 +193,7 @@ H : \mathbb{R}\times T^*\mathcal{M} &\to \mathbb{R}\\
 $$\dr{L}{v^i}(t,q,v(t,q,p)) =: p_i $$
 $$H(t,q,p) = p_i v^i(t,q,p) - L(t,q,v(t,q,p))$$
 
-\subsection{retours sur Noether}
+\subsection{Retours sur Noether}
 $T\frac{\partial}{\partial t} + X^i \frac{\partial}{\partial x^i}$ sur $\mathbb{R}\times\mathcal{M}$ est une symétrie de $L$.
 
 $\implies Q = \dr{L}{v^i}(t,\gamma, \dot\gamma)X^i(t,\gamma) - (\dr{L}{v^i}\dot\gamma^i - L(t,\gamma,\dot\gamma))$ est conservé si $\gamma$ est solution.
@@ -1436,7 +1436,7 @@ $G$ un groupoide, $\mathfrak{g}$ son algèbre; le groupoide associé est:
 $$T^*G = \mathfrak{G} \quad \mathfrak{g}^*=\mathfrak{G}^{(0)}$$
 Et on a une application ``moment": $T^*G \to \mathfrak{g}^*$ qui permet bien de voir le plongement.
 
-\subsection{De BRST à BV}
+\subsection{Méthode BV}
 \underline{Quantification BRST:}
 $$\int_{\mathcal M \times \mathfrak g \times \ppi(\mathfrak g^* \oplus \mathfrak g)}\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\d x\; \d\lambda\; \D c\; \D\bar c \quad \e^{\frac i\hbar \Big(S(x)+\langle\lambda,F(x)\rangle+\langle\bar c, (\d F\circ \rho) c\rangle\Big)}$$
 où $F:\mathcal{M}\to\mathfrak g$ fixe la jauge, et $\langle\lambda,F(x)\rangle+\langle\bar c, (\d F\circ \rho) c\rangle = Q\langle\bar c, F(x)\rangle$
@@ -1468,11 +1468,14 @@ $$S_0(x) \quad \longrightarrow \quad S_0 + \underset{\mathrm{Sym}}Q\underset{\ma
 $$\frac{S_\mathrm{BV}\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_\mathrm{BV}}{\partial z^n} \quad = \quad 0$$
 Qui est une sorte de crochet de Poisson (c'est un crochet de BV) $=\frac12 \{S_\mathrm{BV},S_\mathrm{BV}\}$
 \begin{align*}
+\{\varphi,\psi\} :=& \frac{\varphi\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial \psi}{\partial z^n} - (-1)^{(1+|\varphi|)(1+|\psi|)}\frac{\psi\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial \varphi}{\partial z^n}\\
 \frac{S_\mathrm{BV}\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_\mathrm{BV}}{\partial z^n} =& 
 (-c^a\varphi^i_a) \left(\dr{S_0}{x^i} - c^a\dr\varphi{x^i} \color{violet}x^\dag_j\color{black}\right) + \underset{\dr{}\lambda}0\times (c_a^\dag)\\
 &+\frac12 f^c_{ab}c^ac^b\left(f^d_{cb}c^b\color{violet}c^\dag_d\color{black}-\rho^i_c\color{violet}x^\dag_i\color{black}\right) + \lambda^a \times 0\\
 =& \underset{\mathrm{Sym}\;\mathrm{Jauge}}{-c^a\rho^i_a \dr{S_0}{x^i}} + \underset{\mathrm{repr}}{\left(\frac12 f^c_{ab}c^ac^b\rho_c - c^ac^b\rho^i_a \dr{\rho_b}{x^i}\right)}\color{violet}x^\dag\color{black} + \underset{\mathrm{Jacobi}}{\frac12 f^c_{ab}f^d_{cb} c^ac^bc^c} \color{violet}c_d^\dag\\
 S_\mathrm{BV} =& S_0 + S_1\\
+S_1 =& z_n^\dag Q z^n = c_a^\dag Q c^a+x_i^\dag Qx^i+\bar c^a_\dag Q \bar c_a\\
+=& \frac12 c_c^\dag f^c_{ab}c^ac^b - x_i^\dag c^a\rho^i_a+\bar c_\dag^a\lambda_a\\
 \{S_\mathrm{BV},S_\mathrm{BV}\} =& \{S_0,S_0\} + 2\{S_0,S_1\} + \{S_1,S_1\}
 \end{align*}
 \begin{itemize}
@@ -1483,5 +1486,215 @@ S_\mathrm{BV} =& S_0 + S_1\\
 
 Quand à la gestion de la fixation de Jauge, on l'obtient par la restriction à une Lagrangienne (une surface Lagrangienne, i.e. une surface de dimension moitié sur laquelle s'annule la forme symplectique, et évidement, il y a tout un travail pour montrer qu'une telle physique est indépendante de ce choix, pour ne pas casser l'invariance de Jauge).
 $$\mathrm{Jauge}: \quad L \quad \subset \quad \ppi T^* \mathcal{N}$$
+\underline{Remarque:} On appelle l'équation $\{S,S\}=0$ l'équation maitresse classique.\\
 
+Le problème, c'est qu'il existe des cas où $Q^2\ne0$ et donc $\{S_1,S_1\}\ne 0$. On suppose que $\{S_1,S1\}$ s'annule sur les points critiques c'est à dire $\underset{(\mathrm{E}.\mathrm{L}.)}{\d S_0=0}$. On parle de symétrie ``On Shell". D'où on a bien $Q^2=0$ mais seulement là où $\d S=0$. (Notons que cette affirmation nécessite également quelques hypothèses de régularité et de d'autres choses, qu'on va mettre sous le tapis). Cela a également pour conséquence que pour tout $\xi,\zeta\in\mathfrak{g}$ l'action de $\rho$ sur les champs n'est plus compatible avec le crochet de Lie i.e. $[\rho \xi, \rho \zeta]\ne \rho[\xi,\zeta]$ sauf bien sûr, sur les points où $\d S_0 = 0$.\\
+
+\noindent \underline{Lemme:} (modulo les mêmes hypothèses) 
+$$\exists E = \frac12 E^{ij}(\xi,\zeta) \partial_i\wedge\partial_j \quad \mathrm{t}.\mathrm{q}.\quad  [\rho \xi, \rho \zeta] = \rho[\xi,\zeta] + E^{ij}(\xi,\zeta) \dr S{x^i} \dr{}{x^j}$$
+
+Cet écart à une symétrie complète n'est pas traitable avec BRST, mais ça se joue ``à pas grand chose" ($E$) et BV permet de gérer ça. Et l'idée est assez simple: on rajoute des termes:
+$$\rightsquigarrow S = S_0 + S_1 + S_2\quad\quad\quad S_2 = \pm \frac12 x_i^\dag x_j^\dag E^{ij}_{\;\;ab}c^ac^b$$
+$\{S,S\}$ est alors sans termes de degrés 1 i.e. homogène de degrés 2 en les antichamps.
+
+\subsection{Retour sur la Fixation de Jauge dans le cas BV}
+\underline{Avec BRST:} \quad $S_0 + Q\psi$ où $\psi:=\bar c_a F^a(x)$ fixe la jauge.\\\\
+\underline{Avec BV:}
+$$\int_\mathcal{N} \e^{\frac i\hbar S_\mathrm{BV}} \quad\quad\rightsquigarrow\quad\quad
+\int_{L\subset \ppi T^*\mathcal{N}} \e^{\frac i\hbar S_\mathrm{BV}} \quad L\; \mathrm{sous}-\mathrm{varr}\;\mathrm{Lagrangienne}$$
+\begin{align*}
+S_\mathrm{BV} &= S_0 + S_1 (+S_2 +...)\\
+&= S_0 + Q \lrcorner Q\\
+L &= \left\{\Big(z^n, z_n^\dag= \dr\psi{z^n}\Big) \quad z \in \mathcal{N} \right\} && \subset \ppi T^*\mathcal{N}\\
+Q &= z_n^\dag\d z^n &&\in \Omega^1(\ppi T^*\mathcal N)
+\end{align*}
+\underline{Sous-varr Lagrangienne:} (Mécanique)
+\begin{itemize}
+\item Soit $(Y,\omega)$ une varr symplectique; $n:= \mathrm{dim} Y$.\\
+Une \emph{sous-variété Lagrangienne} $L$ est une sous-varr de dim $^n\!/\!_2$ et telle que $\omega|_L=0$
+\item Localement: $Y + T^* X$, et $\omega = \d p_i \wedge \d q^i$
+$$L = \left\{\Big(x^i,\dr S{x^i}\Big)\quad x\in X\right\} \quad \mathrm{pour}\;\mathrm{un}\;\mathrm{certain}\; S:X\to\mathbb{R}$$
+(modulo les singularités, évidement, cf \color{red} mon petit dessin\color{black})
+$$S_1 = z_n^\dag Q z^n \quad\quad S_1|_L = \dr \psi{z^n} Q z^n = \bar c_a \dr{E^a}{x^i} Q x^i + F^aQ \bar c_a$$
+\end{itemize}
+\underline{Remarque:}
+
+Il existe un théorème (via un calcul diff extérieur, en dim infinie, et une sorte de thm de Stockes) qui donne une contrainte sur BV pour s'assurer de l'indépendance de $\int_L \e{^i\!/\!_\hbar S_\mathrm{BV}}$ par des déformations homologiques de $L$; permettant ainsi de récupérer l'invariance de jauge (qu'on aurait pu pensé perdue dans la fixation de jauge).\\
+
+\noindent\underline{Autre remarque:}
+
+On peut construire une mesure ``Beresteinnene" sur $\d z^n$ sur $L \subset \ppi T^*\mathcal{N}$.  Bere $\approx \dr{}{z^1}\wedge...\dr{}{z^p}\lrcorner \mathrm{forme}$ \color{red} notons que je suis absolument pas serein sur l'orthographe du bonhomme...\color{black}
+$$\overset{\mathrm{pair}}{z^n} \quad \longrightarrow\quad \overset{\mathrm{impair}}{z^\dag_n}\quad \quad \quad \d z^\dag_n\approx\dr{}{z_n^\dag}\approx\d z^n
+\quad \quad \quad (\mathrm{tres}\;\mathrm{vaguement})$$
+
+C'est le tour de magie qui assure que l'on a une bonne mesure sur $L$ indépendante des coordonnées, via de la dualité bien trouvée. cf le livre de Pavel-Nev pour la construction.
+
+\subsection{Toute petite aparté sur la quantification}
+\underline{Exemple:} Kontsevitch (1997) formule de quantification par déformation d'une variété de Poisson.\\
+
+\noindent\underline{Le problème:}
+$F \in \mathcal{C}^\infty(T^*\mathcal M) \rightsquigarrow \Hat F$ opérateur sur $\mathcal{H}\approx L^2(X)$\\
+Approche par déformation: 
+$$\Big( \mathcal{C}^\infty(T^*X), \{\cdot,\cdot\}\Big) \quad \overset{\mathrm{quantification}}\longrightarrow (\mathcal{A},[\cdot,\cdot])$$
+
+$\mathcal{A}$ une algèbre d'opérateurs auto-adjoints. Notons que si ça marche pour les variétés, c'est vite assez limité. On généralise donc un chouille en cherchant à créer un $*$-produit $(fg)\mapsto f * g$ (qui sera donc \#, le produit de Moyal dans le cas pseudo-diff) tel que:
+$$f*g \quad\quad = \quad\quad f \cdot g \quad+\quad \hbar \{f,g\} \quad+ o(\hbar^2)$$
+puis on se pose le même problème, mais sur une variété de Poisson:
+$$\Big(\mathcal M, \underset{=\pi}{\{\cdot,\cdot\}}\Big) \quad \quad \quad fg \quad \mapsto \quad f*g = f\cdot g + \hbar \{f,g\} + ...$$
+1999 Fattaneo \& Felder formulent une interprétation de la formule de Konsevitch.
+
+\section{Modèle Poisson-$\Sigma$}
+\subsection{Contexte}
+On se donne $(\mathcal{M},\{\cdot,\cdot\}) = (\mathcal{M},\pi)$ une variété de Poisson. \color{red} METTRE DESSIN\color{black}
+$$X \in \mathcal{C}^\infty (\Sigma,\mathcal M)\quad\quad\quad \eta \in\Omega^1(\Sigma)\otimes_X X^*T^*\mathcal{M}$$
+$$\mathrm{en}\; z \in \Sigma, \quad \eta_z \in T^*_z Z \otimes T^*_{X(z)}\mathcal{M}$$
+On se munit de coordonnés $x^i$ sur $\mathcal{M}$; $\eta = \eta_i \d x^i:= \eta_i\otimes \d x^i$ où $\eta_i \in \Omega^1(D)$.
+$$S(X,\eta) = \int_{\Sigma^2} \eta_i \wedge \d X^i + \frac12 \pi^{ij} (x) \eta_i\wedge \eta_j $$
+\underline{Remarque:} cette action est topologique. \color{red} METRRE DESSIN\color{black} 
+$$\int_{(X,\eta)} \D X \D \eta \e^{\frac i\hbar S(X,\eta)} \underset{=(f*g)(x)}{f(X(p))g(X(q))}$$
+$X(r)=x$, mais aussi $p,q,r \in \partial \Sigma$ et $f,g\in\mathcal C^\infty (\mathcal{M})$. Calculons E.L.
+$$\left\{\begin{matrix}
+\d X^i \;+\; \pi^{ij} (x)\eta_j &=& 0\\
+\d \eta_i + \frac12 \partial_i \pi^{jk}(x) \eta_j\wedge\eta_k \!\!\! &=& 0
+\end{matrix}\right.$$
+\underline{Remarque:} Les variations sont toutes à support compact, d'où l'absence de termes de bord.
+\subsection{Symétrie de Jauge}
+\quad Pour $b\in \mathcal C^\infty(\Sigma, X^*T^*\mathcal M)$ où $X^*T^*\mathcal M$ est le fibré de base $\Sigma$ dont la fibre en $z$ est $T^*_{X(z)}\mathcal{M}$, i.e. $b=b_i \d x^i$ avec $b_i \in\mathcal{C}^\infty(\Sigma)$. Notons que c'est une symétrie modulo un terme de bord.\\
+
+\noindent\underline{Rappel:}
+
+$(\mathcal{M},\pi)$ est une algébroide de Lie. Or, le dual d'une alg de Lie est une varr de Poisson. D'où le dual d'une varr de Poisson est aussi une algebroide de Lie. (enfin, là, ``avec les mains"). Donc $T^*\mathcal M$ algébroïde de Lie. $(X,\eta)$ est alors une 1-forme à coefficients dans une algébroïde de Lie.\\\\
+\underline{L'algebroïde de Lie:}
+$$\begin{matrix}
+T^*\mathcal{M} &\quad \quad \quad & \mathrm{Crochet}\;\mathrm{sur}\; \Gamma(T^*\mathcal{M})\\
+\downarrow\\
+\mathcal{M} && \mathrm{Ancre}\;\rho: T^*\mathcal{M} \quad \longrightarrow \quad T\mathcal{M}
+\end{matrix}$$
+$$[X,fY] = f[X,Y] + (\rho(X)\lrcorner \d F)Y \quad\quad\quad X,Y\in\Gamma(T^*\mathcal{M})$$
+$$[\d x^i, \d x^j] \quad=\quad \d \pi^{ij} \quad=\quad \partial_k \pi^{ij} \d x^k
+\quad\quad\quad\quad\quad\rho(\d x^i) \quad=\quad \pi^{ij}\partial_j\quad\quad\quad\quad\quad
+\d X \quad=\quad \rho(\eta)$$
+$$\d\eta_i + \frac12[\d x^j, \d x^k] \eta_j\wedge\eta_k \quad = \quad 0 \quad\quad\quad /\!/\mathrm{Mauer}-\mathrm{Cartan}: \; \d A^a + \frac12 f^a_{bc}A^bA^c = 0$$
+\underline{Interprétation:} la connexion a ne courbure nulle dans l'espace des phases.
+$$\delta_b X \quad=\quad \rho_X (b) \quad\quad\quad\quad\quad \delta_b \eta \quad = \quad \d^\nabla b$$
+
+$\d^\nabla$, la ``différentielle covariante"  construite via les $\partial_i \pi^{jk}$ qui jouent le rôles des constantes de structure en théorie de Lie.\\ \\
+Dans une illustration dimension-finie:
+$$Q_{T^*\mathcal{M}} = -\frac12 \partial_k \pi^{ij}(x) \alpha_i\alpha_j \dr{}{\alpha_k} + \pi^{ij} \alpha_i \dr{}{x^j}$$
+
+$(x^i,\alpha_j)$ coordonnées sur $T^*\mathcal{M}$ de sorte que $\alpha = \alpha_i \d x^i$. On voit alors $T^*\mathcal{M}$ est vue comme algebroïde de Lie, et on a recréé un ``Chevaley-Eilenberg" pour $T^*\mathcal{M}$: ${Q_{T^*\mathcal{M}}}^2 = 0$.\\
+
+\noindent\underline{Cas dimension infinie:} (toujours Poisson-$\Sigma$)
+
+On a une représentation de $\mathcal{C}^\infty(\Sigma, T^*\mathcal{M})$ sur $\eta \in \Omega^1(\Sigma)\otimes_X X^*T^*\mathcal M$ avec $X:\Sigma\to\mathcal{M}$ et $\beta \in \mathcal{C}^\infty(\Sigma)\otimes_X X^*T^*\mathcal{M} = \Gamma(\Sigma,X^*T^*\mathcal{M})$.
+$$Q_{X^*T^*\mathcal M} = -\frac12 \partial_k \pi^{ij}(X) \beta_i\beta_j\dr{}{\beta_k} + \pi^{ij}(X) \beta_i \dr{}{x_j} + (\d \beta_i + \partial_i \pi^{jk}(X)\eta_j \beta_k) \dr{}{\eta_i}$$
+et: \quad ${Q_{X^*T^*\mathcal{M}}}^2 \ne 0$\quad\quad (d'où l'échec d'une approche BRST)
+$$=\left(-\frac12 \partial_i \partial_l \pi^{jk}(X) \beta_j\beta_k(\d X^l + \pi^{lm} \eta_m)\right)\dr{}{\eta_i} \quad\quad\quad\quad\quad\quad\quad\quad$$
+
+Mais on remarque dans l'expression de ${Q_{X^*T^*\mathcal{M}}}^2$ le terme $\d X^l + \pi^{lm} \eta_m$ qui n'est autre qu'une des deux équations d'E.L. donc on a quand même ${Q_{X^*T^*\mathcal{M}}}^2=0$ on shell.\\
+On rappelle les conditions de bord sur $(X,\eta)$ à savoir: $\langle\eta,\d X\rangle\Big|_{\partial\Sigma} = 0$, puis on pose:
+$$S_\mathrm{BV} \quad := S_0 \;+\; S_1\;+\;S_2$$
+
+\begin{align*}
+S_1 :=& \int_\Sigma - \frac12 \beta^i_\dag \Big( \partial_i \pi^{jk}(X)\beta_j \beta_k\Big) + X_j^\dag \pi^{ij}(X)\beta_i + \eta^i_\dag \Big( \d\beta_i + \partial_i \pi^{jk}(X)\eta_j\beta_k\Big)\\
+S_2 :=& \int_\Sigma \frac14 \eta^i_\dag \eta^j_\dag \partial_i\partial_j\pi^{kl}\beta_k\beta_l\\
+\{S_1,S_0\} =& \pm \int_\Sigma \frac14 \underset{=0}{[\pi,\pi]^{ijk}}\beta_k \eta_i\wedge\eta_j + \d(X^i\d \beta_i)\\
+=& \pm \int_\Sigma \d(X^i\d \beta_i)\\
+=& 0\\
+\{S_1,S_1\} =& ?
+\end{align*}
+$$\delta_b \eta_i = \d b_i + \partial_i \pi^{jk}(X)\eta_j b_k \quad\quad\quad\quad b: \Sigma\to X^*T^*\mathcal{M}$$
+\underline{Remarque:} Il est également nécessaire que l'égalité suivante soit vérifiée, mais malheureusement, le prof ne sais plus d'où ça sort...
+$$\int_{\partial\Sigma} X^i\d \beta_i \quad = \quad 0$$
+$$X^i\Big(\d b_i + \partial_i \pi^{jk}(X)\eta_jb_k\Big)\bigg|_{\partial\Sigma} = 0$$
+\begin{align*}
+\{S_1,S_2\} =& \int_\Sigma -\frac12 \eta^i_\dag \partial_i\partial_l \pi^{jk}(X) \beta_j\beta_k \Big(\underset{\mathrm{E}.\mathrm{L}.}{\d X^l + \pi^{lm}\eta_m}\Big)\\\\
+&\quad \left.\begin{array}{l}
++ \beta^k_\dag \partial_k (\frac14 [\pi,\pi]^{jlm} \beta_j\beta_l\beta_m)\\\\
++ X^\dag_j (-\frac14 [\pi,\pi]^{jkl}\beta_k\beta_l)\\\\
++ \frac14\eta^i_\dag \partial_i \left([\pi,\pi]^{jkm}\right)\eta_j\beta_k\beta_m
+\end{array}\right\} = 0 \; \mathrm{par}\;\mathrm{la}\;\mathrm{structure}\;\mathrm{Poisson}\; [\pi,\pi]=0\\\\
+\{S_2,S_0\} =& \frac{S_2\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_0}{\partial z^n} + \frac{S_0\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_2}{\partial z^n}\\
+=& \int_\Sigma \left(\frac12 \eta^i + \partial_i\partial_j \pi^{kl} \beta_k\beta_l\right)\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \underset{\quad\quad\quad=\d X^j + \pi^{jk} \eta_k}{\dr{S_0}{X^j}}
+\end{align*}
+Où l'on remarque que, comme on est en dimension infinie, $\dr{S_0}{X^j}$ est un opérateur d'E.L.\\ On conclu:
+$$\{S_1,S_1\}\;+\;2\{S_0,S_2\} \quad = \quad 0$$
+On montre également que:
+$$\{S_1,S_2\}\quad = \quad\frac14 \eta^l_\dag\eta^m_\dag\partial_l\partial_m \left([\pi,\pi]^{ijk}\beta_i\beta_j\beta_k\right) \quad = \quad 0$$
+Et que (mais flemme) $\{S_2,S_2\} = 0$ ce qui permet de conclure que :
+$$\boxed{\boxed{\{S_\mathrm{BV},S_\mathrm{BV}\} \; = \; 0}}$$
+Dès lors: $\quad \d_\mathrm{CE} \rightsquigarrow Q \rightsquigarrow \{S_\mathrm{BV}, \cdot\}$\\
+``Jaccobi": $\{\varphi,\{\psi, \chi\}\} = \{\{\varphi,\psi\},\chi\} + (-1)^{(1+|\varphi|)(1+|\psi|)}\{\psi,\{\varphi,\chi\}\}$\\
+Conséquence: $\mathrm{Ad}_{S_\mathrm{BV}} := \{S_\mathrm{BV},\cdot\} \implies {\mathrm{Ad}_{S_\mathrm{BV}}}^2 = 0$
+
+Bref, on est revenu à de la théorie connue. Notant $\{\varphi, \psi\chi\} = \pm \{\varphi,\psi\}\chi \pm \psi\{\varphi,\chi\}$. Petite remarque, tout comme en théorie des opérades, on a en fait, deux degrés qui cohabitent. Le degrès de forme $\Omega^\bullet(\Sigma)$ (0,1 et 2) et un degrès plus algébrique (-2,-1, 0 et 1) que l'on récapitule dans le tableau ci-dessous:
+\color{red} METTRE DESSIN\color{black}
+
+\noindent Bref, notre espace des phases est:
+$$\Sigma\times\mathcal{C}^1(\Sigma,\mathcal{M}) \oplus \Gamma(\Sigma,X^*T\mathcal{M})\times \mathcal{C}^1(\Sigma,X^*T^*\mathcal{M})$$
+évidement, de dimension infinie.\\
+
+\noindent\underline{Fixation de Jauge:}\\
+Choix de 
+$$\underset{z=(x,c,\bar c, \lambda)}{\Psi : \mathcal{N}} \longrightarrow \underset{\;\;:=\ppi\mathbb{R}}{``\mathbb{R}^{0|1}"}$$
+$$L := \left\{\Big(z,\dr\Psi z\Big), \; z\in\mathcal{N}\right\} \quad \subset \ppi  T^*\mathcal{N}\quad \mathrm{varr}\;\mathrm{Lagrangienne} $$
+\color{red} Mettre le dessins\color{black}
+
+Le problème est que $\mathrm{rg}\; \partial^2 S_\mathrm{BV} \approx \mathrm{dim}\mathcal{N}$, (approximativement bien sûr, car une Lagrangienne peut avoir des points singuliers, mais en gros, c'est ça). Bref, $\partial^2S_\mathrm{BV}|_L$ est inversible, ce qui est cool, car alors $\exists G$ et on peut faire du Feynman.\\
+
+\noindent\underline{Invariance par choix de Jauge:} (i.e. par choix de $L$)\\
+\color{red} DESSIN\color{black}\\
+Dans le cas dimension finie:
+$$\int_{L_1} \alpha = \int_{L_2} \alpha \quad \quad \mathrm{si}\; L_1 \sim L_2 \;\mathrm{quand}\;\mathrm{on}\;\mathrm{restreint}\;\mathrm{sur}\; \d\alpha=0$$
+
+En dimension infinie, on remplace la différentielle $\d  \rightsquigarrow \Delta_\mathrm{BV} = (-1)^{|z^\dag_n|} \frac{\vec\partial}{\partial z^n}\frac{\vec\partial}{\partial z^\dag_n}$, c.f. A. Schwarz pour les détails. Considérons le cas simple suivant:
+\begin{align*}
+&\mathcal{N} = \mathbb{R}^n && x^i\\
+&\& \; \ppi T^*\mathbb{R}^n && x_i^\dag \approx p_i
+\end{align*}
+$$\mathcal{C}^\infty(\ppi T^*\mathbb{R}^n) \ni X = \frac 1{k!} X^{i_1, ... i_k} \dr{}{x^{i_1}}\wedge ...\wedge \dr{}{x^{i_k}}$$
+$$\dr{}{x^\dag_i} X = \d x^i \llcorner X \quad \implies\quad \dr{}{x^i} \left(\dr{}{x^\dag_i} X\right) = \dr{}{x^i}\left(\d x^i \llcorner X\right)$$
+$$\d x^i \llcorner X = X^i \quad \implies \quad \Delta X = \dr{X^i}{x^i} = \mathrm{div} X = \frac{\d \Big( X^i \partial_i \lrcorner (\d x)^n\Big)}{(\d x)^n}$$
+$$\Delta : \Omega^k \longrightarrow \Omega^{n-k}$$
+D'où $\Delta$ : truc de dim inf ($\mathcal{N}$) $\longrightarrow$ truc de codim finie (donc c'est à peu près apréhendable).
+$$\Delta^2 = 0 \quad (\mathrm{Schwarz} - \mathrm{BV})$$
+\underline{Remarque de Tomas:} en vrai c'est pas trop une différentielle, mais cet objet existe en théorie de Hodge, c'est (en gros) $\d(*\d(\cdot))$ donc rien de follichon.\\
+
+Si $\alpha$ est une fonction, $\d z$ est alors une forme de degrés moitié. Si $\Delta \alpha = 0$ et $L_1\sim L_2$ on obtient bien:
+$$\int_{L_1} \alpha \d z = \int_{L_2} \alpha \d z$$ maintenant, on veut regarder si:
+$$\Delta(\e^{\frac i\hbar S_\mathrm{BV}}F) \overset?= 0$$
+Pour finir la construction de notre calcul diff, il ne reste plus qu'à pouvoir gérer la mesure:\\
+
+\noindent\underline{Théorème:}
+$$\Delta(\e^{\frac i\hbar S_\mathrm{BV}}) = \frac{i}{\hbar} \left(\Delta S + \frac{i}{\hbar} \{S,S\}\right) \e^{\frac i\hbar S}$$
+Donc:
+$$\Delta(\e^{\frac i\hbar S})=0 \quad \iff \quad \boxed{\Delta S + \frac{i}{\hbar} \{S,S\} = 0}_{\;\mathrm{equation}\;\mathrm{maitresse}\;\mathrm{quantique}}$$
+
+Dans beaucoup de modèles, $\Delta S = \{S,S\} = 0$, du coup, c'est facile. Et c'est le cas, pour Poisson-$\Sigma$.
+$$\Delta(\e^{\frac i\hbar S_\mathrm{BV}}F) = \Delta(\e^{\frac i\hbar S_\mathrm{BV}})F \pm \mathrm{cste}\underset{=0}{\{S,F\}} \e^{\frac i\hbar S_\mathrm{BV}}$$
+où le crochet s'annule par invariance de jauge de $F$ i.e. indep des anti-champs.\\
+\underline{Rappel de règle de calcul:} $\Delta(\varphi\psi) = \Delta\varphi \psi + (-1)^{|\varphi|}\{\varphi,\psi\} + (-1)^{|\varphi|} \varphi\Delta\psi$\\
+
+\noindent\underline{Lemme:}
+\begin{itemize}
+\item $\{S,S^n\} = n S^{n-1} \{S,S\}$
+\item $\Delta S^n = n S^{n-1} \Delta S + \frac{n(n-1)}2 S^{n-2}\{S,S\}$
+\end{itemize}
+Preuve: récurrence simultanée\\
+
+Ceci permet de conclure qu'on peut faire Feynman sur Poisson-$\Sigma$; tout en conservant l'invariance de Jauge, et toutes les bonnes propriétés physiques.\\
+
+\noindent\underline{Fixation de Jauge Alternative:} (chez Cattaneo \& Felder)
+
+On fait un calcul perturbatif, $X=x+\xi$ avec $x\in\Sigma$; $\xi \in \mathbb{R}^n$ et $\eta$ ``petit". On rajoute à l'action:
+$$+ S_\mathrm{gh} = \int_\Sigma \eta_i (\d\xi^i + * \d \chi^i) + \beta_i \d * \d \gamma^i$$
+$\beta_i$ fantôme, $\gamma^i$ fantômes, et $\lambda^i$ multiplicateurs de Lagrange.\\
+\underline{Remarque du prof:} un bon choix de Jauge, serait alors $\d(*\eta)=0$
+
+Avec cela, Cataneo et Felder re-dérivent la formule de Kontsevitch (fort lie avec les algebroïdes de Lie). C'est également comme cela qu'ils construisent un groupoide (presque de Lie, mais singulier) qui integre tout algebroide de Lie (inspiré de la structure de Poisson de Poisson-$\Sigma$). 
+\begin{align*}\underset{\mathrm{chemins}=\quad\quad\quad}P\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!T^*\mathcal{M} =& \mathcal{C}^1([0,1], T^*\mathcal M)\\
+=& \{(X,\eta), X:[0,1] \to \mathcal{M}, \eta\in\Omega^1([0,1])\otimes_X X^*T^*\mathcal{M}\}
+\end{align*}
+$$\delta_\beta X^i = -\pi^{ij}(X)\beta_j\quad\quad\quad \delta_\beta \eta_i = \d \beta_i + \partial_i \pi^{jk}(X) \beta_k$$
+$$\mathrm{dim}\{\mathrm{orbites}\;\mathrm{dans} PT^*\mathcal{M}\;\mathrm{sous} \mathrm{l}'\mathrm{action}\;\d\e\;\mathcal{C}^\infty(T^*\mathcal{M})\}=2n=2\mathrm{dim}\mathcal{M}=\mathrm{grp}-\mathrm{oid}\;\d\e\;\mathrm{Lie}$$
 \end{document}
