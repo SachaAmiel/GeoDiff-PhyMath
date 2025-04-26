@@ -124,10 +124,10 @@ Même si on va aller plus loin dans les théorèmes de Noether plus tard, une bo
 
 
 \subsection{Formalisme Hamiltonien}
-L'idée est de faire un changement de variable de $T\mathcal{M}$ vers $T^*\mathcal{M}$... Commençons par définir un variété symplectique.
+L'idée est de faire un changement de variable de $T\mathcal{M}$ vers $T^*\mathcal{M}$... Commençons par définir une variété symplectique.
 \\
 \underline{Définition}: (variété symplectique)\\
-Un var symplectique $\mathcal{M}$ est une variété munie d'une 2-forme $\omega$, $\omega \in \Omega^2(\mathcal{M})$ telle que:
+Une var symplectique $\mathcal{M}$ est une variété munie d'une 2-forme $\omega$, $\omega \in \Omega^2(\mathcal{M})$ telle que:
 \begin{itemize}
 \item $\omega$ non dégénérée i.e. $\forall \xi\in T\mathcal{M}, \quad \quad \xi \lrcorner \omega = 0 \quad \implies \quad \xi =0$\\
 $\xi \lrcorner \omega:= \omega(\xi,\cdot)$ (également noté, $\iota_\xi \omega$ dans d'autres ressources)
@@ -152,7 +152,7 @@ b) Soit $\mathcal{M}$ une variété de dimension $n$,
 Soit ce$\pi$ et soit $\theta \in \Omega^1 (T^*\mathcal{M})$ tel que,
 $$\forall \xi \in T_{(p,q)}(T^*\mathcal{M}), \quad \theta_{(q,p)}(\xi) = \langle \underset{\in T_q^*\mathcal{M}}{p,} \underset{\in T_q\mathcal{M}}{\d \pi_{(q,p)} \xi} \rangle$$
 
-En coordonnées locales, $(q^i)$ sur $\mathbb{M}$ et $(p_i)$ sur $T_q^*\mathcal{M}$ avec $p := p_i \d q^i$, on obtient $\theta = p_i \d \left(q^i\circ \pi\right)$ où $(p_i)\!\!\smile\!\!(q^i)$ sont des coordonnées locales sur $T^*\mathcal{M}$. On notera tout simplement $\theta = p_i\d q^i$ avec $\theta \in \Omega^1(T^*\mathcal{M})$
+En coordonnées locales, $(q^i)$ sur $\mathcal{M}$ et $(p_i)$ sur $T_q^*\mathcal{M}$ avec $p := p_i \d q^i$, on obtient $\theta = p_i \d \left(q^i\circ \pi\right)$ où $(p_i)\!\!\smile\!\!(q^i)$ sont des coordonnées locales sur $T^*\mathcal{M}$. On notera tout simplement $\theta = p_i\d q^i$ avec $\theta \in \Omega^1(T^*\mathcal{M})$
 ce qui est un abus de notation conséquent (notamment puisque rentrant violemment en conflit avec la définition de $p$). Bref, il faut ouvrir l'œil au contexte.\\
 \\
 Il suffit alors de prendre $\omega := \d \theta$ forme symplectique, pour avoir $(T^*\mathcal{M},\omega)$ une variété symplectique.
@@ -169,6 +169,7 @@ L: \left\{ \begin{matrix}
 (t,q,p) & \to & H(t,q,p)
 \end{matrix}\right.
 \end{equation*}
+
 Si $(\d q^i)$ est une base de $T_q^*\mathcal{M}$, $p\in T^*_q\mathcal{M} \implies p=p_i\d q^i$, d'où $(p_i, q^i)$ est un système de coordonnées sur $T^*\mathcal{M}$; enfin, en fait c'est $q^i\circ \pi$ à la place de $q^i$ mais bon, c'est l'abus de notation de tout à l'heure. On pose:
 $$\theta = p_i\d q^i$$
 \underline{Transformation de Legendre}:
@@ -226,7 +227,7 @@ $$Hq \iff (t\gamma,\pi) = \mathbb{L}(t,\gamma,\dot\gamma)$$
 $$\dr{H}{p_i}(t,\gamma,\pi)=v^i(t,\gamma,\pi)=\frac{\d \gamma^i}{\d t}$$
 par def de $v$.\\
 Alors, $\pi_i = \dr{L}{v_i}(t,\gamma,\dot\gamma)$
-$$\frac{\d \pi}{\d t} = \frac{\d}{d t}(\dr{L}{v_i}) = (EL) \dr{L}{x^i} = -\dr{H}{q^i}$$
+$$\frac{\d \pi}{\d t} = \frac{\d}{d t}(\dr{L}{v_i}) \overset{(\mathrm{E.L.})}= \dr{L}{x^i} = -\dr{H}{q^i}$$
 Notation:
 \begin{align*}
 \frac{\d q^i}{\d t} &= \;\;\,\dr H{p_i}\;\\
@@ -261,14 +262,14 @@ Lagrangien d'ordre quelconque $r$, i.e. $L(x, \dot x, \ddot x, \dot{\ddot x}\;..
 \underline{Définition}: (Jets)\\
 Si $\mathcal{M}$ est varr de dim $k$ et $U$ est un ouvert de $\mathbb{R}^n$, 
 $$\mathfrak{j}^r u (x) := (x, u(x), \partial u(x), \partial^2 u(x), \,...\, \partial^r u (x)$$
-où $\partial^i := \dr{}{^{\mu_1}...\partial^{\mu_r}} =: \partial_{\mu_1...\mu_r}$
+où $\partial^i := \dr{}{^{\mu_1}...\partial^{\mu_i}} =: \partial_{\mu_1...\mu_i}$. 
 Cas général pour des variétés quelconques:
 
 \begin{align*}
 	\mathfrak{j}^0(U,\mathcal{M}) &= U\times\mathcal{M}\\
-	\mathfrak{j}^1(U,\mathcal{M}) &= \{(x,y,E), \quad (x,y)\in U\times\mathcal{M}, E \;\mathrm{sev}\;\mathrm{de}\; T_{(x,y)}(U\times\mathcal{M})\\&\quad \quad| \quad \mathrm{dim}E=\mathrm{dim}U\\
+	\mathfrak{j}^1(U,\mathcal{M}) &= \Big\{(x,y,E), \quad (x,y)\in U\times\mathcal{M}, E \;\mathrm{sev}\;\mathrm{de}\; T_{(x,y)}(U\times\mathcal{M})\\&\quad \quad| \quad \mathrm{dim}E=\mathrm{dim}U\\
 	&\quad\quad\quad\;\d (\pi_{U\times\mathcal{M}\to U})_{(x,y)}: T_{(x,y)}(U\times\mathcal{M})\to T_x\mathcal{M}
-	\\&\quad\quad\quad\; \d (\pi_{U\times\mathcal{M}\to U})_{x,y)}|_E : E\to T_x\mathcal{U}\quad\quad\quad\quad\quad\quad\quad\quad\quad\}\\
+	\\&\quad\quad\quad\; \d (\pi_{U\times\mathcal{M}\to U})_{x,y)}|_E : E\to T_x\mathcal{U}\quad\quad\quad\quad\quad\quad\quad\quad\quad\Big\}\\
 	\mathfrak{j}^r(U,\mathcal{M}) &= \mathfrak{j}^1(U, j^{r-1}(U,\mathcal{M}))
 \end{align*}
 Système de coordonnées locales sur les jets:
@@ -360,7 +361,7 @@ a) on prend $\mathfrak{j}^{2r-1}f_a |{\partial u}=0$, d'où $\int_U (\mathrm{EL}
 b) $(\mathrm{EL})(u)_i = \sum_m (-1)^r \partial_\mu (\dr L {v^i_m})$ 
 $$(\mathrm{EL})(u)_i \delta u^i \quad = \quad (\mathrm{EL})(u)_i \sum_{|m|\leq r} \delta u^{m,i}\partial_m f_a \quad + \quad \partial_\mu \left(\sum_{|m|\leq r} (\mathrm{EL})\delta u^{m,a}\overset{\leftrightarrow}\partial_{m\backslash\mu} f_a\right)$$
 Conclusion: $\forall f_a : \mathfrak{j}^{2r-1} f_a\,\!_{|\partial u} = 0$
-$$\int \sum_{|m|\leq r} (-1)^{|m|}\partial_m\left[(\mathrm{EL})(u)_i (Y^{m,a} - \dr u{x^\nu} X^{m,a,\nu}\right] f_a = 0$$
+$$\int \sum_{|m|\leq r} (-1)^{|m|}\partial_m\left[(\mathrm{EL})(u)_i \Big(Y^{m,a} - \dr u{x^\nu} X^{m,a,\nu}\Big)\right] f_a = 0$$
 \\
 Exemple: Électromagnétisme\\
 Rappel: Étoile de Hodge $* : \Omega^p(\mathcal{M})\to \Omega^{n-p}(\mathcal{M})$ pour passer de $J^\mu$ 3-forme à 1-forme...
@@ -457,7 +458,7 @@ V^* & \to W^* &&\\
 V^*/\mathbb{R}(\alpha_i)_{i\in[\![1,k]\!]} & \to W^* &&\\
 \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
 \beta \mathrm{mod} [\alpha_1, \; ... \alpha_k] & \mapsto \beta_{|W}&&
-\mathrm{est} \; \mathrm{un}\mathrm{iso}!
+\mathrm{est} \; \mathrm{un}\;\mathrm{iso}!
 \end{align*}
 Soit $(\mathcal{M},\omega)$ une variété symplectique, $T^*\mathcal{E}$, $\mathcal{N}\subset\mathcal{M}$, $M\in\mathcal{N}$, $X\in T_M\mathcal{M}$.
 $$X\lrcorner \omega \in T_M^*\mathcal{M} \to X\lrcorner \omega_{|\mathcal{N}} \in T_M^*\mathcal{N}$$
@@ -509,9 +510,8 @@ $$\int_{\Gamma\subset\mathcal{N}} \theta \quad \quad \to \quad \quad \Gamma \; \
 Si $F=\theta(X) - f = p_\mu X^\mu (q) - f(q)$ où $f\in\mathcal{C}^\infty$, $X^\mu$ est une symétrie (modulo $\d f$) lorsque $\{H,F\}_{|\mathcal{N}}=0$.
 
 \noindent \underline{Point de vue non-relativiste}:\\
-$H:T^*\mathcal{M}\to \mathbb{R}$, $H$ indépendant du temps. $X=X^i(x)\partial_i \in \mathfrak{X}(\mathcal{M})$ est une symétrie de $\int_I L(\gamma,\dot\gamma)\d t$ ssi $\{H, p_i X^i(q)\}=0$.\\
-\underline{Généralisation plus générale}:sur une variété symplectique quelconque $\mathcal{M}$.\\
-\\
+$H:T^*\mathcal{M}\to \mathbb{R}$, $H$ indépendant du temps. $X=X^i(x)\partial_i \in \mathfrak{X}(\mathcal{M})$ est une symétrie de $\int_I L(\gamma,\dot\gamma)\d t$ ssi $\{H, p_i X^i(q)\}=0$.\\\\
+\underline{Généralisation plus générale:} (sur une variété symplectique quelconque $\mathcal{M}$)\\
 \underline{Définition}: (crochet de poisson sur une variété symplectique)\\
 $$\begin{matrix}
 \mathcal{C}^\infty(\mathcal{M})\times\mathcal{C}^\infty(\mathcal{M}) &
@@ -761,7 +761,7 @@ $$\forall f, g \in \mathcal{C}^\infty (\mathfrak{g}^*), \quad \quad
 on dit que $p$ est un ``\underline{morphisme de Poisson}".
 \subsection{Poisson, distributions et feuilletages}
 Soit $(\mathcal{M},\pi)$ une variété de Poisson.\\
-\underline{Motivation via exemple}: $\mathcal{M}=\mathfrak{so}(3)^*\approx \mathbb{R}^3$; $\mathfrak{so}(3) = \mathrm{Vect}\left(x^i\dr{}{x^{i+1}}-x^{i+1}\dr{}{x^i}\right)_{i\in \mathbb{Z}/2g\mathbb{Z}}$\\
+\underline{Motivation via exemple}: $\mathcal{M}=\mathfrak{so}(3)^*\approx \mathbb{R}^3$; $\mathfrak{so}(3) = \mathrm{Vect}\left(x^i\dr{}{x^{i+1}}-x^{i+1}\dr{}{x^i}\right)_{i\in \mathbb{Z}/2\mathbb{Z}}$\\
 On étudie la distribution:
 $$D_x := \big\{ X_F(x), F\in \mathcal{C}^\infty(\mathfrak{so}(3)^*)\big\}=: x^\perp\subset T_x \mathfrak{so}(3)^* = \mathfrak{so}(3)^* \quad \mathrm{car} \; \mathrm{espace}\; \mathrm{vectoriel}$$
 $D_x$ est une distribution singulière (singularité en 0)
@@ -873,7 +873,7 @@ $$\begin{matrix}
 $$
 \color{red} METTRE LE DESSIN \color{black}
 On appel cette construction une \emph{connexion d'Ehresmann} (connexion sur des fibrés lisses), et est définie rigoureusement par:
-$$\forall z \in \mathcal{F} \quad V_z = \mathrm{ker} \; \d P_z \quad \quad \d P_z T_z \mathcal{F} \to T_{P(z)} X$$
+$$\forall z \in \mathcal{F} \quad V_z = \mathrm{ker} \; \d P_z \quad \quad \d P_z : T_z \mathcal{F} \to T_{P(z)} X$$
 Utilisant l'extension naturelle sur les algèbres de Lie, on obtient:
 $$z\cdot \xi = \frac{\d}{\d t}\left(z\e^{t\xi}\right)_{|t=0} \in V_z$$
 
@@ -1116,7 +1116,7 @@ $$\mathfrak{g}
 $$\delta_0(F) = \frac{1}{(2\pi\hbar)^k}\int_{\mathfrak{g}^*} \d^4\lambda \e^{\frac{i}{\hbar}\langle\lambda,F\rangle}$$
 où $\lambda \in \mathfrak{g}^*$ est un multiplicateur de Lagrange. De même FP $= \mathrm{det} \; A$ où $A=\d (F\circ \rho)$.\\
 
-\underline{Remarque}: On a un petit problème avec FP qui n'est pas local en l'espace-temps (.e. si on change $\mathcal M$ par $\Omega^1(\mathbb M)$, par exemple, $\mathrm{det}(A)_{z\in\Omega^1(\mathbb M)}$ ne se calcul pas à partir de la forme locale de $z$)...
+\underline{Remarque}: On a un petit problème avec FP qui n'est pas local en l'espace-temps (i.e. si on change $\mathcal M$ par $\Omega^1(\mathbb M)$, par exemple, $\mathrm{det}(A)_{z\in\Omega^1(\mathbb M)}$ ne se calcul pas à partir de la forme locale de $z$)...
 \subsection{Un peu de super-calcul}
 Soit:
 \begin{itemize}
@@ -1182,7 +1182,7 @@ i.e. $x_0$ point critique de l'action (i.e. solution d'E.L.) notons $x_0\approx(
 $M_{00}$ et $M_{11}$ sont à coefficients paires (Bosons) et $M_{01}$ et $M_{10}$ impaires (Fermions). 
 \begin{align*}
 ^\mathcal{S}\mathrm{det} :&= ``\mathrm{super}\;\mathrm{determiant}\\
-:&=\frac{\mathrm{det}\left(M_{00}-M{01}M_{11}^{\;-1}M_{10}\right)}{\mathrm{det}\;M_{11}}
+:&=\frac{\mathrm{det}\left(M_{00}-M_{01}M_{11}^{\;-1}M_{10}\right)}{\mathrm{det}\;M_{11}}
 \end{align*}
 et $M$ inversible ssi $^\mathcal{S}\mathrm{det}\;M \ne 0$.\\L'idée derrière la construction de $^\mathcal{S}\mathrm{det}$ est que $\mathrm{det}(AB)=\mathrm{det}(A)\times\mathrm{det}(B)$ d'où: $$^\mathcal{S}\mathrm{det} \left(\begin{matrix}
 M_{00}&0\\0&M_{11}
@@ -1190,12 +1190,12 @@ M_{00}&0\\0&M_{11}
 \underline{Lemme:} (proof as exo)
 $$\left(\begin{matrix}
 M_{00} & M_{01}\\
-M_{10} & M{11}
+M_{10} & M_{11}
 \end{matrix}\right)
 \overset{\exists X}=
 \left(\begin{matrix}
-M_{00}-M{01}M_{11}^{\;-1}M_{10} & 0\\
-0 & M{11}
+M_{00}-M_{01}M_{11}^{\;-1}M_{10} & 0\\
+0 & M_{11}
 \end{matrix}\right)
 \times
 \mathlarger{\mathlarger{\Bigg(}}\left(\begin{matrix}
@@ -1425,7 +1425,7 @@ On demande à ce que $G$ et $G^{(0)}=:\mathcal{M}$ soient des variétés. On dem
 \noindent\underline{Lien avec alg de Lie:}
 $$T^bG = \Big\{(\gamma,v) \in TG; \d b_\gamma(v)=0\in T_{b(v)}\mathcal{M}\Big\}\quad\subset\quad TG$$
 $$u*T^bG = T^bG|_\mathcal{M} = \Big\{(x,v); x\in \mathcal{M}; v\in T_x ^b G\Big\}$$
-Bref, les ``plans tangents" aux unité forment une algebroide de Lie. \color{red} Mettre le dessin \color{black}\\
+Bref, les ``plans tangents" aux unités forment une algebroide de Lie. \color{red} Mettre le dessin \color{black}\\
 
 \noindent\underline{Remarque sur le problème inverse:}
 
