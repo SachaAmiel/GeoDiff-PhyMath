@@ -395,7 +395,7 @@ On obtenait alors les equations:
 \end{align*}
 On obtenait alors un flot sur la variété symplectique $T^*\mathcal{M}$ par
 $$X_H : \left\{\quad \begin{matrix}
-0 & = & X_H \lrcorner + \d H\\
+0 & = & X_H \lrcorner \omega + \d H\\
 \omega & = & \d p_i \wedge \d q^i
 \end{matrix}\right.$$
 Mais on peut se ramener à des problèmes variationnels, en changeant un peu notre construction:\\
@@ -428,8 +428,8 @@ A pour point critique les solutions de l'équation de Hamilton. (proof left as e
 On appel cela l'\underline{action de Poincaré}.
 
 \subsection{Trajectoires dans l'espace-temps}
-On travaille donc dans $T^*(I\times \mathcal{M})$. On a des coordonnées dans $T^*\mathcal{M}$ via $(q^i,p_i)$, et on complète par $q^0:=t$ et $p_0$ son dual, pour faire $(q_\mu,p^\mu)$ coordonnées pour $T^*(I\times \mathcal{M})$.
-$$\omega = \d p_0 \wedge \d q^0 + \d p_i \wedge \d p^i = \d p_\mu \wedge \d q^\mu$$
+On travaille donc dans $T^*(I\times \mathcal{M})$. On a des coordonnées dans $T^*\mathcal{M}$ via $(q^i,p_i)$, et on complète par $q^0:=t$ et $p_0$ son dual, pour faire $(q^\mu,p_\mu)$ coordonnées pour $T^*(I\times \mathcal{M})$.
+$$\omega = \d p_0 \wedge \d q^0 + \d p_i \wedge \d q^i = \d p_\mu \wedge \d q^\mu$$
 $$\mathcal{H}(p_\mu, q^\mu):= p_0 + H(q^0,q^1,p_i)$$
 $$\mathcal{H}: T^*(I\times\mathcal{M}) \to \mathbb{R}$$
 On construit également:
@@ -601,7 +601,7 @@ Dans tout système de coordonnées locales $(x_i)$,
 $$\exists \pi = \sum_{i<j} \pi^{ij}(x) \partial_i \wedge\partial_j$$
 $\partial_i\wedge\partial_j:=(\partial_i\otimes\partial_j-\partial_j\otimes\partial_i)$, d'où $\pi = \pi^{ij}\partial_i\otimes\partial_j$ une fois anti-symétrisé, de sorte que:
 $$\{f,g\} = \sum_{ij}\pi^{ij} \partial_i (f) \partial_j (g)$$
-$$\pi^{ab}\partial_b\pi^{a'a''} + \pi^{a'b}\partial_b \partial^{a''a}+\pi^{a''b}\partial_b\pi^{aa'}=0 \quad \quad(\mathrm{Jacobi})$$
+$$\pi^{ab}\partial_b\pi^{a'a''} + \pi^{a'b}\partial_b \pi^{a''a}+\pi^{a''b}\partial_b\pi^{aa'}=0 \quad \quad(\mathrm{Jacobi})$$
 $$\pi \in \Gamma(\mathcal{M},\lambda^2 T\mathcal{M})$$
 Note: si on étends la dérivée de Lie au crochet de Schouten ($\sim$ dérivée de Lie sur les structures supérieures) alors $[\pi,\pi]=0$.
 \\ \\
@@ -1236,7 +1236,7 @@ là ya une page de correspondances diagrammes de Feynman $<->$ intégrales de Fe
 Notons que $\langle\lambda,F(x)\rangle + \langle\bar c, \d(F\circ\rho)c\rangle = \lambda_\alpha F^\alpha+\bar c_\alpha(\d F\circ\rho)^\alpha_{\;\beta} c^\beta$\\
 Notons les constante de structures sur $\mathfrak{g}$ par $f^\alpha_{\beta\gamma}$ pour éviter les conflits de notations avec les fantômes.
 $$\boxed{
-Q:=\frac12 f^\gamma_{\alpha\beta} c^\gamma c^\beta\dr{}{c^\gamma} - c^\alpha\rho^i(e_\alpha)\dr{}{x^i}+\lambda_\alpha\dr{}{\bar c_\alpha}
+Q:=\frac12 f^\gamma_{\alpha\beta} c^\alpha c^\beta\dr{}{c^\gamma} - c^\alpha\rho^i(e_\alpha)\dr{}{x^i}+\lambda_\alpha\dr{}{\bar c_\alpha}
 }$$
 agit sur $\mathcal{C}^\infty\Big(\underset x {\mathcal M}\times \underset \lambda {\mathfrak g} \times \underset{(c,\bar c)} {\ppi(\mathfrak g^*\oplus\mathfrak g})\Big) $.\\
 
@@ -1593,8 +1593,10 @@ $$=\left(-\frac12 \partial_i \partial_l \pi^{jk}(X) \beta_j\beta_k(\d X^l + \pi^
 
 Mais on remarque dans l'expression de ${Q_{X^*T^*\mathcal{M}}}^2$ le terme $\d X^l + \pi^{lm} \eta_m$ qui n'est autre qu'une des deux équations d'E.L. donc on a quand même ${Q_{X^*T^*\mathcal{M}}}^2=0$ on shell.\\
 On rappelle les conditions de bord sur $(X,\eta)$ à savoir: $\langle\eta,\d X\rangle\Big|_{\partial\Sigma} = 0$, puis on pose:
+
 $$S_\mathrm{BV} \quad := S_0 \;+\; S_1\;+\;S_2$$
 
+$$\underline{\mathrm{Rappel}\;\mathrm{super}\;\mathrm{important}:}\quad \quad \boxed{\boxed{\;\,[\pi,\pi]^{ijk} = 2 \left(\pi^{li}\partial_l \pi^{jk} + \pi^{lj}\partial_l\pi^{ki} + \pi^{lk}\partial_l \pi^{ij}\right)\;\Bigg.}}\quad\quad\quad\quad\quad\quad\quad\quad$$
 \begin{align*}
 S_1 :=& \int_\Sigma - \frac12 \beta^i_\dag \Big( \partial_i \pi^{jk}(X)\beta_j \beta_k\Big) + X_j^\dag \pi^{ij}(X)\beta_i + \eta^i_\dag \Big( \d\beta_i + \partial_i \pi^{jk}(X)\eta_j\beta_k\Big)\\
 S_2 :=& \int_\Sigma \frac14 \eta^i_\dag \eta^j_\dag \partial_i\partial_j\pi^{kl}\beta_k\beta_l\\
@@ -1615,7 +1617,7 @@ $$X^i\Big(\d b_i + \partial_i \pi^{jk}(X)\eta_jb_k\Big)\bigg|_{\partial\Sigma} =
 + \frac14\eta^i_\dag \partial_i \left([\pi,\pi]^{jkm}\right)\eta_j\beta_k\beta_m
 \end{array}\right\} = 0 \; \mathrm{par}\;\mathrm{la}\;\mathrm{structure}\;\mathrm{Poisson}\; [\pi,\pi]=0\\\\
 \{S_2,S_0\} =& \frac{S_2\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_0}{\partial z^n} + \frac{S_0\overset\leftarrow\partial}{\partial z_n^\dag}\;\frac{\overset\to\partial S_2}{\partial z^n}\\
-=& \int_\Sigma \left(\frac12 \eta^i + \partial_i\partial_j \pi^{kl} \beta_k\beta_l\right)\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \underset{\quad\quad\quad=\d X^j + \pi^{jk} \eta_k}{\dr{S_0}{X^j}}
+=& \int_\Sigma \left(\frac12 \eta^i_\dag \partial_i\partial_j \pi^{kl} \beta_k\beta_l\right)\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \underset{\quad\quad\quad=\d X^j + \pi^{jk} \eta_k}{\dr{S_0}{X^j}}
 \end{align*}
 Où l'on remarque que, comme on est en dimension infinie, $\dr{S_0}{X^j}$ est un opérateur d'E.L.\\ On conclu:
 $$\{S_1,S_1\}\;+\;2\{S_0,S_2\} \quad = \quad 0$$
