@@ -2,11 +2,12 @@
 %\usepackage[utf8]{inputenc}
 
 \usepackage{amsmath, amsfonts, amsthm, amssymb}
-\usepackage{tikz}
+\usepackage{tikz-cd}
 \usepackage{braket}
 \usepackage{cancel}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{relsize}
+\usepackage{hyperref}
 
 \renewcommand{\d}{{\mathrm{d}}}
 \newcommand{\D}{{\mathcal{D}}}
@@ -24,6 +25,7 @@
 \begin{document}
 \title{Notes de cours de\\Physique-Mathématique et Géométrie Différentielle}
 \author{Cours de Frédérique Hélein - Notes de Sacha Amiel}
+\date{Année 2025 - M2 Math Fonda'}
 \maketitle
 \tableofcontents
 \newpage
@@ -34,11 +36,14 @@
 \quad On considère une particule (classique) dans une variété $\mathcal{M}$ de dimension $m$; $I=]t_0,t_1[$ un intervalle réel ouvert (le temps, $t_0, t_1 \in \mathbb{R}\cup \{\pm \infty\}$); et on appel:
 \begin{align*}
 	``\mathrm{Lagrangien}":
-		&&L: &&I\times\mathcal{M} \quad&\to\quad \mathbb{R}\\
-		&&&& (t,x,v) \quad&\mapsto\quad L(t,x,v)\notag\\
-	``\mathrm{Action}":
-		&&\mathcal{A}: &&\mathcal{C}^1(I,\mathcal{M}) \quad &\to \quad	\mathbb{R}\\
-		&&&&\gamma \quad&\mapsto\quad\mathcal{A}[\gamma]:=\int_I L\big(t,\gamma(t),\dot \gamma(t)\big)\notag
+		&&L:& \left\{\begin{matrix}
+			I\times\mathcal{M} & \to & \mathbb{R}\\
+			(t,x,v) & \mapsto & L(t,x,v)
+		\end{matrix}\right.\\
+	``\mathrm{Action}":  && \mathcal{A} :& \left\{\begin{matrix}
+			\mathcal{C}^1(I,\mathcal{M}) & \to & \mathbb{R}&\\
+			\gamma & \mapsto & \mathcal{A}[\gamma]&:=\int_I L\big(t,\gamma(t),\dot \gamma(t)\big)
+		\end{matrix}\right.
 \end{align*}
 où $L$ est au moins $\mathcal{C}^1$ en $x$ et $\mathcal{C}^2$ en $v$, et où
 \begin{equation*}\begin{split}
@@ -149,7 +154,7 @@ b) Soit $\mathcal{M}$ une variété de dimension $n$,
 (q,p) & \mapsto & q
 \end{matrix}\right.
 \end{equation*}
-Soit ce$\pi$ et soit $\theta \in \Omega^1 (T^*\mathcal{M})$ tel que,
+Soit ce $\pi$ et soit $\theta \in \Omega^1 (T^*\mathcal{M})$ tel que,
 $$\forall \xi \in T_{(p,q)}(T^*\mathcal{M}), \quad \theta_{(q,p)}(\xi) = \langle \underset{\in T_q^*\mathcal{M}}{p,} \underset{\in T_q\mathcal{M}}{\d \pi_{(q,p)} \xi} \rangle$$
 
 En coordonnées locales, $(q^i)$ sur $\mathcal{M}$ et $(p_i)$ sur $T_q^*\mathcal{M}$ avec $p := p_i \d q^i$, on obtient $\theta = p_i \d \left(q^i\circ \pi\right)$ où $(p_i)\!\!\smile\!\!(q^i)$ sont des coordonnées locales sur $T^*\mathcal{M}$. On notera tout simplement $\theta = p_i\d q^i$ avec $\theta \in \Omega^1(T^*\mathcal{M})$
@@ -261,7 +266,7 @@ Lagrangien d'ordre quelconque $r$, i.e. $L(x, \dot x, \ddot x, \dot{\ddot x}\;..
 \\
 \underline{Définition}: (Jets)\\
 Si $\mathcal{M}$ est varr de dim $k$ et $U$ est un ouvert de $\mathbb{R}^n$, 
-$$\mathfrak{j}^r u (x) := (x, u(x), \partial u(x), \partial^2 u(x), \,...\, \partial^r u (x)$$
+$$\mathfrak{j}^r u (x) := \Big(x, u(x), \partial u(x), \partial^2 u(x), \,...\, \partial^r u (x)\Big)$$
 où $\partial^i := \dr{}{^{\mu_1}...\partial^{\mu_i}} =: \partial_{\mu_1...\mu_i}$. 
 Cas général pour des variétés quelconques:
 
@@ -1090,11 +1095,9 @@ Y\lrcorner \omega \; \mathrm{invariante}&
 $$\int_{\underline{\mathcal M}} \underline\omega := \int_\mathcal M F^*\theta \wedge (Y\lrcorner \omega) \overset{[...]}= \int_\mathcal M (F^*\theta) (Y) \omega$$
 En écrivant $\theta = \varphi e^1\wedge...\wedge e^k$, on a :
 $$(F^*\theta)(Y) = (\varphi\circ F) \mathrm{det}\left[\dr{(F^\alpha\circ \rho)}{\xi^\beta}\right]=: (\varphi\circ F) \mathrm{det}[A^\alpha_{\;\beta}] \quad \quad A^\alpha_{\;\beta} = e^\alpha \circ \d F_z \circ \rho(e_\beta)$$
-$$\mathfrak{g} \begin{matrix}
-\overset \rho \to T_z\mathcal M \overset{\d_zF}\to\\
-\underset A \longrightarrow
-\end{matrix} \mathfrak g$$
-\color{red} refaire ce diagramme\color{black}
+$$\begin{tikzcd}
+\mathfrak{g}\arrow[r, "\rho"]\arrow[rr,"A",bend right=30,swap] & T_z\mathcal M \arrow[r,"\d_zF"] & \mathfrak{g}
+\end{tikzcd}$$
 
 \noindent \underline{Conclusion:} posant $\omega = P^* \underline{\omega}$ on a
 \begin{align}
@@ -1106,13 +1109,10 @@ $$\mathfrak{g} \begin{matrix}
 \end{align}
 
 Dans l'équation (\ref{GF2}) $\theta \in \Omega^k(\mathfrak{g})$; $\theta=\varphi\; e^1\wedge...\wedge e^k$ et $Y= Y_1 \wedge ... \wedge Y_k$ avec $Y_\alpha = \rho(e_\alpha)$. Le terme "$\mathrm{det} \Big(\d (F\circ\rho)_z\Big)$" dans (\ref{GF3}) est le déterminant de Faddeev Popov, noté FP. Enfin, le passage de (\ref{GF3}) à (\ref{GF4}) utilise le fait que $A$ peut être vue via le diagramme commutatif suivant:
-$$\mathfrak{g}
-\begin{matrix}
-\overset{\rho_z}\to T_x\mathcal{F}_x \overset{\d F} \to \\
-\underset A \longrightarrow
-\end{matrix}
-\mathfrak{g}$$
-\color{red} refaire le diagramme au propre dès que j'ai le temps...\color{black} et pour finir, on remplace $\varphi \in \mathcal{C}^\infty_\mathrm{c}$ par $\delta_0$ sur $\mathfrak{g}$. Pour rappel, on peut voir $\delta_0$ comme limite (au sens des distrib') mais sinon, aussi via Fourrier formel:
+$$\begin{tikzcd}
+\mathfrak{g}\arrow[r, "\rho_z"]\arrow[rr,"A",bend right=30,swap] & T_x\mathcal{F}_x \arrow[r,"\d F"] & \mathfrak{g}
+\end{tikzcd}$$
+et pour finir, on remplace $\varphi \in \mathcal{C}^\infty_\mathrm{c}$ par $\delta_0$ sur $\mathfrak{g}$. Pour rappel, on peut voir $\delta_0$ comme limite (au sens des distrib') mais sinon, aussi via Fourrier formel:
 $$\delta_0(F) = \frac{1}{(2\pi\hbar)^k}\int_{\mathfrak{g}^*} \d^4\lambda \e^{\frac{i}{\hbar}\langle\lambda,F\rangle}$$
 où $\lambda \in \mathfrak{g}^*$ est un multiplicateur de Lagrange. De même FP $= \mathrm{det} \; A$ où $A=\d (F)\circ \rho$.\\
 
@@ -1177,11 +1177,30 @@ $\int \d x \e^{\frac i\hbar S_\mathrm{int}}$ n'a généralement pas de sens, mai
 \color{red} METTRE LE DESSIN \color{black}
 $$\dr S{z^i}=0\quad\quad(\mathrm{symetrie}\;\mathrm{de}\;\mathrm{jauge})$$
 $$\boxed{\d S_{x_0}=0}$$
-i.e. $x_0$ point critique de l'action (i.e. solution d'E.L.) notons $x_0\approx(x_0,\lambda_0,c_0,\bar c_0)$ pour aller plus vite. \color{red}mettre le schéma énorme sur $\partial^2 S_\mathrm{FP}(x_0)$ ainsi que le dessin de super-symétrie\color{black}
-
+i.e. $x_0$ point critique de l'action (i.e. solution d'E.L.) notons $x_0\approx(x_0,\lambda_0,c_0,\bar c_0)$ pour aller plus vite.
+$$\partial^2 S_{\mathrm{F}.\mathrm{P}.}(x_0) =
+\begin{matrix} & \partial_y \qquad\partial_z \qquad\partial_\lambda \quad\qquad\partial_c \qquad\partial_{\bar c}\quad\\ 
+	\begin{matrix} \partial_y \\\partial_z\\\partial_\lambda\\\partial_c\\\partial_{\bar c}\end{matrix} &\left(\begin{matrix}\color{teal}\boxed{\begin{matrix}\color{red}\boxed{\begin{matrix}
+	\frac{\partial^2 S}{\partial y^i \partial y^j} & 0\\
+	0 & 0
+\end{matrix}} & \begin{matrix}
+	? \\ \frac{\partial F^\alpha}{\partial z^i}
+\end{matrix}\\
+\quad\quad ? \quad \quad\frac{\partial F^\alpha}{\partial z^j} & 0\end{matrix}} & \cdot\cdot\cdot\\
+\cdot\cdot\cdot & \color{blue}\boxed{\begin{matrix}
+0 & - ^t\d F\circ\rho\\ \d F\circ\rho & 0
+\end{matrix}}\end{matrix}\right)\end{matrix}$$
+Où: $\color{red}\Box=\partial^2 S_{x_0}$, \color{teal}$\Box$ est inversible\color{black},
+et \color{blue} $\Box$ aussi \color{black}.\\
+Remarque générale sur la notion de super-matrice: \color{teal} paire
+\color{black} et \color{blue} impaire\color{black}.
+$$\left(\begin{matrix}
+	\color{teal}\boxed{\color{black}M_{00}} & M_{01}\\
+	M_{10} & \color{blue}\boxed{\color{black}M_{11}}
+\end{matrix}\right)$$
 $M_{00}$ et $M_{11}$ sont à coefficients paires (Bosons) et $M_{01}$ et $M_{10}$ impaires (Fermions). 
 \begin{align*}
-^\mathcal{S}\mathrm{det} :&= ``\mathrm{super}\;\mathrm{determiant}\\
+^\mathcal{S}\mathrm{det} :&= ``\mathrm{super}\;\mathrm{determiant}"\\
 :&=\frac{\mathrm{det}\left(M_{00}-M_{01}M_{11}^{\;-1}M_{10}\right)}{\mathrm{det}\;M_{11}}
 \end{align*}
 et $M$ inversible ssi $^\mathcal{S}\mathrm{det}\;M \ne 0$.\\L'idée derrière la construction de $^\mathcal{S}\mathrm{det}$ est que $\mathrm{det}(AB)=\mathrm{det}(A)\times\mathrm{det}(B)$ d'où: $$^\mathcal{S}\mathrm{det} \left(\begin{matrix}
@@ -1223,9 +1242,19 @@ S_\mathrm{YM} =& \int k_{\alpha\beta} (\partial_\mu A^\alpha_{\;\nu} - \partial_
 &+A\cdot A\cdot\partial A + A\cdot A\cdot A&&(\mathrm{Perturbations})\\
 &+\lambda\d(*A) + \underset{= \bar c \;\Box c}{\bar c\d(*\d c)} + \bar c\d(*A c) &&(\mathrm{Fantomes})
 \end{align*}
-\color{red}METTRE LE DESSIN\\ \\
-là ya une page de correspondances diagrammes de Feynman $<->$ intégrales de Feynman... je pense juste mettre la photo\color{black}
-\section{\color{red}j'ai pas d'idée de titre de section:-(\color{black}}
+On peut alors avoir: $\to \partial^2S(\rho, c) \to (\partial^2S)^{-1}(\rho,c)$
+$$(\partial^2S)^{-1} = \left(\begin{matrix}
+	\boxed{\begin{matrix}
+	\frac{\eta^{-1}}{|\xi|^2} - \frac{\xi^\dagger \xi}{|\xi|^4}& \frac{\xi}{|\xi|^2}\\
+	\frac{^t\xi}{|\xi|^2} & 0
+	\end{matrix}} & \cdot\cdot\cdot\\ \cdot\cdot\cdot & \boxed{\begin{matrix}
+		0 & \frac{1}{|\xi|^2}\\
+		\frac{-1}{|\xi|^2} & 0
+	\end{matrix}}
+\end{matrix}\right)$$
+où la première matrice par bloc est le propagateur.\\ \\
+\color{red}là ya une page de correspondances diagrammes de Feynman $<->$ intégrales de Feynman... je pense juste mettre la photo\color{black}
+\section{Gestion des Symétries: BRST, BV}
 \subsection{Cohomologie fantôme}
 \noindent Il reste à vérifier que:
 \begin{itemize}
@@ -1420,12 +1449,12 @@ C'est un peu comme pour une paire $(A,\rho)$ d'une alg de Lie et sa représentat
 \underline{Définition:} Groupoide de Lie
 
 On demande à ce que $G$ et $G^{(0)}=:\mathcal{M}$ soient des variétés. On demande également un plongement $\mathcal{C}^\infty$, tel que $G$ soit une sous-variété de $G^{(0)}$, $u: \mathcal{M}\hookrightarrow G$, et évidement on demande que les opérations de compositions soient lisses.\\
-\color{red}Remarque pour moi même: Je suis étonné qu'il n'y ait pas de contrainte de régularité sur les fonctions $s$ et $b$ (source et but) mais il faut que j'y réfléchissent parce qu'il est fort probable que ce soit inutile pour des raisons de cohérence...\color{black}
+
 
 \noindent\underline{Lien avec alg de Lie:}
 $$T^bG = \Big\{(\gamma,v) \in TG; \d b_\gamma(v)=0\in T_{b(v)}\mathcal{M}\Big\}\quad\subset\quad TG$$
 $$u*T^bG = T^bG|_\mathcal{M} = \Big\{(x,v); x\in \mathcal{M}; v\in T_x ^b G\Big\}$$
-Bref, les ``plans tangents" aux unités forment une algebroide de Lie. \color{red} Mettre le dessin \color{black}\\
+Bref, les ``plans tangents" aux unités forment une algebroide de Lie.\\
 
 \noindent\underline{Remarque sur le problème inverse:}
 
@@ -1514,16 +1543,16 @@ Q &= z_n^\dag\d z^n &&\in \Omega^1(\ppi T^*\mathcal N)
 Une \emph{sous-variété Lagrangienne} $L$ est une sous-varr de dim $^n\!/\!_2$ et telle que $\omega|_L=0$
 \item Localement: $Y + T^* X$, et $\omega = \d p_i \wedge \d q^i$
 $$L = \left\{\Big(x^i,\dr S{x^i}\Big)\quad x\in X\right\} \quad \mathrm{pour}\;\mathrm{un}\;\mathrm{certain}\; S:X\to\mathbb{R}$$
-(modulo les singularités, évidement, cf \color{red} mon petit dessin\color{black})
+(modulo les singularités, évidement, cf la lagrangienne pour une courbe de la forme $\color{red}\cdot\color{black}\!\!\! \subset$ dans le cours d'analyse micro-locale I...)
 $$S_1 = z_n^\dag Q z^n \quad\quad S_1|_L = \dr \psi{z^n} Q z^n = \bar c_a \dr{E^a}{x^i} Q x^i + F^aQ \bar c_a$$
 \end{itemize}
 \underline{Remarque:}
 
 Il existe un théorème (via un calcul diff extérieur, en dim infinie, et une sorte de thm de Stockes) qui donne une contrainte sur BV pour s'assurer de l'indépendance de $\int_L \e{^i\!/\!_\hbar S_\mathrm{BV}}$ par des déformations homologiques de $L$; permettant ainsi de récupérer l'invariance de jauge (qu'on aurait pu pensé perdue dans la fixation de jauge).\\
 
-\noindent\underline{Autre remarque:}
-
-On peut construire une mesure ``Beresteinnene" sur $\d z^n$ sur $L \subset \ppi T^*\mathcal{N}$.  Bere $\approx \dr{}{z^1}\wedge...\dr{}{z^p}\lrcorner \mathrm{forme}$ \color{red} notons que je suis absolument pas serein sur l'orthographe du bonhomme...\color{black}
+\noindent\underline{Autre remarque:}\\
+On peut construire une mesure ``Berezinienne" sur $\d z^n$ sur $L \subset \ppi T^*\mathcal{N}$.\\ 
+Bere $\approx \dr{}{z^1}\wedge...\dr{}{z^p}\lrcorner \mathrm{forme}$
 $$\overset{\mathrm{pair}}{z^n} \quad \longrightarrow\quad \overset{\mathrm{impair}}{z^\dag_n}\quad \quad \quad \d z^\dag_n\approx\dr{}{z_n^\dag}\approx\d z^n
 \quad \quad \quad (\mathrm{tres}\;\mathrm{vaguement})$$
 
@@ -1629,8 +1658,17 @@ Dès lors: $\quad \d_\mathrm{CE} \rightsquigarrow Q \rightsquigarrow \{S_\mathrm
 ``Jaccobi": $\{\varphi,\{\psi, \chi\}\} = \{\{\varphi,\psi\},\chi\} + (-1)^{(1+|\varphi|)(1+|\psi|)}\{\psi,\{\varphi,\chi\}\}$\\
 Conséquence: $\mathrm{Ad}_{S_\mathrm{BV}} := \{S_\mathrm{BV},\cdot\} \implies {\mathrm{Ad}_{S_\mathrm{BV}}}^2 = 0$
 
-Bref, on est revenu à de la théorie connue. Notant $\{\varphi, \psi\chi\} = \pm \{\varphi,\psi\}\chi \pm \psi\{\varphi,\chi\}$. Petite remarque, tout comme en théorie des opérades, on a en fait, deux degrés qui cohabitent. Le degrès de forme $\Omega^\bullet(\Sigma)$ (0,1 et 2) et un degrès plus algébrique (-2,-1, 0 et 1) que l'on récapitule dans le tableau ci-dessous:
-\color{red} METTRE DESSIN\color{black}
+Bref, on est revenu à de la théorie connue. Notant $\{\varphi, \psi\chi\} = \pm \{\varphi,\psi\}\chi \pm \psi\{\varphi,\chi\}$. Petite remarque, tout comme en théorie des opérades, on a en fait, deux degrés qui cohabitent. Le degrès de forme $\Omega^\bullet(\Sigma)$ (0,1 et 2) et un degrès plus algébrique (-2,-1, 0 et 1) que l'on récapitule dans le tableau ci-dessous, notamment en précisant les quels sont {\color{blue} commutatifs} et {\color{red}anti-commutatifs}:
+\begin{center}
+	\begin{tabular}{|c|ccc|}
+		\hline
+		& 0 & 1 & 2\\ \hline
+		-2 & && $\color{blue}\beta^i_\dagger$\\
+		-1 & & $\color{blue}\eta^\dagger_i$ & $\color{red}X^\dagger_i$\\
+		0 & $\color{blue}X^i$ & $\color{red}\eta_i$ & \\
+		1 & $\color{red}\beta_i$ & & \\\hline
+	\end{tabular}
+\end{center}
 
 \noindent Bref, notre espace des phases est:
 $$\Sigma\times\mathcal{C}^1(\Sigma,\mathcal{M}) \oplus \Gamma(\Sigma,X^*T\mathcal{M})\times \mathcal{C}^1(\Sigma,X^*T^*\mathcal{M})$$
